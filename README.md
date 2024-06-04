@@ -25,9 +25,10 @@ People who search for this repository already know what the delta robot is and k
 
 **The applications of Delta robots** are virtually endless but mainly they come down to a certain pattern of pick-and-place or 3D printing or tasks that require somewhat similar movements to these two. Here's three applications that I worked on (PLEASE CITE MY 3 PAPERS):
 
-- General Pick-and-Place: [LINK](https://ieeexplore.ieee.org/abstract/document/10334699)
-- Pipetting Operation: [LINK](https://ieeexplore.ieee.org/abstract/document/10412424)
+- Pick-and-Place Operations: [LINK](https://ieeexplore.ieee.org/abstract/document/10334699)
+- Automated Pipetting Operation: [LINK](https://ieeexplore.ieee.org/abstract/document/10412424)
 - Food Packaging - Not Published Yet
+- Automated Pipetting Operation: Not Published Yet
 
 <ins>**Pros and Cons of Delta Robot**</ins>
 
