@@ -1,4 +1,4 @@
-# Delta Parallel Robot - Trajectory Planning
+# Delta Parallel Robot - Kinematics & Trajectory Planning - Theoretical and Experimental Study
 *sigh* ok let's do this one last time. 
 
 
