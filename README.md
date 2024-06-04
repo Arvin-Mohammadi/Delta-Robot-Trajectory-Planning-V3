@@ -4,6 +4,11 @@
 
 Overview: 
 - [Introduction](#section-introduction)
+- [Delta Robot Kinematics](section-deltarobot_kinematics)
+- [Theoretical Study - Point-to-Point Trajectory Generation](section-point2point_trajectory_generation)
+- [Theoretical Study - Multi-Point Trajectory Generation](section-multipoint_trajectory_generation)
+- [References](section-references)
+- [End Notes](section-endnote)
 
 
 ![DSC03194_edited-min](https://github.com/Arvin-Mohammadi/Delta-Robot-Trajectory-Planning-V3/assets/69509720/5d0b34e0-8cbd-4d3d-9884-382a565008ef)
@@ -37,9 +42,29 @@ Disadvantages:
 
 <ins>**Trajectory Planning**</ins> 
 
-We have to get this crystal clear. Take a look at the following
+Take a look at the figure below. There are four main stages to any sort of robotic operation:
+1. **Task Planning:** Figuring out what the robot is going to be doing [in order]
+2. **Path Planning:** What points in 3D space the robot is going through [in order]
+3. **Trajectory Planning:** Positon as a function of time
+4. **Control**: Giving the trajectory as a reference to the robot's controller
 
 ![trajectory planning model](https://github.com/Arvin-Mohammadi/Delta-Robot-Trajectory-Planning-V3/assets/69509720/5924887e-6c97-4af0-b3d5-d6d9a3c5c459)
+
+
+<a name="section-deltarobot_kinematics"></a>
+## Theoretical Study - Delta Robot Kinematics
+------
+
+
+<a name="section-point2point_trajectory_generation"></a>
+## Theoretical Study - Point-to-Point Trajectory Generation
+------
+
+
+<a name="section-multipoint_trajectory_generation"></a>
+## Theoretical Study - Multi-Point Trajectory Generation
+------
+
 
 <a name="section-references"></a>
 ## References
