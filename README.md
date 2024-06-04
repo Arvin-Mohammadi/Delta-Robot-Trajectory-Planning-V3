@@ -10,6 +10,7 @@ Overview:
 - [References](section-references)
 - [End Notes](section-endnote)
 
+</br>
 
 ![DSC03194_edited-min](https://github.com/Arvin-Mohammadi/Delta-Robot-Trajectory-Planning-V3/assets/69509720/5d0b34e0-8cbd-4d3d-9884-382a565008ef)
 
