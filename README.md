@@ -57,6 +57,15 @@ Take a look at the figure below. There are four main stages to any sort of robot
 ## Theoretical Study - Delta Robot Kinematics
 ------
 
+<ins>**What are Forward and Inverse Kinematics**</ins> 
+
+Let's say our robot has actuated joints of [$\theta_1, \theta_2, \theta_3$] and the position of the end-effector is [$x, y, z$]. If we are given the actuated joint parameters and want to calculate the position of end-effecotr, that's Forward Kinematics. If we are given the position of the end-effector and want to calculate the actuated joint parameters that's Inverse Kinematics. 
+
+![IK and FK](https://github.com/Arvin-Mohammadi/Delta-Robot-Trajectory-Planning-V3/assets/69509720/a06639cb-afbb-47c5-8a0d-340a20674f84)
+
+<ins>**What is the Jacobian of a Robot**</ins> 
+
+This basically has the same logic as the FK and IK but this time instead of converting between positions and angles, the conversion occurs between velocity of the end-effector and the velocity of the joint parameters. 
 
 <a name="section-point2point_trajectory_generation"></a>
 ## Theoretical Study - Point-to-Point Trajectory Generation
