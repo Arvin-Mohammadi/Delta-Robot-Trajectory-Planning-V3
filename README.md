@@ -67,6 +67,10 @@ Let's say our robot has actuated joints of [$\theta_1, \theta_2, \theta_3$] and 
 
 This basically has the same logic as the FK and IK but this time instead of converting between positions and angles, the conversion occurs between velocity of the end-effector and the velocity of the joint parameters. 
 
+<ins>**Theoretical Solution of Forward and Inverse Kinematics in Delta Robot**</ins> 
+
+
+
 <a name="section-point2point_trajectory_generation"></a>
 ## Theoretical Study - Point-to-Point Trajectory Generation
 ------
@@ -80,7 +84,9 @@ This basically has the same logic as the FK and IK but this time instead of conv
 <a name="section-references"></a>
 ## References
 ------
-
+R1 - [Kinematic Analysis of Delta Parallel Robot: Simulation Study - A. Eltayeb
+](https://www.researchgate.net/publication/352787189_Kinematic_Analysis_of_Delta_Parallel_Robot_Simulation_Study) 
+R2 - [?]()
 
 <a name="section-endnote"></a>
 ## End Note
