@@ -71,18 +71,18 @@ This basically has the same logic as the FK and IK but this time instead of conv
 
 <a name="subsection-theoretical-solution-fkik-dpr"></a>
 ### Theoretical Solution of Forward and Inverse Kinematics in Delta Robot
- 
 
 ![DPR scheme](https://github.com/Arvin-Mohammadi/Delta-Robot-Trajectory-Planning-V3/assets/69509720/b34332cf-6016-42b2-83ac-fc2824447b97)
+Note: The solution is from the reference #1 
 
 The Delta robot consists of three main chains. Each chain starts from the base platform($O_0$), connects to the upper arm via the pin joint ($A_i$), connects to the lower arm via the universal joint ($B_i$), and finally connects to the end-effector via the universal joint ($C_i$). This results in a movement behaviour, where the end-effector moves parallel to the base platform and can move along three translational axes of ($x, y, z$) in 3D space. 
 
 ```math
 \begin{cases} 
-  R_i \equiv \overline{O_0A_i} & = \text{The distance between base platform center and the pin joint} \\
-  r_i \equiv \overline{O_PC_i} & = \text{The distance between the end-effector center and the universal joint $C_i$} \\
-  L_i \equiv \overline{A_iB_i} & = \text{The length of each actuated link (upper arm)}  \\
-  l_i \equiv \overline{B_iC_i} & = \text{The length of each driven link (lower arm)}
+  R_i & \equiv \overline{O_0A_i} & = \text{The distance between base platform center and the pin joint} \\
+  r_i & \equiv \overline{O_PC_i} & = \text{The distance between the end-effector center and the universal joint $C_i$} \\
+  L_i & \equiv \overline{A_iB_i} & = \text{The length of each actuated link (upper arm)}  \\
+  l_i & \equiv \overline{B_iC_i} & = \text{The length of each driven link (lower arm)}
 \end{cases}
 ```
 
@@ -99,9 +99,9 @@ The Delta robot consists of three main chains. Each chain starts from the base p
 <a name="section-references"></a>
 ## References
 ------
-R1 - [Kinematic Analysis of Delta Parallel Robot: Simulation Study - A. Eltayeb
+1. [Kinematic Analysis of Delta Parallel Robot: Simulation Study - A. Eltayeb
 ](https://www.researchgate.net/publication/352787189_Kinematic_Analysis_of_Delta_Parallel_Robot_Simulation_Study) 
-R2 - [?](https://github.com/Arvin-Mohammadi/Delta-Robot-Trajectory-Planning-V3/blob/main/References/Inverse%20Kinematics%20(Delta%20Robot).pdf)
+2. [?](https://github.com/Arvin-Mohammadi/Delta-Robot-Trajectory-Planning-V3/blob/main/References/Inverse%20Kinematics%20(Delta%20Robot).pdf)
 
 <a name="section-endnote"></a>
 ## End Note
