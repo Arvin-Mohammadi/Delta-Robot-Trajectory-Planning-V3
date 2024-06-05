@@ -69,7 +69,9 @@ This basically has the same logic as the FK and IK but this time instead of conv
 
 <ins>**Theoretical Solution of Forward and Inverse Kinematics in Delta Robot**</ins> 
 
+![DPR scheme](https://github.com/Arvin-Mohammadi/Delta-Robot-Trajectory-Planning-V3/assets/69509720/b34332cf-6016-42b2-83ac-fc2824447b97)
 
+The Delta robot consists of three main chains. Each chain starts from the base platform($O_0$), connects to the upper arm via the pin joint ($A_i$), connects to the lower arm via the universal joint ($B_i$), and finally connects to the end-effector via the universal joint ($C_i$). This results in a movement behaviour, where the end-effector moves parallel to the base platform and can move along three translational axes of ($x, y, z$) in 3D space. 
 
 <a name="section-point2point_trajectory_generation"></a>
 ## Theoretical Study - Point-to-Point Trajectory Generation
@@ -86,7 +88,7 @@ This basically has the same logic as the FK and IK but this time instead of conv
 ------
 R1 - [Kinematic Analysis of Delta Parallel Robot: Simulation Study - A. Eltayeb
 ](https://www.researchgate.net/publication/352787189_Kinematic_Analysis_of_Delta_Parallel_Robot_Simulation_Study) 
-R2 - [?]()
+R2 - [?](https://github.com/Arvin-Mohammadi/Delta-Robot-Trajectory-Planning-V3/blob/main/References/Inverse%20Kinematics%20(Delta%20Robot).pdf)
 
 <a name="section-endnote"></a>
 ## End Note
