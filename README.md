@@ -80,7 +80,7 @@ The Delta robot consists of three main chains. Each chain starts from the base p
 ```math
 \begin{cases} 
   R_i \equiv \overline{O_0A_i} = \text{The distance between base platform center and the pin joint} \\
-  r_i \equiv \overline{O_PC_i} = \text{The distance between the end-effector center and the universal joint C_i} \\
+  r_i \equiv \overline{O_PC_i} = \text{The distance between the end-effector center and the universal joint $C_i$} \\
   L_i \equiv \overline{A_iB_i} = \text{The length of each actuated link (upper arm)}  \\
   l_i \equiv \overline{B_iC_i} = \text{The length of each driven link (lower arm)}
 \end{cases}
