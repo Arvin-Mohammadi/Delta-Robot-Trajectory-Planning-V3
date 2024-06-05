@@ -5,6 +5,7 @@
 Overview: 
 - [Introduction](#section-introduction)
 - [Delta Robot Kinematics](section-deltarobot_kinematics)
+  - [Theoretical Solution of Forward and Inverse Kinematics in Delta Robot](subsection-theoretical-solution-fkik-dpr)
 - [Theoretical Study - Point-to-Point Trajectory Generation](section-point2point_trajectory_generation)
 - [Theoretical Study - Multi-Point Trajectory Generation](section-multipoint_trajectory_generation)
 - [References](section-references)
@@ -67,11 +68,23 @@ Let's say our robot has actuated joints of [$\theta_1, \theta_2, \theta_3$] and 
 
 This basically has the same logic as the FK and IK but this time instead of converting between positions and angles, the conversion occurs between velocity of the end-effector and the velocity of the joint parameters. 
 
-<ins>**Theoretical Solution of Forward and Inverse Kinematics in Delta Robot**</ins> 
+
+<a name="subsection-theoretical-solution-fkik-dpr"></a>
+### Theoretical Solution of Forward and Inverse Kinematics in Delta Robot
+ 
 
 ![DPR scheme](https://github.com/Arvin-Mohammadi/Delta-Robot-Trajectory-Planning-V3/assets/69509720/b34332cf-6016-42b2-83ac-fc2824447b97)
 
 The Delta robot consists of three main chains. Each chain starts from the base platform($O_0$), connects to the upper arm via the pin joint ($A_i$), connects to the lower arm via the universal joint ($B_i$), and finally connects to the end-effector via the universal joint ($C_i$). This results in a movement behaviour, where the end-effector moves parallel to the base platform and can move along three translational axes of ($x, y, z$) in 3D space. 
+
+```math
+\begin{cases} 
+  R_i \equiv \overline{O_0A_i} = The distance between base platform center and the pin joint \\
+  r_i \equiv \overline{O_PC_i} = The distance between the end-effector center and the universal joint C_i \\
+  L_i \equiv \overline{A_iB_i} = The length of each actuated link (upper arm)  \\
+  l_i \equiv \overline{B_iC_i} = The length of each driven link (lower arm) 
+\end{cases}
+```
 
 <a name="section-point2point_trajectory_generation"></a>
 ## Theoretical Study - Point-to-Point Trajectory Generation
