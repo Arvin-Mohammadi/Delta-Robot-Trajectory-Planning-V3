@@ -177,7 +177,7 @@ and also:
 
 _Note: The solution and code are taken from reference #2_
 
-If you need a plug and place code to **JUST WORK** i suggest the following code: LINK
+If you need a plug and place code to **JUST WORKS** i suggest the following code: LINK
 
 <a name="section-point2point_trajectory_generation"></a>
 ## Theoretical Study - Point-to-Point Trajectory Generation
