@@ -22,9 +22,9 @@ Overview:
 
 <ins>**What is a Delta Robot and Why is it Important**</ins> 
 
-People who search for this repository already know what the delta robot is and know why it's important. Delta robot parallel kinematic structure and high-speed capabilities make them ideal for precise and speedy tasks, particularly in pick-and-place operations. This repository studies trajectory planning methods for Delta robots, focusing on smooth motion for the End-Effector while minimizing deviations.
+People who search for this repository already know what the delta robot is and know why it's important. Delta robot parallel kinematic structure and high-speed capabilities make them ideal for precise and speedy tasks, particularly in pick-and-place operations. This repository studies trajectory planning methods for Delta robots, focusing on smooth motion for the end-effector while minimizing deviations.
 
-**The applications of Delta robots** are virtually endless but mainly they come down to a certain pattern of pick-and-place or 3D printing or tasks that require somewhat similar movements to these two. Here's three applications that I worked on (PLEASE CITE MY 3 PAPERS):
+**The applications of Delta robots** are virtually endless but mainly they come down to a certain pattern of pick-and-place or 3D printing or tasks that require somewhat similar movements to these two. Here's three applications that I worked on (PLEASE CITE MY 4 PAPERS):
 
 - Pick-and-Place Operations: [LINK](https://ieeexplore.ieee.org/abstract/document/10334699)
 - Automated Pipetting Operation: [LINK](https://ieeexplore.ieee.org/abstract/document/10412424)
@@ -33,7 +33,7 @@ People who search for this repository already know what the delta robot is and k
 
 <ins>**Pros and Cons of Delta Robot**</ins>
 
-Delta robot has basically two advantages at the cost for two things (I'm talking about the important ones). 
+Delta robot has basically two advantages at the cost of two things (I'm talking about the important ones). 
 
 Advantages: 
 1. High Speed
@@ -41,7 +41,7 @@ Advantages:
 
 Disadvantages:
 1. Small Workspace
-2. Low Workload
+2. Small Workload
 
 <ins>**Trajectory Planning**</ins> 
 
@@ -60,7 +60,10 @@ Take a look at the figure below. There are four main stages to any sort of robot
 
 <ins>**What are Forward and Inverse Kinematics**</ins> 
 
-Let's say our robot has actuated joints of [$\theta_1, \theta_2, \theta_3$] and the position of the end-effector is [$x, y, z$]. If we are given the actuated joint parameters and want to calculate the position of end-effecotr, that's Forward Kinematics. If we are given the position of the end-effector and want to calculate the actuated joint parameters that's Inverse Kinematics. 
+Look at the figure below. Let's say our robot has actuated joints of $\[\theta_1, \theta_2, \theta_3\]$ and the position of the end-effector is $\[x, y, z\]$:
+
+- **Forward Kinematics:** Given the actuated joint parameters to calculate the position of end-effector
+- **Inverse Kinematics:** Given the position of the end-effector to calculate the actuated joint parameters
 
 ![IK and FK](https://github.com/Arvin-Mohammadi/Delta-Robot-Trajectory-Planning-V3/assets/69509720/a06639cb-afbb-47c5-8a0d-340a20674f84)
 
@@ -143,14 +146,12 @@ and also:
     \end{bmatrix}
 ```
 
-<ins>**Constrain Equation**</ins> 
-
-Given the mentioned equations we can say that we have the following \textbf{constraint}:
+- Given the mentioned equations we can say that we have the following \textbf{constraint}:
 
 ```math
     l = |\overline{O_0B_i} - \overline{O_0C_i}|
 ```
-Re-writing the previous equation we have: 
+- Re-writing the previous equation we have: 
 
 ```math 
     \overline{O_0B_i - O_0C_i} = 
@@ -160,6 +161,12 @@ Re-writing the previous equation we have:
         - L\sin\theta_i - Z_P
     \end{bmatrix}
 ```
+
+<ins>**Solution of Foward and Inverse Kinematics**</ins> 
+
+1. For FK we numerically solve the above constraint equation for $(X_P, Y_P, Z_P)$ given $\theta_i$
+
+2. For IK we assume a variable change of $t_i = \tan(\theta_i/2)$, which gives us $\sin(\theta_i) = \frac{2t}{t^2+1}$ and $\cos(\theta_i) = \frac{1 - t^2}{t^2+1}$. Applying this, we solve the constraint equation for $t_i$, which in turn, gives us $\theta_i$. 
 
 <a name="section-point2point_trajectory_generation"></a>
 ## Theoretical Study - Point-to-Point Trajectory Generation
