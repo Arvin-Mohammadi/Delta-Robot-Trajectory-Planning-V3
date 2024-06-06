@@ -75,6 +75,8 @@ This basically has the same logic as the FK and IK but this time instead of conv
 ![DPR scheme](https://github.com/Arvin-Mohammadi/Delta-Robot-Trajectory-Planning-V3/assets/69509720/b34332cf-6016-42b2-83ac-fc2824447b97)
 Note: The solution is from the reference #1 
 
+<ins>**Given Data & Assumptions**</ins> 
+
 The Delta robot consists of three main chains. Each chain starts from the base platform($O_0$), connects to the upper arm via the pin joint ($A_i$), connects to the lower arm via the universal joint ($B_i$), and finally connects to the end-effector via the universal joint ($C_i$). This results in a movement behaviour, where the end-effector moves parallel to the base platform and can move along three translational axes of ($x, y, z$) in 3D space. 
 
 ```math
@@ -90,17 +92,28 @@ The angles between $x_0$ and $\overline{O_0A_i}$ are indiacted by $\gamma_i$. Th
 
 We have the following assumptions:
 
-
 ```math
 \begin{cases}
-  L = L_i \\
-  l = l_i \\
-  R = R_i \\
-  r = r_i \\
-  \gamma_1 = \frac{1}{2}\gamma_2 = \frac{1}{3}\gamma_3 = \beta_1 = \frac{1}{2}\beta_2 = \frac{1}{3}\beta_3 = 120\degree
+  L & = L_i \\
+  l & = l_i \\
+  R & = R_i \\
+  r & = r_i
 \end{cases}
 ```
 
+and also: 
+
+```math
+\gamma_1 = \frac{1}{2}\gamma_2 = \frac{1}{3}\gamma_3 = \beta_1 = \frac{1}{2}\beta_2 = \frac{1}{3}\beta_3 = 120\degree
+```
+
+<ins>**Calculating Relative Positions**</ins> 
+
+- The position of $A_i$ in relation to the $\{O_0\}$-frame:
+```math
+
+```
+- 
 
 <a name="section-point2point_trajectory_generation"></a>
 ## Theoretical Study - Point-to-Point Trajectory Generation
