@@ -86,6 +86,22 @@ The Delta robot consists of three main chains. Each chain starts from the base p
 \end{cases}
 ```
 
+The angles between $x_0$ and $\overline{O_0A_i}$ are indiacted by $\gamma_i$. The angles between $x_p$ and $\overline{O_PC_i}$ are indicated by $\beta_i$. The angles between the actuaated links and the horizon are indicated by $\theta_i$, where $i=1, 2, 3$
+
+We have the following assumptions:
+
+
+```math
+\begin{cases}
+  L = L_i \\
+  l = l_i \\
+  R = R_i \\
+  r = r_i \\
+  \gamma_1 = \frac{1}{2}\gamma_2 = \frac{1}{3}\gamma_3 = \beta_1 = \frac{1}{2}\beta_2 = \frac{1}{3}\beta_3 = 120\degree
+\end{cases}
+```
+
+
 <a name="section-point2point_trajectory_generation"></a>
 ## Theoretical Study - Point-to-Point Trajectory Generation
 ------
