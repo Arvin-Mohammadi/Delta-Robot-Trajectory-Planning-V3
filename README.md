@@ -110,10 +110,56 @@ and also:
 <ins>**Calculating Relative Positions**</ins> 
 
 - The position of $A_i$ in relation to the $\{O_0\}$-frame:
-```math
 
+```math
+    \overline{O_0A_i} = [R\cos\gamma_i \quad R\sin\gamma_i \quad 0]^T
 ```
-- 
+
+- The position of $B_i$ in relation to the $\{O_0\}$-frame:
+
+```math
+    \overline{O_0B_i} = 
+    \begin{bmatrix}
+        (R + L\cos\theta_i)\cos\gamma_i \\ 
+        (R + L\cos\theta_i)\sin\gamma_i \\
+        - L\sin\theta_i 
+    \end{bmatrix}
+```
+
+- The position of $C_i$ in relation to the $\{O_0\}$-frame:
+
+```math
+    \overline{O_PC_i} = [r\cos\gamma_i \quad r\sin\gamma_i \quad 0]^T
+```
+
+-  The position of $C_i$ in relation to the $\{O_0\}$-frame, given that the position of end-effector center is equal to $[X_P \quad Y_P \quad Z_P]^T$:
+
+```math
+    \overline{O_0C_i} = 
+    \begin{bmatrix}
+        X_P + r\cos\gamma_i\\ 
+        Y_P + r\sin\gamma_i \\ 
+        Z_P
+    \end{bmatrix}
+```
+
+<ins>**Constrain Equation**</ins> 
+
+Given the mentioned equations we can say that we have the following \textbf{constraint}:
+
+```math
+    l = |\overline{O_0B_i} - \overline{O_0C_i}|
+```
+Re-writing the previous equation we have: 
+
+```math 
+    \overline{O_0B_i - O_0C_i} = 
+    \begin{bmatrix}
+        (R - r + L\cos\theta_i)\cos\gamma_i - X_P \\ 
+        (R - r + L\cos\theta_i)\sin\gamma_i - Y_P \\ 
+        - L\sin\theta_i - Z_P
+    \end{bmatrix}
+```
 
 <a name="section-point2point_trajectory_generation"></a>
 ## Theoretical Study - Point-to-Point Trajectory Generation
