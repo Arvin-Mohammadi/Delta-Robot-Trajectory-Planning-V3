@@ -77,7 +77,7 @@ This basically has the same logic as the FK and IK but this time instead of conv
 ### Theoretical Solution of Forward and Inverse Kinematics in Delta Robot
 
 ![DPR scheme](https://github.com/Arvin-Mohammadi/Delta-Robot-Trajectory-Planning-V3/assets/69509720/b34332cf-6016-42b2-83ac-fc2824447b97)
-Note: The solution is from the reference #1 
+_Note: The solution is from the reference #1_
 
 <ins>**Given Data & Assumptions**</ins> 
 
@@ -174,6 +174,10 @@ and also:
 
 <a name="subsection-experimental-solution-fkik-dpr"></a>
 ### Experimental Solution of Forward and Inverse Kinematics in Delta Robot
+
+_Note: The solution and code are taken from reference #2_
+
+If you need a plug and place code to **JUST WORK** i suggest the following code: LINK
 
 <a name="section-point2point_trajectory_generation"></a>
 ## Theoretical Study - Point-to-Point Trajectory Generation
