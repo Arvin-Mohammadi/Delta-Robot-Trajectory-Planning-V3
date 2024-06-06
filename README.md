@@ -4,13 +4,13 @@
 
 Overview: 
 - [Introduction](#section-introduction)
-- [Delta Robot Kinematics](section-deltarobot_kinematics)
-  - [Theoretical Solution of Forward and Inverse Kinematics in Delta Robot](subsection-theoretical-solution-fkik-dpr)
-  - [Experimental Solution of Forward and Inverse Kinematics in Delta Robot](subsection-experimental-solution-fkik-dpr)
-- [Theoretical Study - Point-to-Point Trajectory Generation](section-point2point_trajectory_generation)
-- [Theoretical Study - Multi-Point Trajectory Generation](section-multipoint_trajectory_generation)
-- [References](section-references)
-- [End Notes](section-endnote)
+- [Delta Robot Kinematics](#section-deltarobot_kinematics)
+  - [Theoretical Solution of Forward and Inverse Kinematics in Delta Robot](#subsection-theoretical-solution-fkik-dpr)
+  - [Experimental Solution of Forward and Inverse Kinematics in Delta Robot](#subsection-experimental-solution-fkik-dpr)
+- [Theoretical Study - Point-to-Point Trajectory Generation](#section-point2point_trajectory_generation)
+- [Theoretical Study - Multi-Point Trajectory Generation](#section-multipoint_trajectory_generation)
+- [References](#section-references)
+- [End Notes](#section-endnote)
 
 </br>
 
