@@ -6,6 +6,7 @@ Overview:
 - [Introduction](#section-introduction)
 - [Delta Robot Kinematics](section-deltarobot_kinematics)
   - [Theoretical Solution of Forward and Inverse Kinematics in Delta Robot](subsection-theoretical-solution-fkik-dpr)
+  - [Experimental Solution of Forward and Inverse Kinematics in Delta Robot](subsection-experimental-solution-fkik-dpr)
 - [Theoretical Study - Point-to-Point Trajectory Generation](section-point2point_trajectory_generation)
 - [Theoretical Study - Multi-Point Trajectory Generation](section-multipoint_trajectory_generation)
 - [References](section-references)
@@ -166,7 +167,13 @@ and also:
 
 1. For FK we numerically solve the above constraint equation for $(X_P, Y_P, Z_P)$ given $\theta_i$
 
-2. For IK we assume a variable change of $t_i = \tan(\theta_i/2)$, which gives us $\sin(\theta_i) = \frac{2t}{t^2+1}$ and $\cos(\theta_i) = \frac{1 - t^2}{t^2+1}$. Applying this, we solve the constraint equation for $t_i$, which in turn, gives us $\theta_i$. 
+2. For IK we assume a variable change of $t_i = \tan(\theta_i/2)$, which gives us $\sin(\theta_i) = \frac{2t}{t^2+1}$ and $\cos(\theta_i) = \frac{1 - t^2}{t^2+1}$. Applying this, we solve the constraint equation for $t_i$, which in turn, gives us $\theta_i$.
+
+
+
+
+<a name="subsection-experimental-solution-fkik-dpr"></a>
+### Experimental Solution of Forward and Inverse Kinematics in Delta Robot
 
 <a name="section-point2point_trajectory_generation"></a>
 ## Theoretical Study - Point-to-Point Trajectory Generation
