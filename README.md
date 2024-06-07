@@ -230,6 +230,18 @@ For the sake of simplicity we say that $t_0 = 0, t_1 = T/3, t_2 = 2T/3, t_3 = T$
 We know that $v_{max} = a.t_1 = a/3$ so we can calculate the acceleration given that the robot has a limitation of top-speed.  
 
 
+#### S-curve
+
+The S-curve method is similar to the trapezoidal method with the difference that it is smoother. So in mathemtical terms that would be: 
+
+```\math
+  \ddot{\theta} = 
+  \begin{cases}
+    jt        & t_0 \leq t < t_1 \\
+    a_{max}   & t_1 \leq t < t_2  \\
+    -jt       & t_2 \leq t \leq t_3
+  \end{cases}
+```
 
 
 <a name="subsection-multipoint_trajectory_generation"></a>
