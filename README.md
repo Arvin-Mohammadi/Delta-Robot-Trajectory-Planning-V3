@@ -20,7 +20,6 @@ Overview:
 
 <a name="section-introduction"></a>
 ## Introduction
-------
 
 <ins>**What is a Delta Robot and Why is it Important**</ins> 
 
@@ -58,7 +57,6 @@ Take a look at the figure below. There are four main stages to any sort of robot
 
 <a name="section-deltarobot_kinematics"></a>
 ## Theoretical Study - Delta Robot Kinematics
-------
 
 <ins>**What are Forward and Inverse Kinematics**</ins> 
 
@@ -280,11 +278,11 @@ Multi-point trajectory generation generates a trajectory between multiple target
 
 <a name="section-adeptcycle"></a>
 ## Adept Cycle 
-------
+
 
 <a name="section-references"></a>
 ## References
-------
+
 1. [Kinematic Analysis of Delta Parallel Robot: Simulation Study - A. Eltayeb](https://www.researchgate.net/publication/352787189_Kinematic_Analysis_of_Delta_Parallel_Robot_Simulation_Study) 
 2. [?](https://github.com/Arvin-Mohammadi/Delta-Robot-Trajectory-Planning-V3/blob/main/References/Inverse%20Kinematics%20(Delta%20Robot).pdf)
 3. [Trajectory Planning for Automatic Machines and Robots - Luigi Biagiotti](https://link.springer.com/book/10.1007/978-3-540-85629-0)
@@ -293,6 +291,6 @@ Multi-point trajectory generation generates a trajectory between multiple target
 
 <a name="section-endnote"></a>
 ## Ending Note
-------
+
 Ok real talk here. I'm absolutely sick of working on papers and things like that. I think they are pretentious and faily useless for computer and robotics projects such as this one. I think github projects are millions of times more valuable because they provide real insight and tend to lean on explaining how things work instead of trying to convince you why the work is really important. But I need to work on publishing papers and also finishing my bachelor thesis ... at least for now. But just know that sharing this information in the raw format and purely practical way like this with the people around the world who might need it, is what makes me even slightly excited about doing this. that's what keeps me going. so thanks for taking interest in the previous projects I did on Delta robot trajectory planning. this will be the final version and I will hopefully never work or even see another delta robot in my entire life also follow me on instagram if you're into gaming 🖥️🎮🤖  
 
