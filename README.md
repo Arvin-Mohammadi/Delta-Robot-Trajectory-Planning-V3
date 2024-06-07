@@ -7,10 +7,11 @@ Overview:
 - [Delta Robot Kinematics](#section-deltarobot_kinematics)
   - [Theoretical Solution of Forward and Inverse Kinematics in Delta Robot](#subsection-theoretical-solution-fkik-dpr)
   - [Experimental Solution of Forward and Inverse Kinematics in Delta Robot](#subsection-experimental-solution-fkik-dpr)
-- [Theoretical Study - Point-to-Point Trajectory Generation](#section-point2point_trajectory_generation)
-- [Theoretical Study - Multi-Point Trajectory Generation](#section-multipoint_trajectory_generation)
+- [Trajectory Generation](#section-trajectory_generation)
+  - [Theoretical Study - Point-to-Point Trajectory Generation](#section-point2point_trajectory_generation)
+  - [Theoretical Study - Multi-Point Trajectory Generation](#section-multipoint_trajectory_generation)
 - [References](#section-references)
-- [End Notes](#section-endnote)
+- [Ending Note](#section-endnote)
 
 </br>
 
@@ -177,25 +178,36 @@ and also:
 
 If you need a plug and place code that **JUST WORKS** i suggest the following code: [LINK](https://github.com/Arvin-Mohammadi/Delta-Robot-Trajectory-Planning-V3/blob/main/References/Inverse%20Kinematics%20(Delta%20Robot).pdf) - Reference #2
 
-<a name="section-point2point_trajectory_generation"></a>
-## Theoretical Study - Point-to-Point Trajectory Generation
+<a name="section-trajectory_generation"></a>
+## Trajectory Generation
 ------
 
+For the Delta robot to work assume you have a certain objective such as a pick-and-place operation. Based on the model explained in the intrdoction you can take the following steps in logic:
 
-<a name="section-multipoint_trajectory_generation"></a>
-## Theoretical Study - Multi-Point Trajectory Generation
-------
+1. Task Planning: The robot goes on top of object, picks it up, goes to target location, drops it
+2. Path Planning: The robot goes to point A, waits, then goes to point B
+3. Trajectory Planning: The robot goes through the path of p(t) to get from point A to B
+4. control: the p(t) is given to the PID controller as a reference
 
+
+<a name="subsection-point2point_trajectory_generation"></a>
+### Theoretical Study - Point-to-Point Trajectory Generation
+
+Point-to-point trajectory generation does what the name suggests. It generates a trajectory between two given points. For example if the robot needs to be moved from point A to B. 
+
+<a name="subsection-multipoint_trajectory_generation"></a>
+### Theoretical Study - Multi-Point Trajectory Generation
+
+Multi-point trajectory generation generates a trajectory between multiple target points given as a path.
 
 <a name="section-references"></a>
 ## References
 ------
-1. [Kinematic Analysis of Delta Parallel Robot: Simulation Study - A. Eltayeb
-](https://www.researchgate.net/publication/352787189_Kinematic_Analysis_of_Delta_Parallel_Robot_Simulation_Study) 
+1. [Kinematic Analysis of Delta Parallel Robot: Simulation Study - A. Eltayeb](https://www.researchgate.net/publication/352787189_Kinematic_Analysis_of_Delta_Parallel_Robot_Simulation_Study) 
 2. [?](https://github.com/Arvin-Mohammadi/Delta-Robot-Trajectory-Planning-V3/blob/main/References/Inverse%20Kinematics%20(Delta%20Robot).pdf)
 
 <a name="section-endnote"></a>
-## End Note
+## Ending Note
 ------
 Ok real talk here. I'm absolutely sick of working on papers and things like that. I think they are pretentious and faily useless for computer and robotics projects such as this one. I think github projects are millions of times more valuable because they provide real insight and tend to lean on explaining how things work instead of trying to convince you why the work is really important. But I need to work on publishing papers and also finishing my bachelor thesis ... at least for now. But just know that sharing this information in the raw format and purely practical way like this with the people around the world who might need it, is what makes me even slightly excited about doing this. that's what keeps me going. so thanks for taking interest in the previous projects I did on Delta robot trajectory planning. this will be the final version and I will hopefully never work or even see another delta robot in my entire life also follow me on instagram if you're into gaming 🖥️🎮🤖  
 
