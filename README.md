@@ -10,6 +10,7 @@ Overview:
 - [Trajectory Generation](#section-trajectory_generation)
   - [Theoretical Study - Point-to-Point Trajectory Generation](#section-point2point_trajectory_generation)
   - [Theoretical Study - Multi-Point Trajectory Generation](#section-multipoint_trajectory_generation)
+- [Adept Cycle](#section-adeptcycle) 
 - [References](#section-references)
 - [Ending Note](#section-endnote)
 
@@ -204,7 +205,7 @@ Point-to-point trajectory generation does what the name suggests. It generates a
 
 Also the time duration would be 1 second. 
 
-#### Trapezoidal Method
+#### Trapezoidal 
 
 As explained, the goal here is to basically use a trapezoidal diagram as a way to interpolate between two given motor rotations. The trapezoidal diagram is defined as the following:
 
@@ -245,18 +246,51 @@ The S-curve method is similar to the trapezoidal method with the difference that
   \end{cases}
 ```
 
+#### 5th order polynomial 
 
+#### 7th order polynomial 
+
+#### higher order polynomial
 
 <a name="subsection-multipoint_trajectory_generation"></a>
 ### Theoretical Study - Multi-Point Trajectory Generation
 
 Multi-point trajectory generation generates a trajectory between multiple target points given as a path, along with its time information. For example if the robot needs to be moved from point A, passes point B and then stop at point C.  
 
+
+#### higher order polynomial 
+
+
+#### trapezoidal / cubic polynomial / quintic polynomial
+
+
+#### Multi-Segment Linear Trajectory with Trapezoidal Blends
+
+
+#### Multi-Segment Linear Trajectory with Polynomial Blends
+
+
+#### Cubic Spline 
+
+
+#### B-Spline
+
+
+#### Pattern Generation 
+
+
+<a name="section-adeptcycle"></a>
+## Adept Cycle 
+------
+
 <a name="section-references"></a>
 ## References
 ------
 1. [Kinematic Analysis of Delta Parallel Robot: Simulation Study - A. Eltayeb](https://www.researchgate.net/publication/352787189_Kinematic_Analysis_of_Delta_Parallel_Robot_Simulation_Study) 
 2. [?](https://github.com/Arvin-Mohammadi/Delta-Robot-Trajectory-Planning-V3/blob/main/References/Inverse%20Kinematics%20(Delta%20Robot).pdf)
+3. [Trajectory Planning for Automatic Machines and Robots - Luigi Biagiotti](https://link.springer.com/book/10.1007/978-3-540-85629-0)
+4. [Fundamentals of Robotic Mechanical Systems: Theory, Methods, and Algorithms - Jorge Angeles](https://link.springer.com/book/10.1007/978-3-319-01851-5)
+5. 
 
 <a name="section-endnote"></a>
 ## Ending Note
