@@ -178,7 +178,6 @@ If you need a plug and place code that **JUST WORKS** i suggest the following co
 
 <a name="section-trajectory_generation"></a>
 ## Trajectory Generation
-------
 
 For the Delta robot to work assume you have a certain objective such as a pick-and-place operation. Based on the model explained in the intrdoction you can take the following steps in logic:
 
