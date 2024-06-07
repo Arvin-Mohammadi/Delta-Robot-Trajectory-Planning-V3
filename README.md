@@ -234,14 +234,17 @@ We know that $v_{max} = a.t_1 = a/3$ so we can calculate the acceleration given 
 
 The S-curve method is similar to the trapezoidal method with the difference that it is smoother. So in mathemtical terms that would be: 
 
-```\math
+```math
   \ddot{\theta} = 
   \begin{cases}
     jt        & t_0 \leq t < t_1 \\
     a_{max}   & t_1 \leq t < t_2  \\
-    -jt       & t_2 \leq t \leq t_3
+    -jt       & t_2 \leq t < t_3 \\
+    -a_{max}  & t_3 \leq t < t_4 \\
+    jt        & t_4 \leq t \leq t_5
   \end{cases}
 ```
+
 
 
 <a name="subsection-multipoint_trajectory_generation"></a>
