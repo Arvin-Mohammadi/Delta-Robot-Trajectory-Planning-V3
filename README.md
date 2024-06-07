@@ -56,7 +56,7 @@ Take a look at the figure below. There are four main stages to any sort of robot
 
 
 <a name="section-deltarobot_kinematics"></a>
-## Theoretical Study - Delta Robot Kinematics
+## Delta Robot Kinematics
 
 <ins>**What are Forward and Inverse Kinematics**</ins> 
 
