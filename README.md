@@ -175,9 +175,7 @@ and also:
 <a name="subsection-experimental-solution-fkik-dpr"></a>
 ### Experimental Solution of Forward and Inverse Kinematics in Delta Robot
 
-_Note: The solution and code are taken from reference #2_
-
-If you need a plug and place code to **JUST WORKS** i suggest the following code: LINK
+If you need a plug and place code that **JUST WORKS** i suggest the following code: [LINK](https://github.com/Arvin-Mohammadi/Delta-Robot-Trajectory-Planning-V3/blob/main/References/Inverse%20Kinematics%20(Delta%20Robot).pdf) - Reference #2
 
 <a name="section-point2point_trajectory_generation"></a>
 ## Theoretical Study - Point-to-Point Trajectory Generation
