@@ -1,4 +1,4 @@
-# Delta Parallel Robot - Kinematics & Trajectory Planning & Obstacle Avoidance 
+# Delta Parallel Robot - Kinematics, Trajectory Planning, Obstacle Avoidance, and Experimental Study 
 
 
 Overview: 
