@@ -37,11 +37,12 @@ Delta robot has basically two advantages at the cost of two things (I'm talking 
 Advantages: 
 1. High Speed
 2. High Precision
-<img align="right" src="https://github.com/Arvin-Mohammadi/Delta-Robot-Trajectory-Planning-V3/assets/69509720/5924887e-6c97-4af0-b3d5-d6d9a3c5c459" width=30%>
-
+3. 
 Disadvantages:
 1. Small Workspace
 2. Small Workload
+<img align="right" src="https://github.com/Arvin-Mohammadi/Delta-Robot-Trajectory-Planning-V3/assets/69509720/5924887e-6c97-4af0-b3d5-d6d9a3c5c459" width=30%>
+
 
 <ins>**Trajectory Planning**</ins> 
 
