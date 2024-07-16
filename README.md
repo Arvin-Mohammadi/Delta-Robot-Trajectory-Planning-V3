@@ -50,7 +50,8 @@ Take a look at the figure below. There are four main stages to any sort of robot
 3. **Trajectory Planning:** Positon as a function of time
 4. **Control**: Giving the trajectory as a reference to the robot's controller
 
-![trajectory planning model](https://github.com/Arvin-Mohammadi/Delta-Robot-Trajectory-Planning-V3/assets/69509720/5924887e-6c97-4af0-b3d5-d6d9a3c5c459)
+
+<img align="right" src="https://github.com/Arvin-Mohammadi/Delta-Robot-Trajectory-Planning-V3/assets/69509720/5924887e-6c97-4af0-b3d5-d6d9a3c5c459" width=25%>
 
 
 <a name="section-deltarobot_kinematics"></a>
@@ -63,7 +64,10 @@ Look at the figure below. Let's say our robot has actuated joints of $\[\theta_1
 - **Forward Kinematics:** Given the actuated joint parameters to calculate the position of end-effector
 - **Inverse Kinematics:** Given the position of the end-effector to calculate the actuated joint parameters
 
-![IK and FK](https://github.com/Arvin-Mohammadi/Delta-Robot-Trajectory-Planning-V3/assets/69509720/a06639cb-afbb-47c5-8a0d-340a20674f84)
+
+<img align="right" src="https://github.com/Arvin-Mohammadi/Delta-Robot-Trajectory-Planning-V3/assets/69509720/a06639cb-afbb-47c5-8a0d-340a20674f84" width=25%>
+
+
 
 <ins>**What is the Jacobian of a Robot**</ins> 
 
