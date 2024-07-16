@@ -11,7 +11,7 @@ Overview:
 - [References](#section-references)
 - [Ending Note](#section-endnote)
 
-<div align="right">
+<div align="right" style="float">
   <img src="https://github.com/Arvin-Mohammadi/Delta-Robot-Trajectory-Planning-V3/assets/69509720/5d0b34e0-8cbd-4d3d-9884-382a565008ef" style="width: 25%;">
 </div>
 
