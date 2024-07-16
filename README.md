@@ -12,7 +12,7 @@ Overview:
 - [Ending Note](#section-endnote)
 
 <div>
-<img align="right" src="https://github.com/Arvin-Mohammadi/Delta-Robot-Trajectory-Planning-V3/assets/69509720/5d0b34e0-8cbd-4d3d-9884-382a565008ef">
+<img align="right" src="https://github.com/Arvin-Mohammadi/Delta-Robot-Trajectory-Planning-V3/assets/69509720/5d0b34e0-8cbd-4d3d-9884-382a565008ef" width=25%>
 </div>
 
 <a name="section-introduction"></a>
