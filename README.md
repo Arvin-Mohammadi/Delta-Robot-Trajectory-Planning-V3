@@ -1,17 +1,21 @@
 # Delta Parallel Robot - Kinematics, Trajectory Planning, Obstacle Avoidance, and Experimental Study 
 
-
 Overview: 
 - [Introduction](#section-introduction)
 - [Delta Robot Kinematics](#section-deltarobot_kinematics)
   - [Theoretical Solution of Forward and Inverse Kinematics in Delta Robot](#subsection-theoretical-solution-fkik-dpr)
   - [Experimental Solution of Forward and Inverse Kinematics in Delta Robot](#subsection-experimental-solution-fkik-dpr)
-- [Trajectory Generation](#section-trajectory_generation)
-  - [Theoretical Study - Point-to-Point Trajectory Generation](#section-point2point_trajectory_generation)
-  - [Theoretical Study - Multi-Point Trajectory Generation](#section-multipoint_trajectory_generation)
+- [Theoretical Study - Point-to-Point Trajectory Generation](#section-point2point_trajectory_generation)
+- [Theoretical Study - Multi-Point Trajectory Generation](#section-multipoint_trajectory_generation)
 - [Adept Cycle](#section-adeptcycle) 
 - [References](#section-references)
 - [Ending Note](#section-endnote)
+
+<br>
+
+<div style="float: right; width: 25%; margin-left: 10px; margin-bottom: 10px;">
+  <img src="https://github.com/Arvin-Mohammadi/Delta-Robot-Trajectory-Planning-V3/assets/69509720/5d0b34e0-8cbd-4d3d-9884-382a565008ef" style="width: 100%;">
+</div>
 
 </br>
 
