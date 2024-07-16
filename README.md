@@ -199,8 +199,7 @@ NOTE: The output array does not include any time information, the time informati
 
 NOTE: Since the array does not include time information, the duration for the whole process is considered to be 1, hence it simplifies a lot of the calculations. We call this "normalized time". If you need the time information included you should refer to the main references. 
 
-
-#### Bang-Bang 
+### Bang-Bang 
 
 We need to define the main phases of movement at the start of each method, so for this the important time instances are:
 
@@ -214,10 +213,10 @@ We need to define the main phases of movement at the start of each method, so fo
 So the trajectory is also called the parabolic trajectory and is actually made of two 2nd order polynomials glued together, in mathmetical form that will look like: 
 
 ```math
-\begin{algined}
+\begin{aligned}
 	\theta_a(t) & = a_0 + a_1(t - t_0) + a_2(t - t_0)^2 & \quad\text{for}‌\quad t_0 \leq t \leq t_1 \\ 
 	\theta_b(t) & = a_3 + a_4(t - t_1) + a_5(t - t_1)^2 & \quad\text{for}‌\quad t_1 \leq t \leq t_2 \\ 
-\end{algined}
+\end{aligned}
 ```
 
 
