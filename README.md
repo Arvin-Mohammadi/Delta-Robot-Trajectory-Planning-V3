@@ -176,30 +176,45 @@ and also:
 
 If you need a plug and place code that **JUST WORKS** i suggest the following code: [LINK](https://github.com/Arvin-Mohammadi/Delta-Robot-Trajectory-Planning-V3/blob/main/References/Inverse%20Kinematics%20(Delta%20Robot).pdf) - Reference #2
 
-<a name="section-trajectory_generation"></a>
-## Trajectory Generation
-
-For the Delta robot to work assume you have a certain objective such as a pick-and-place operation. Based on the model explained in the intrdoction you can take the following steps in logic:
-
-1. Task Planning: The robot goes on top of object, picks it up, goes to target location, drops it
-2. Path Planning: The robot goes to point A, waits, then goes to point B
-3. Trajectory Planning: The robot goes through the path of p(t) to get from point A to B
-4. control: the p(t) is given to the PID controller as a reference
-
 
 <a name="subsection-point2point_trajectory_generation"></a>
-### Theoretical Study - Point-to-Point Trajectory Generation
+## Theoretical Study - Point-to-Point Trajectory Generation
 
-Point-to-point trajectory generation does what the name suggests. It generates a trajectory between two given points. For this section assume that the robot wants to go from $\Theta^I$ to $\Theta^F$. The following arbitrary values are chosen as the initial and target motor rotations:
+Basically point-to-point trajectory planning is like interpolation between two values (let's call them $\theta^I$ and $\theta^F$), and to us it outputs an interpolation of these two values as a function of time; then we take that function and sample it at a constant sampling frequency, take the resulting array of values and give that array to the robot's PID controller. 
 
 ```math
   \begin{cases}
-    & \Theta^I & = [90, 45, 30]^T (deg) \\
-    & \Theta^F & = [60, 0, 60]^T (deg)  
+    & \Theta^I & = \text{Initial Value} \\
+    & \Theta^F & = \text{Final Value}
   \end{cases}
 ```
 
-Also the time duration would be 1 second. 
+NOTE: The output array does not include any time information, the time information comes into play when we want to give the PID controller the next target point from the array. So basically when the robot wants to move from Point A to  B in either 2 seconds or 3 seconds, the interpolation array for both of these actions are the same. 
+
+NOTE: Since the array does not include time information, the duration for the whole process is considered to be 1, hence it simplifies a lot of the calculations. We call this "normalized time". If you need the time information included you should refer to the main references. 
+
+
+#### Bang-Bang 
+
+We need to define the main phases of movement at the start of each method, so for this the important time instances are:
+
+```math
+\begin{aligned}
+  t_0 & \equiv \text{Positive acceleration phase starts} \\ 
+  t_1 & \equiv \text{Positive acceleration phase ends | Negative acceleration phase starts} \\ 
+  t_2 & \equiv \text{Negative acceleration phase ends} 
+\end{aligned}
+```
+So the trajectory is also called the parabolic trajectory and is actually made of two 2nd order polynomials glued together, in mathmetical form that will look like: 
+
+```math
+\begin{algined}
+	\theta_a(t) & = a_0 + a_1(t - t_0) + a_2(t - t_0)^2 & \quad\text{for}‌\quad t_0 \leq t \leq t_1 \\ 
+	\theta_b(t) & = a_3 + a_4(t - t_1) + a_5(t - t_1)^2 & \quad\text{for}‌\quad t_1 \leq t \leq t_2 \\ 
+\end{algined}
+```
+
+
 
 #### Trapezoidal 
 
