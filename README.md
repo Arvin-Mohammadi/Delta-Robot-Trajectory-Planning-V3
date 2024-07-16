@@ -76,7 +76,8 @@ This basically has the same logic as the FK and IK but this time instead of conv
 ### Theoretical Solution of Forward and Inverse Kinematics in Delta Robot
 
 <div align="center">
-  <img src="https://github.com/Arvin-Mohammadi/Delta-Robot-Trajectory-Planning-V3/assets/69509720/b34332cf-6016-42b2-83ac-fc2824447b97" style="width: 50%;">
+ 	<img src="https://github.com/Arvin-Mohammadi/Delta-Robot-Trajectory-Planning-V3/assets/69509720/b34332cf-6016-42b2-83ac-fc2824447b97" style="width: 50%;">
+	</br>
 	_Note: The solution is from the reference #1_
 </div>
 
