@@ -11,10 +11,8 @@ Overview:
 - [References](#section-references)
 - [Ending Note](#section-endnote)
 
+<img align="right" src="[img.jpg](https://github.com/Arvin-Mohammadi/Delta-Robot-Trajectory-Planning-V3/assets/69509720/5d0b34e0-8cbd-4d3d-9884-382a565008ef)">
 
-<img align="center">
-  <img src="https://github.com/Arvin-Mohammadi/Delta-Robot-Trajectory-Planning-V3/assets/69509720/5d0b34e0-8cbd-4d3d-9884-382a565008ef" style="width: 25%;">
-</img>
 
 
 <a name="section-introduction"></a>
