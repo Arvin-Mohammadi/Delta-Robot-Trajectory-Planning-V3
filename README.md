@@ -37,7 +37,7 @@ Delta robot has basically two advantages at the cost of two things (I'm talking 
 Advantages: 
 1. High Speed
 2. High Precision
-3. 
+
 Disadvantages:
 1. Small Workspace
 2. Small Workload
