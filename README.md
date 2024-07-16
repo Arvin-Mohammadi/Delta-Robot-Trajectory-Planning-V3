@@ -43,7 +43,7 @@ Disadvantages:
 2. Small Workload
 
 <ins>**Trajectory Planning**</ins> 
-<img align="right" src="https://github.com/Arvin-Mohammadi/Delta-Robot-Trajectory-Planning-V3/assets/69509720/5924887e-6c97-4af0-b3d5-d6d9a3c5c459" width=25%>
+<img align="right" src="https://github.com/Arvin-Mohammadi/Delta-Robot-Trajectory-Planning-V3/assets/69509720/5924887e-6c97-4af0-b3d5-d6d9a3c5c459" width=30%>
 
 Take a look at the figure below. There are four main stages to any sort of robotic operation:
 1. **Task Planning:** Figuring out what the robot is going to be doing [in order]
@@ -51,10 +51,11 @@ Take a look at the figure below. There are four main stages to any sort of robot
 3. **Trajectory Planning:** Positon as a function of time
 4. **Control**: Giving the trajectory as a reference to the robot's controller
 
+</br>
+
 <a name="section-deltarobot_kinematics"></a>
 ## Delta Robot Kinematics
-<img align="right" src="https://github.com/Arvin-Mohammadi/Delta-Robot-Trajectory-Planning-V3/assets/69509720/a06639cb-afbb-47c5-8a0d-340a20674f84" width=25%>
-
+<img align="right" src="https://github.com/Arvin-Mohammadi/Delta-Robot-Trajectory-Planning-V3/assets/69509720/a06639cb-afbb-47c5-8a0d-340a20674f84" width=30%>
 
 <ins>**What are Forward and Inverse Kinematics**</ins> 
 
@@ -68,9 +69,15 @@ Look at the figure below. Let's say our robot has actuated joints of $\[\theta_1
 This basically has the same logic as the FK and IK but this time instead of converting between positions and angles, the conversion occurs between velocity of the end-effector and the velocity of the joint parameters. 
 
 
+</br>
+
 <a name="subsection-theoretical-solution-fkik-dpr"></a>
 ### Theoretical Solution of Forward and Inverse Kinematics in Delta Robot
-![DPR scheme](https://github.com/Arvin-Mohammadi/Delta-Robot-Trajectory-Planning-V3/assets/69509720/b34332cf-6016-42b2-83ac-fc2824447b97)
+
+<div align="center">
+  <img src="https://github.com/Arvin-Mohammadi/Delta-Robot-Trajectory-Planning-V3/assets/69509720/b34332cf-6016-42b2-83ac-fc2824447b97" style="width: 50%;">
+</div>
+</br>
 _Note: The solution is from the reference #1_
 
 <ins>**Given Data & Assumptions**</ins> 
