@@ -228,18 +228,18 @@ What we can do is to set $t_0 = 0, t_1 = 0.5, t_2 = 1$ and then simplify everyth
 \end{aligned}
 ```
 
-Then 
+Then we write down the conditions for solving $\theta_a(t)$ based on the given $\theta^I$ and $\theta^F$ and the fact that velocity at the start is equal to zero:
 
 ```math
 \begin{aligned}
 	\text{conditions for solving $\theta_a(t)$} \rightarrow
-	& \theta_a(t=0) = \theta_0 = a_0 \\ 
-	&‌ \theta_a(t=0.5) = \frac{\theta_0 + \theta_1}{2} = a_0 + a_1(0.5) + a_2(0.5)^2 \\ 
-	&‌ \dot{\theta}_a(t=0) = v_0 = 0 = a_1 
+	& \theta_a(t=0) = \theta^I = a_0 \\ 
+	&‌ \theta_a(t=0.5) = \frac{\theta^I + \theta^F}{2} = a_0 + a_1(0.5) + a_2(0.5)^2 \\ 
+	&‌ \dot{\theta}_a(t=0) = 0 = a_1 
 \end{aligned}
 ```
 
-#### Trapezoidal 
+### Trapezoidal 
 
 As explained, the goal here is to basically use a trapezoidal diagram as a way to interpolate between two given motor rotations. The trapezoidal diagram is defined as the following:
 
