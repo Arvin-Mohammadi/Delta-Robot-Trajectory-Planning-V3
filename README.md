@@ -5,8 +5,6 @@
 Overview: 
 - [Introduction](#section-introduction)
 - [Delta Robot Kinematics](#section-deltarobot_kinematics)
-  - [Theoretical Solution of Forward and Inverse Kinematics in Delta Robot](#subsection-theoretical-solution-fkik-dpr)
-  - [Experimental Solution of Forward and Inverse Kinematics in Delta Robot](#subsection-experimental-solution-fkik-dpr)
 - [Theoretical Study - Point-to-Point Trajectory Generation](#section-point2point_trajectory_generation)
 - [Theoretical Study - Multi-Point Trajectory Generation](#section-multipoint_trajectory_generation)
 - [Adept Cycle](#section-adeptcycle) 
@@ -72,7 +70,6 @@ This basically has the same logic as the FK and IK but this time instead of conv
 
 </br>
 
-<a name="subsection-theoretical-solution-fkik-dpr"></a>
 ### Theoretical Solution of Forward and Inverse Kinematics in Delta Robot
 
 <div align="center">
@@ -177,7 +174,7 @@ and also:
 
 
 
-<a name="subsection-experimental-solution-fkik-dpr"></a>
+<a name="section-point2point_trajectory_generation"></a>
 ### Experimental Solution of Forward and Inverse Kinematics in Delta Robot
 
 If you need a plug and place code that **JUST WORKS** i suggest the following code: [LINK](https://github.com/Arvin-Mohammadi/Delta-Robot-Trajectory-Planning-V3/blob/main/References/Inverse%20Kinematics%20(Delta%20Robot).pdf) - Reference #2
