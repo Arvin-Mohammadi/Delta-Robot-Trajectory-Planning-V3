@@ -31,6 +31,7 @@ People who search for this repository already know what the delta robot is and k
 - Automated Pipetting Operation: Not Published Yet
 
 <ins>**Pros and Cons of Delta Robot**</ins>
+<img align="right" src="https://github.com/Arvin-Mohammadi/Delta-Robot-Trajectory-Planning-V3/assets/69509720/5924887e-6c97-4af0-b3d5-d6d9a3c5c459" width=30%>
 
 Delta robot has basically two advantages at the cost of two things (I'm talking about the important ones). 
 
@@ -43,7 +44,6 @@ Disadvantages:
 2. Small Workload
 
 <ins>**Trajectory Planning**</ins> 
-<img align="right" src="https://github.com/Arvin-Mohammadi/Delta-Robot-Trajectory-Planning-V3/assets/69509720/5924887e-6c97-4af0-b3d5-d6d9a3c5c459" width=30%>
 
 Take a look at the figure below. There are four main stages to any sort of robotic operation:
 1. **Task Planning:** Figuring out what the robot is going to be doing [in order]
