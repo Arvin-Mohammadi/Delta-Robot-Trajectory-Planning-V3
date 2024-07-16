@@ -219,7 +219,25 @@ So the trajectory is also called the parabolic trajectory and is actually made o
 \end{aligned}
 ```
 
+What we can do is to set $t_0 = 0, t_1 = 0.5, t_2 = 1$ and then simplify everything to reach:  
 
+```math
+\begin{aligned}
+	\theta_a(t) & = a_0 + a_1t + a_2t^2 & \quad\text{for}‌\quad 0 \leq t \leq 0.5 \\ 
+	\theta_b(t) & = a_3 + a_4(t - 0.5) + a_5(t - 0.5)^2 & \quad\text{for}‌\quad 0.5 \leq t \leq 1 \\ 
+\end{aligned}
+```
+
+Then 
+
+```math
+\begin{aligned}
+	\text{conditions for solving $\theta_a(t)$} \rightarrow
+	& \theta_a(t=0) = \theta_0 = a_0 \\ 
+	&‌ \theta_a(t=0.5) = \frac{\theta_0 + \theta_1}{2} = a_0 + a_1(0.5) + a_2(0.5)^2 \\ 
+	&‌ \dot{\theta}_a(t=0) = v_0 = 0 = a_1 
+\end{aligned}
+```
 
 #### Trapezoidal 
 
