@@ -225,7 +225,11 @@ What we can do is to set $t_0 = 0, t_1 = 0.5, t_2 = 1$ and then simplify everyth
 \end{aligned}
 ```
 
-Then we write down the conditions for solving $\theta_a(t)$ based on the given $\theta^I$ and $\theta^F$ and the fact that velocity at the start is equal to zero:
+Then we write down the conditions for solving $\theta_a(t)$. The conditions are:
+1. At the start of movement in this phase, $\theta_a(t)$ is equal to $\theta^I$
+2. At the end of the movement in this phase, $\theta_a$ is exactly half-way between $\theta^I$ and $\theta^F$
+3. At the start of movement in this phase, velocity (1st differential) of $\theta_a(t)$ is equal to zero
+which in mathematical form is written as:
 
 ```math
 \begin{aligned}
@@ -235,6 +239,53 @@ Then we write down the conditions for solving $\theta_a(t)$ based on the given $
 	&‌ \dot{\theta}_a(t=0) = 0 = a_1 
 \end{aligned}
 ```
+
+Solving the system of linear equations we get:
+
+```math
+	a_0 = \theta^I, \quad a_1 = 0, \quad a_2 = 2(\theta^F - \theta^I)
+```
+
+Then we write down the conditions for solving $\theta_a(t)$. The conditions are:
+1. At the start of movement in this phase $\theta_b(t)$ is exactly half-way between $\theta^I$ and $\theta^F$
+2. At the end of the movement in this phase, $\theta_b(t)$ is equal to $\theta^F$
+3. At the end of movement velocity (1st differential) of $\theta_b(t)$ is equal to zero
+which in mathematical form is written as:
+
+
+```math
+\begin{aligned}
+	\text{conditions for solving $\theta_b$} \rightarrow
+	& \theta_b(t=0.5) = \frac{\theta^I+\theta^F}{2} = a_3 \\ 
+	& \theta_b(t=1) = \theta^F = a_3 + a_4(0.5) + a_5(0.5)^2 \\ 
+	&‌ \dot{\theta}_b(t=1) = 0 = a_4 + 2a_5(0.5)
+\end{aligned}
+```
+
+
+Solving the system of linear equations we get:
+
+```math
+	a_3 = \frac{\theta^I+\theta^F}{2}, \quad a_4 = 2(\theta^F - \theta^I), \quad a_5 = 2(\theta^I - \theta^F)
+```
+
+Finally the overall mathematicall function can be described as:
+
+```math
+\begin{aligned}
+	\theta_a(t) & = \theta^I + 2(\theta^F - \theta^I)t^2 &‌ \quad\text{for}\quad 0 \leq t \leq 0.5 \\ 
+	\theta_b(t) & = \frac{\theta^I+\theta^F}{2} + 2(\theta^F - \theta^I)(t - 0.5) + 2(\theta^I - \theta^F)(t - 0.5)^2 &‌ \quad\text{for}\quad 0.5 \leq t \leq 1
+\end{aligned}
+```
+
+<div align="center">
+ 	<img src="https://github.com/user-attachments/files/16257741/5th.order.polynomial.pdf" style="width: 50%;">
+	</br>
+	Bang-Bang Method | Parabolic Method
+</div>
+</br>
+
+
 
 ### Trapezoidal 
 
@@ -262,7 +313,7 @@ For the sake of simplicity we say that $t_0 = 0, t_1 = T/3, t_2 = 2T/3, t_3 = T$
 We know that $v_{max} = a.t_1 = a/3$ so we can calculate the acceleration given that the robot has a limitation of top-speed.  
 
 
-#### S-curve
+### S-curve
 
 The S-curve method is similar to the trapezoidal method with the difference that it is smoother. So in mathemtical terms that would be: 
 
