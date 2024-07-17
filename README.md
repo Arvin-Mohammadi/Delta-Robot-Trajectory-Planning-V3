@@ -1,4 +1,4 @@
-![image](https://github.com/user-attachments/assets/35464f85-b957-4e7f-b824-12157ec3c2d3)# Delta Parallel Robot - Kinematics, Trajectory Planning, Obstacle Avoidance, and Experimental Study 
+# Delta Parallel Robot - Kinematics, Trajectory Planning, Obstacle Avoidance, and Experimental Study 
 
 <img align="right" src="https://github.com/Arvin-Mohammadi/Delta-Robot-Trajectory-Planning-V3/assets/69509720/5d0b34e0-8cbd-4d3d-9884-382a565008ef" width=25%>
 
