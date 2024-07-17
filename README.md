@@ -469,8 +469,8 @@ Then solving the system of linear equations:
 
 ```math
 \begin{aligned}
-	a_1 = 70, \quad a_2 = -315, \quad a_3 = 540 \\
-	a_4 = -420, \quad a_5 = 126, \quad a_6=a_7=a_8=a_9=a_10=0
+	a_1 & = 70, \quad a_2 = -315, \quad a_3 = 540, \quad a_4 = -420 \\\
+	a_5 & = 126, \quad a_6=a_7=a_8=a_9=a_{10}=0
 \end{aligned}
 ```
 
