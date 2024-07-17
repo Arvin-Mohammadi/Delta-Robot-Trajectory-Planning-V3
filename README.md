@@ -299,19 +299,16 @@ As explained, the goal here is to basically use a trapezoidal diagram as a way t
     -at       & t_2 \leq t \leq t_3
   \end{cases}
 ```
-For the sake of simplicity we say that $t_0 = 0, t_1 = T/3, t_2 = 2T/3, t_3 = T$. We have from the given problem that $T=1s$, which results in:
 
+For the sake of simplicity we say that $t_0 = 0, t_1 = 1/3, t_2 = 2/3, t_3 = 1$. Using this we can also conclude that $v_{max} = a.t$ where $t=1/3$ and this results in  $a = 3v_{max}$. Finally we have: 
 ```math
   \dot{\theta} = 
   \begin{cases}
-    at        & 0 \leq t < 1/3 \\
+    3V_{max}t        & 0 \leq t < 1/3 \\
     V_{max}   & 1/3 \leq t < 2/3  \\
-    -at       & 2/3 \leq t \leq 1
+    -3V_{max}t       & 2/3 \leq t \leq 1
   \end{cases}
 ```
-
-We know that $v_{max} = a.t_1 = a/3$ so we can calculate the acceleration given that the robot has a limitation of top-speed.  
-
 
 
 <div align="center">
