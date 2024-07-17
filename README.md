@@ -279,7 +279,7 @@ Finally the overall mathematicall function can be described as:
 ```
 
 <div align="center">
- 	<img src="https://github.com/user-attachments/files/16257741/5th.order.polynomial.pdf" style="width: 50%;">
+ 	<img src="" style="width: 50%;">
 	</br>
 	Bang-Bang Method | Parabolic Method
 </div>
@@ -313,6 +313,15 @@ For the sake of simplicity we say that $t_0 = 0, t_1 = T/3, t_2 = 2T/3, t_3 = T$
 We know that $v_{max} = a.t_1 = a/3$ so we can calculate the acceleration given that the robot has a limitation of top-speed.  
 
 
+
+<div align="center">
+ 	<img src="" style="width: 50%;">
+	</br>
+	Bang-Bang Method | Parabolic Method
+</div>
+</br>
+
+
 ### S-curve
 
 The S-curve method is similar to the trapezoidal method with the difference that it is smoother. So in mathemtical terms that would be: 
@@ -328,13 +337,48 @@ The S-curve method is similar to the trapezoidal method with the difference that
   \end{cases}
 ```
 
+
+<div align="center">
+ 	<img src="" style="width: 50%;">
+	</br>
+	Bang-Bang Method | Parabolic Method
+</div>
+</br>
+
+
 #### 5th order polynomial 
 
-#### 7th order polynomial 
 
-#### higher order polynomial
+<div align="center">
+ 	<img src="https://github.com/user-attachments/assets/dee8093b-4d78-4f55-90bd-c46c7d0e57ac" style="width: 50%;">
+	</br>
+	5th-order polynomial
+</div>
+</br>
 
-<a name="subsection-multipoint_trajectory_generation"></a>
+
+#### 7th order polynomial
+
+<div align="center">
+ 	<img src="https://github.com/user-attachments/assets/67bb3d24-3a9c-4c92-9cbf-19afd13afd12" style="width: 50%;">
+	</br>
+	7th-order polynomial
+</div>
+</br>
+
+
+#### 9th order polynomial
+
+
+<div align="center">
+ 	<img src="https://github.com/user-attachments/assets/c8ad43ab-9485-4e7c-bc79-4aa5d9a46071" style="width: 50%;">
+	</br>
+	9th-order polynomial
+</div>
+</br>
+
+
+<a name="section-multipoint_trajectory_generation"></a>
 ### Theoretical Study - Multi-Point Trajectory Generation
 
 Multi-point trajectory generation generates a trajectory between multiple target points given as a path, along with its time information. For example if the robot needs to be moved from point A, passes point B and then stop at point C.  
