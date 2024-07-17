@@ -436,7 +436,7 @@ and at the end we can write:
 ```
 
 which means for $\theta(t)$ we have:
-```
+```math
 	\theta(t) = \theta^I + (\theta^F - \theta^I)(-20.t^7 + 70.t^6 - 84.t^5 + 35.t^4)
 ```
 
@@ -472,6 +472,18 @@ Then solving the system of linear equations:
 	a_1 = 70, \quad a_2 = -315, \quad a_3 = 540 \\
 	a_4 = -420, \quad a_5 = 126, \quad a_6=a_7=a_8=a_9=a_10=0
 \end{aligned}
+```
+
+So we have for $s(t)$:
+
+```math
+	s(t) = 70.t^9 - 315.t^8 + 540.t^7 - 420.t^6 + 126.t^5
+```
+
+and we have for $\theta(t)$: 
+
+```math
+	\theta(t) = \theta^I + (\theta^F - \theta^I)(70.t^9 - 315.t^8 + 540.t^7 - 420.t^6 + 126.t^5)
 ```
 
 
