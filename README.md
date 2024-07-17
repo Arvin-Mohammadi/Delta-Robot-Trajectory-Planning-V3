@@ -1,4 +1,4 @@
-# Delta Parallel Robot - Kinematics, Trajectory Planning, Obstacle Avoidance, and Experimental Study 
+![image](https://github.com/user-attachments/assets/35464f85-b957-4e7f-b824-12157ec3c2d3)# Delta Parallel Robot - Kinematics, Trajectory Planning, Obstacle Avoidance, and Experimental Study 
 
 <img align="right" src="https://github.com/Arvin-Mohammadi/Delta-Robot-Trajectory-Planning-V3/assets/69509720/5d0b34e0-8cbd-4d3d-9884-382a565008ef" width=25%>
 
@@ -314,37 +314,88 @@ For the sake of simplicity we say that $t_0 = 0, t_1 = 1/3, t_2 = 2/3, t_3 = 1$.
 <div align="center">
  	<img src="" style="width: 50%;">
 	</br>
-	Bang-Bang Method | Parabolic Method
+	Trapezoidal Method
 </div>
 </br>
 
 
 ### S-curve
 
-The S-curve method is similar to the trapezoidal method with the difference that it is smoother. So in mathemtical terms that would be: 
+The S-curve method is somewhat similar to the trapezoidal method with the difference that it is smoother. So in mathemtical terms that would be: 
 
 ```math
-  \ddot{\theta} = 
-  \begin{cases}
-    jt        & t_0 \leq t < t_1 \\
-    a_{max}   & t_1 \leq t < t_2  \\
-    -jt       & t_2 \leq t < t_3 \\
-    -a_{max}  & t_3 \leq t < t_4 \\
-    jt        & t_4 \leq t \leq t_5
-  \end{cases}
+\begin{aligned}
+	\ddot{\theta} = 
+	\begin{cases}
+		j.t         & \quad\text{for}\quad t_0 \leq t < t_1 \\
+		a_{max} 	& \quad\text{for}\quad t_1 \leq t < t_2 \\
+		-j.t 		& \quad\text{for}\quad t_2 \leq t < t_3 \\
+		0 			& \quad\text{for}\quad t_3 \leq t < t_4 \\
+		-j.t		& \quad\text{for}\quad t_4 \leq t < t_5 \\
+		-a_{max}	& \quad\text{for}\quad t_5 \leq t < t_6 \\
+		j.t			& \quad\text{for}\quad t_6 \leq t \leq t_7
+	\end{cases}
+\end{aligned}
 ```
 
 
 <div align="center">
  	<img src="" style="width: 50%;">
 	</br>
-	Bang-Bang Method | Parabolic Method
+	S-Curve Method
 </div>
 </br>
 
+### Interpolating Polynomials
+
+
+When interpolating between $\theta^I$ and $\theta^F$ we can use a polynomial such as $s(t)$ where $0 \leq t \leq 1$ since the time is normalized in this context and also $0 \leq s \leq 1$. And then you relate $s(t)$ with $\theta(t)$ as written below:
+
+```math
+	\theta(t) = \theta^I + (\theta^F - \theta^I)s(t)
+```
+
+Now knowing that, we can talk about $s(t)$ and we are gonna use the 5th, 7th, and 9th degree polynomials for this. 
 
 #### 5th order polynomial 
 
+The $s(t)$ polynomial can be written as: 
+
+```math
+	s(t) = a.t^5 + b.t^4 + c.t^3 + d.t^2 + e.t + f
+```
+
+we can write the conditions to solve for $a, b, c, d, e, f$:
+1. starting and finishing position of $s$ which are 0 and 1
+2. starting and finishing velocity of $s$ which are both 0
+3. starting and finishing acceleration of $s$ which are both 0
+These conditions can be written in mathmetical format:  
+
+```math
+\begin{aligned}
+	s(0) = 0, \quad \dot{s}(0) = 0, \quad \ddot{s}(0) = 0 \\ 
+	s(1) = 1, \quad \dot{s}(1) = 0, \quad \ddot{s}(1) = 0
+\end{aligned}
+```
+
+Solving for the resulting system of linear equations we get: 
+
+```math
+	a = 6, \quad b = -15, \quad c = 10, \quad d=e=f=0
+```
+
+
+and in the end we have:
+
+```math
+	s(t) = 6.t^5 - 15.t^4 + 10.t^3
+```
+
+which means:
+
+```math
+	\theta(t) = \theta^I + (\theta^F - \theta^I)(6.t^5 - 15.t^4 + 10.t^3)
+```
 
 <div align="center">
  	<img src="https://github.com/user-attachments/assets/dee8093b-4d78-4f55-90bd-c46c7d0e57ac" style="width: 50%;">
@@ -356,6 +407,39 @@ The S-curve method is similar to the trapezoidal method with the difference that
 
 #### 7th order polynomial
 
+
+We go through the same process of as before in the 5th order polynomial. First it is to write down $s(t)$:
+
+```math
+	s(t) = a.t^7 + b.t^6 + c.t^5 + d.t^4 + e.t^3 + f.t^2 + g.t + h
+```
+
+then writing down the conditions:
+
+```math
+	\begin{aligned}
+		s(0) = 0, \quad \dot{s}(0) = 0, \quad \ddot{s}(0) = 0, \quad \dddot{s}(0) = 0 \\ 
+		s(1) = 1, \quad \dot{s}(1) = 0, \quad \ddot{s}(1) = 0, \quad \dddot{s}(1) = 0
+	\end{aligned}
+```
+
+Then solving the linear system of equations based on the conditions:
+
+```math
+	a=-20, \quad b = 70, \quad c = -84, \quad d = 35, \quad e=f=g=h=0
+```
+
+and at the end we can write:
+
+```math
+	s(t) = -20.t^7 + 70.t^6 - 84.t^5 + 35.t^4
+```
+
+which means for $\theta(t)$ we have:
+```
+	\theta(t) = \theta^I + (\theta^F - \theta^I)(-20.t^7 + 70.t^6 - 84.t^5 + 35.t^4)
+```
+
 <div align="center">
  	<img src="https://github.com/user-attachments/assets/67bb3d24-3a9c-4c92-9cbf-19afd13afd12" style="width: 50%;">
 	</br>
@@ -365,6 +449,30 @@ The S-curve method is similar to the trapezoidal method with the difference that
 
 
 #### 9th order polynomial
+
+Again the same shit is both 5th and 7th order polynomial. First $s(t)$:
+
+```math
+	a_1.t^9 + a_2.t^8 + \dots + a_8.t^2 + a_9.t + a-{10}
+```
+
+then writing down the conditions:
+
+```math
+	\begin{aligned}
+		s(0) = 0, \quad \dot{s}(0) = 0, \quad \ddot{s}(0) = 0, \quad \dddot{s}(0) = 0, \quad \ddot{\ddot{s}}(0) = 0 \\ 
+		s(1) = 1, \quad \dot{s}(1) = 0, \quad \ddot{s}(1) = 0, \quad \dddot{s}(1) = 0, \quad \ddot{\ddot{s}}(1) = 0
+	\end{aligned}
+```
+
+Then solving the system of linear equations:
+
+```math
+\begin{aligned}
+	a_1 = 70, \quad a_2 = -315, \quad a_3 = 540 \\
+	a_4 = -420, \quad a_5 = 126, \quad a_6=a_7=a_8=a_9=a_10=0
+\end{aligned}
+```
 
 
 <div align="center">
