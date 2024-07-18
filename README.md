@@ -277,15 +277,14 @@ Finally the overall mathematicall function can be described as:
 	\theta_b(t) & = \frac{\theta^I+\theta^F}{2} + 2(\theta^F - \theta^I)(t - 0.5) + 2(\theta^I - \theta^F)(t - 0.5)^2 &‌ \quad\text{for}\quad 0.5 \leq t \leq 1
 \end{aligned}
 ```
+![Parabolic Method]()
 
 <div align="center">
- 	<img src="" style="width: 50%;">
+ 	<img src="https://github.com/user-attachments/assets/12e85bb4-e6d7-4b7a-83e4-7890e3506a0f" style="width: 50%;">
 	</br>
 	Bang-Bang Method | Parabolic Method
 </div>
 </br>
-
-
 
 ### Trapezoidal 
 
@@ -312,7 +311,7 @@ For the sake of simplicity we say that $t_0 = 0, t_1 = 1/3, t_2 = 2/3, t_3 = 1$.
 
 
 <div align="center">
- 	<img src="" style="width: 50%;">
+ 	<img src="https://github.com/user-attachments/assets/56500e38-c4fc-462e-a887-dea3079504c5" style="width: 50%;">
 	</br>
 	Trapezoidal Method
 </div>
@@ -340,7 +339,7 @@ The S-curve method is somewhat similar to the trapezoidal method with the differ
 
 
 <div align="center">
- 	<img src="" style="width: 50%;">
+ 	<img src="https://github.com/user-attachments/assets/70db62d1-d776-4765-a389-68538a438e0e" style="width: 50%;">
 	</br>
 	S-Curve Method
 </div>
