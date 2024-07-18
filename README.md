@@ -277,7 +277,6 @@ Finally the overall mathematicall function can be described as:
 	\theta_b(t) & = \frac{\theta^I+\theta^F}{2} + 2(\theta^F - \theta^I)(t - 0.5) + 2(\theta^I - \theta^F)(t - 0.5)^2 &‌ \quad\text{for}\quad 0.5 \leq t \leq 1
 \end{aligned}
 ```
-![Parabolic Method]()
 
 <div align="center">
  	<img src="https://github.com/user-attachments/assets/12e85bb4-e6d7-4b7a-83e4-7890e3506a0f" style="width: 50%;">
