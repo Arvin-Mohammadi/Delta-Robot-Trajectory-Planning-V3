@@ -1,4 +1,4 @@
-# Delta Parallel Robot - Kinematics, Trajectory Planning, Obstacle Avoidance, and Experimental Study 
+# Trajectory Planning Experimental Comparison Study
 
 <img align="right" src="https://github.com/Arvin-Mohammadi/Delta-Robot-Trajectory-Planning-V3/assets/69509720/5d0b34e0-8cbd-4d3d-9884-382a565008ef" width=25%>
 
@@ -492,32 +492,72 @@ and we have for $\theta(t)$:
 </div>
 </br>
 
+### Discussion 
+
+So we took a look at six different methods:
+
+1. Bang-Bang | Parabolic Trajectory
+2. Trapezoidal Velocity Trajectory
+3. S-Curve Velocity Trajectory
+4. 5th Order Interpolating Polynomial
+5. 7th Order Interpolating Polynomial
+6. 9th Order Interpolating Polynomial
+
+All of them are usable, but from my experience for point-to-point movement the polynomials are generally better and what's more, 7th order polynomial is probably the best one. Why is that? Well firstly it's kind of hard for the PID controller to follow trajectories such as trapezoidal (for some reason) rather than the polynomials (maybe because they are smoother in relation to the other three methods). But then why choose 7th order? well because it controls the jerk (unlike the 5th order). The 9th order polynomial ain't bad either. it controls the snap at the start and finish as well as the jerk. 
+
+So yeah from my experience the best ones you can implement for your robot ... whatever it is ... is probably the 7th or 9th order polynomial. It's easy to calculate, easy to implement, reliable, and also the PID controller won't have a problem following it. 
 
 <a name="section-multipoint_trajectory_generation"></a>
-### Theoretical Study - Multi-Point Trajectory Generation
+## Theoretical Study - Multi-Point Trajectory Generation
 
-Multi-point trajectory generation generates a trajectory between multiple target points given as a path, along with its time information. For example if the robot needs to be moved from point A, passes point B and then stop at point C.  
+Multi-point trajectory generation generates a trajectory between multiple target points given as a path, along with its time information. For example if the robot needs to be moved from point A, passes point B and then stop at point C (same logic with more points, basically we have a path which contains more than the starting and final points).
+
+### Bad Choices for Trajectory
+
+Probably the worst methods you can choose for a multiple-point trajectory planning are either using a high-order polynomial interpolation or one of the point-to-point methods. Let's elaborate further. 
+
+#### High-Order Polynomial Interpolation
+
+Assume you have a set of values such as [0, 0.2, 1] and you wanted to create a trajectory for these values with a polynomial:
+
+```math
+	s(t) = a_n.t^n + \dots + a_1.t + a_0
+```
+
+So given this information we list the conditions for creating the polynomial function: 
+
+1. The three positions of [0, 0.2, 1]: Conditions x3
+2. Initial and final velocity values [0, 0]: Conditions x2
+3. Initial and final acceleration values [0, 0]: Conditions x2
+4. Initial and final jerk values [0, 0]: Conditions x2
+
+So that gives us 9 conditions in total. For 9 conditions we need an 8th-order polynomial to be able to create a linear system of equations for the coefficients. Meaning the polynomial would be: 
+
+```math
+	s(t) = a_8.t^8 + \dots + a_1.t + a_0
+```
+
+And the equations will be:
+
+```math
+\begin{aligned}
+	s(0) 		& = 0, \quad s(0.2) 		& = 0.2, \quad s(1) = 1 \\
+	\dot{s}(0) 	& = 0, \quad \dot{s}(1) 	& = 0 \\
+	\ddot{s}(0) 	& = 0, \quad \ddot{s}(1) 	& = 0 \\
+	\dddot{s}(0) 	& = 0. \quad \dddot{s}(1) 	& = 0 
+\end{aligned}
+```
+
+### trapezoidal / cubic polynomial / quintic polynomial
 
 
-#### higher order polynomial 
+### Cubic Spline 
 
 
-#### trapezoidal / cubic polynomial / quintic polynomial
+### B-Spline
 
 
-#### Multi-Segment Linear Trajectory with Trapezoidal Blends
-
-
-#### Multi-Segment Linear Trajectory with Polynomial Blends
-
-
-#### Cubic Spline 
-
-
-#### B-Spline
-
-
-#### Pattern Generation 
+### Pattern Generation 
 
 
 <a name="section-adeptcycle"></a>
