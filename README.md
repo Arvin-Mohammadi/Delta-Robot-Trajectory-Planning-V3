@@ -541,10 +541,10 @@ And the equations will be:
 
 ```math
 \begin{aligned}
-	s(0) 		& = 0, \quad s(0.2) 		& = 0.2, \quad s(1) = 1 \\
-	\dot{s}(0) 	& = 0, \quad \dot{s}(1) 	& = 0 \\
-	\ddot{s}(0) 	& = 0, \quad \ddot{s}(1) 	& = 0 \\
-	\dddot{s}(0) 	& = 0. \quad \dddot{s}(1) 	& = 0 
+	s(0) 		& = 0, \quad s(0.2) 		& = 0.2, \quad s(1) & = 1 \\
+	\dot{s}(0) 	& = 0, \quad \dot{s}(1) 	& = 0 & \\
+	\ddot{s}(0) 	& = 0, \quad \ddot{s}(1) 	& = 0 & \\
+	\dddot{s}(0) 	& = 0. \quad \dddot{s}(1) 	& = 0 &
 \end{aligned}
 ```
 
