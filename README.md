@@ -512,7 +512,7 @@ So yeah from my experience the best ones you can implement for your robot ... wh
 
 Multi-point trajectory generation generates a trajectory between multiple target points given as a path, along with its time information. For example if the robot needs to be moved from point A, passes point B and then stop at point C (same logic with more points, basically we have a path which contains more than the starting and final points).
 
-### Bad Choices for Trajectory
+### Bad Choices for Multi-Point Trajectory
 
 Probably the worst methods you can choose for a multiple-point trajectory planning are either using a high-order polynomial interpolation or one of the point-to-point methods. Let's elaborate further. 
 
