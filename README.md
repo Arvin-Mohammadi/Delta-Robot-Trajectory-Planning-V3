@@ -558,9 +558,7 @@ Firstly how can we use a point-to-point method for multiple number of points? It
 
 ### B-Spline
 
-
 ### Pattern Generation 
-
 
 <a name="section-adeptcycle"></a>
 ## Adept Cycle 
