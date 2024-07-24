@@ -566,7 +566,7 @@ So the input is:
 
 ```math
 \begin{aligned}
-	path array = \[\theta_0, \theta_1, \dots, \theta_n, \theta_{n+1}\]   
+	path array = \left\[\theta_0, \theta_1, \dots, \theta_n, \theta_{n+1}\right\]   
 \end{aligned}
 ```
 
@@ -574,7 +574,7 @@ The overall trajectory function can be described as:
 
 ```math
 \begin{aligned}
-	\theta(t) & = \lbrace q_k(t), t\in [t_k, t_{k+1}], k=0, ..., n-1 \rbrace \\
+	\theta(t) & = \lbrace q_k(t), t \in [t_k, t_{k+1}], k=0, ..., n \rbrace \\
 	\text{where} \quad q_k(t) & = a_{k0} + a_{k1}(t-t_k) + a_{k2}(t-t_k)^2 + a_{k3}(t-t_k)^3
 \end{aligned}
 ```
