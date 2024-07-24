@@ -566,7 +566,7 @@ So the input is:
 
 ```math
 \begin{aligned}
-	path array = \left\[\theta_0, \theta_1, \dots, \theta_n, \theta_{n+1}\right\]   
+	path array = [\theta_0, \theta_1, \dots, \theta_n, \theta_{n+1}]   
 \end{aligned}
 ```
 
@@ -579,6 +579,26 @@ The overall trajectory function can be described as:
 \end{aligned}
 ```
 
+So as I said there are $n$ polynomials with unknown coefficients that connect every two points in the given path. So we need to calculate the value of $4n$ coefficients. We calculate the values of coefficients based on some conditions such as: 
+
+- Adhering to the path values (at the starting and finishing point of each polynomial) x(2n) Conditions
+-  The velocity should be continuous at the transition points between each two successive polynomials (such as polynomial number $k$ and $k+1$) x(n-1) Conditions
+-  The acceleration should be continuous at the transition points between each two successive polynomials (such as polynomial number $k$ and $k+1$) x(n-1) Conditions
+-  Initial and final velocity of the movement x2 Conditions 
+
+Adding these conditions up will result in 4n conditions, hence 4n equations. Solving this system of linear equations will give us the result. Let's write the conditions one more time: 
+
+```math
+\begin{aligned}
+	q_k(t_k) 		& = q_k, \quad q_k(t_{k+1}) = q_{k+1}, & k=0, ..., n \\
+	\dot{q_k} (t_{k+1}) 	& = \dot{q_{k+1}}(t_{k+1})=v_{k+1}, & k=0, ..., n-1\\
+	\ddot{q_k} (t_{k+1}) 	& = \ddot{q_{k+1}} (t_{k+1}), & k=0, ..., n-1\\
+	\dot{q_0} (t_0) 	& = v_0, \quad \dot{q_{n-1}} (t_n) = v_n & \\
+\end{algined}
+```
+
+
+ 
 ### B-Spline
 
 ### Pattern Generation 
