@@ -560,6 +560,60 @@ Firstly how can we use a point-to-point method for multiple number of points? It
 
 ### Pattern Generation 
 
+<a name="section-code_review"></a>
+## Code Review
+
+In this section I'll explain each of the code files and how to use them. Firstly there is a ```SimpleMath.py``` file which you don't have to worry about too much since it only introduces functions of ```sind```, ```cosd```, and ```tand``` which are based on their corresponding numpy functions with the difference of getting inputs in degrees rather than radians. 
+
+### PathPlannerPTP.py
+
+This file introduces a point-to-point path planner class and for initiating the class you can write:
+
+```python
+THETA_I = 0 # intial value 
+THETA_F = 1 # final value 
+path_planner = PathPlannerPTP(THETA_I, THETA_F)
+```
+
+As discussed in the previous sections there are 6 point to point methods implemented: 
+
+1. Parabolic | Bang-Bang Method
+2. Trapezoidal Velocity Method
+3. S-Curve Velocity Method
+4. 5th-Order Interpolating Polynomial
+5. 7th-Order Interpolating Polynomial
+6. 9th-Order Interpolating Polynomial 
+
+You can call each of those methods and plot the results like this:
+
+```python
+# results for the parabolic method
+results = path_planner.ptp_bangbang()
+path_planner.plot(results, "Parabolic Method", num_differentials=2)
+
+# results for the trapezoidal velocity profile
+results = path_planner.ptp_trapezoidal()
+path_planner.plot(results, "Trapezoidal Velocity Profile", num_differentials=2)
+
+# results for the S-curve velocity profile
+results = path_planner.ptp_scurve()
+path_planner.plot(results, "S-curve Profile")
+
+# results for the 5th order interpolating polynomial
+results = path_planner.ptp_polynomial5th()
+path_planner.plot(results, "5th order polynomial")
+
+# results for the 7th order interpolating polynomial
+results = path_planner.ptp_polynomial7th()
+path_planner.plot(results, "7th order polynomial")
+
+# results for the 9th order interpolating polynomial
+results = path_planner.ptp_polynomial9th()
+path_planner.plot(results, "9th order polynomial")
+```
+
+in each of the different methods used, the ```results``` is always an array of values that interpolates the initial and final values 
+
 <a name="section-adeptcycle"></a>
 ## Adept Cycle 
 
