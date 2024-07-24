@@ -597,7 +597,7 @@ Adding these conditions up will result in 4n conditions, hence 4n equations. Sol
 \end{aligned}
 ```
 
-The coefficient $a_{k,i} can be computed with the following steps. First we consider each velocity at time $t_k$ to be known:
+The coefficient $a_{k,i}$ can be computed with the following steps. First we consider each velocity at time $t_k$ to be known:
 
 ```math
 \begin{aligned}
