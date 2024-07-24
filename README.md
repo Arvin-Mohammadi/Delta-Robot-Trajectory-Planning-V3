@@ -732,6 +732,27 @@ path_planner.plot(results, "9th order polynomial")
 
 in each of the different methods used, the ```results``` is always an array of values that interpolates the initial and final values 
 
+
+### PathPlannerMLTP.py
+
+This file introduces a multi-point path planner class and for initiating the class you can write:
+
+```python
+THETA_PATH = [0, 0.1, -0.3, 0.7, 1]
+path_planner = PathPlannerMLTP(THETA_PATH)
+```
+
+Here are the multi-point trajectory planning methods implemented: 
+
+1. Cubic Spline
+
+
+```python
+# results for the cubic spline 
+results = path_planner.mltp_cubicspline()
+path_planner.plot(results, "Cubic Spline")
+```
+
 <a name="section-adeptcycle"></a>
 ## Adept Cycle 
 
