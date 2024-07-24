@@ -566,7 +566,7 @@ So the input is:
 
 ```math
 \begin{aligned}
-	\text{path array} = [\theta_0, \theta_1, \dots, \theta_n, \theta_{n+1}]   
+	\text{path array} = [\theta_0, \theta_1, \dots, \theta_n]   
 \end{aligned}
 ```
 
@@ -574,7 +574,7 @@ The overall trajectory function can be described as:
 
 ```math
 \begin{aligned}
-	\theta(t) & = \lbrace q_k(t), t \in [t_k, t_{k+1}], k=0, ..., n \rbrace \\
+	\theta(t) & = \lbrace q_k(t), t \in [t_k, t_{k+1}], k=0, \dots , n-1 \rbrace \\
 	\text{where} \quad q_k(t) & = a_{k0} + a_{k1}(t-t_k) + a_{k2}(t-t_k)^2 + a_{k3}(t-t_k)^3
 \end{aligned}
 ```
@@ -590,10 +590,10 @@ Adding these conditions up will result in 4n conditions, hence 4n equations. Sol
 
 ```math
 \begin{aligned}
-	& q_k(t_k) = \theta_k, \quad q_k(t_{k+1}) = \theta_{k+1}, & k=0, ..., n \\
-	& \dot{q_k} (t_{k+1}) 	= \dot{q_{k+1}}(t_{k+1}), & k=0, ..., n-1\\
-	& \ddot{q_k} (t_{k+1}) 	= \ddot{q_{k+1}} (t_{k+1}), & k=0, ..., n-1\\
-	& \dot{q_0} (t_0) 	= 0 , \quad \dot{q_{n-1}} (t_n) = 0 & \\
+	& q_k(t_k) = \theta_k, \quad q_k(t_{k+1}) = \theta_{k+1}, & k=0, ..., n-1 \\
+	& \dot{q}_k (t_{k+1}) 	= \dot{q}_{k+1}(t_{k+1}), & k=0, ..., n-2\\
+	& \ddot{q}_k (t_{k+1}) 	= \ddot{q}_{k+1} (t_{k+1}), & k=0, ..., n-2\\
+	& \dot{q}_0 (t_0) 	= v_0 = 0 , \quad \dot{q}_{n-1} (t_n) = v_n = 0 & \\
 \end{aligned}
 ```
 
@@ -610,14 +610,14 @@ The coefficient $a_{k,i}$ can be computed with the following steps. First we con
 
 Where $T_k = t_{k+1} - t_k$. Solving the above equations we have: 
 
-$$
+```math
 \begin{cases}
     a_{k,0} & = q_k\\ 
     a_{k,1} & = v_k\\ 
     a_{k,2} & = \frac{1}{T_k}   [\frac{3(q_{k+1} - q_k)}{T_k} - 2v_k - v_{k+1}] \\ 
     a_{k,3} & = \frac{1}{T^2_k} [\frac{2(q_k - q_{k+1})}{T_k} + v_k + v_{k+1}] \\
 \end{cases}
-$$
+```
 
 
 But this is for when the velocities of the points are known, which they are not (except the initial and final points). So the velocities have to be calculated, in this instance we use the continuity conditions of acceleration. Velocities can be found with a matrix of $v = A^{-1}c$. Where: 
@@ -629,8 +629,8 @@ A =
     2(T_0+T_1)     & T_0         & 0       & ...                             &     & 0 \\
     T_2            & 2(T_1+T_2)  & T_1     & 0                               &     & \vdots \\
     0              &             & \ddots  &                                 &     & 0 \\
-    \vdots         &             &         & T_{n-1}  & 2(T_{n-2}+T_{n-1})   & T_{n-2} \\ 
-    0              & \dots       &         & 0        & T_{n}              & 2(T_{n-1} + T_{n}) \\  
+    \vdots         &             &         & T_{n-2}  & 2(T_{n-3}+T_{n-2})   & T_{n-3} \\ 
+    0              & \dots       &         & 0        & T_{n-1}              & 2(T_{n-2} + T_{n-1}) \\  
 \end{bmatrix}
 $$
 
@@ -640,8 +640,8 @@ c =
     \frac{3}{T_0T_1} \left[ T^2_0(q_2 - q_1) + T^2_1(q_1 - q_0) \right] - T_1 v_0 \\
     \frac{3}{T_1T_2} \left[ T^2_1(q_3 - q_2) + T^2_2(q_2 - q_1) \right] \\
     \vdots \\ 
-    \frac{3}{T_{n-2}T_{n-1}} \left[ T^2_{n-2}(q_{n} - q_{n-1}) + T^2_{n-1}(q_{n-1} - q_{n-2}) \right] \\
-    \frac{3}{T_{n-1}T_{n}} \left[ T^2_{n-1}(q_{n+1} - q_{n}) + T^2_{n}(q_{n} - q_{n-1}) \right] - T_{n-1}v_{n+1} \\
+    \frac{3}{T_{n-3}T_{n-2}} \left[ T^2_{n-3}(q_{n-1} - q_{n-2}) + T^2_{n-2}(q_{n-2} - q_{n-3}) \right] \\
+    \frac{3}{T_{n-2}T_{n-1}} \left[ T^2_{n-2}(q_{n} - q_{n-1}) + T^2_{n-1}(q_{n-1} - q_{n-2}) \right] - T_{n-2}v_{n} \\
 \end{bmatrix}
 $$
 
@@ -651,8 +651,8 @@ v =
     v_1 \\ 
     v_2 \\ 
     \vdots \\ 
+    v_{n-2} \\ 
     v_{n-1} \\ 
-    v_{n} \\ 
 \end{bmatrix}
 $$
 
