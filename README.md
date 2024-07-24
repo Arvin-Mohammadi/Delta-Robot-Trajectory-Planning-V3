@@ -629,8 +629,8 @@ A =
     2(T_0+T_1)     & T_0         & 0       & ...                             &     & 0 \\
     T_2            & 2(T_1+T_2)  & T_1     & 0                               &     & \vdots \\
     0              &             & \ddots  &                                 &     & 0 \\
-    \vdots         &             &         & T_{n-2}  & 2(T_{n-3}+T_{n-2})   & T_{n-3} \\ 
-    0              & \dots       &         & 0        & T_{n-1}              & 2(T_{n-2} + T_{n-1}) \\  
+    \vdots         &             &         & T_{n-1}  & 2(T_{n-2}+T_{n-1})   & T_{n-2} \\ 
+    0              & \dots       &         & 0        & T_{n}              & 2(T_{n-1} + T_{n}) \\  
 \end{bmatrix}
 $$
 
@@ -640,8 +640,8 @@ c =
     \frac{3}{T_0T_1} \left[ T^2_0(q_2 - q_1) + T^2_1(q_1 - q_0) \right] - T_1 v_0 \\
     \frac{3}{T_1T_2} \left[ T^2_1(q_3 - q_2) + T^2_2(q_2 - q_1) \right] \\
     \vdots \\ 
-    \frac{3}{T_{n-3}T_{n-2}} \left[ T^2_{n-3}(q_{n-1} - q_{n-2}) + T^2_{n-2}(q_{n-2} - q_{n-3}) \right] \\
-    \frac{3}{T_{n-2}T_{n-1}} \left[ T^2_{n-2}(q_n - q_{n-1}) + T^2_{n-1}(q_{n-1} - q_{n-2}) \right] - T_{n-2}v_n \\
+    \frac{3}{T_{n-2}T_{n-1}} \left[ T^2_{n-2}(q_{n} - q_{n-1}) + T^2_{n-1}(q_{n-1} - q_{n-2}) \right] \\
+    \frac{3}{T_{n-1}T_{n}} \left[ T^2_{n-1}(q_{n+1} - q_{n}) + T^2_{n}(q_{n} - q_{n-1}) \right] - T_{n-1}v_{n+1} \\
 \end{bmatrix}
 $$
 
@@ -651,8 +651,8 @@ v =
     v_1 \\ 
     v_2 \\ 
     \vdots \\ 
-    v_{n-2} \\ 
     v_{n-1} \\ 
+    v_{n} \\ 
 \end{bmatrix}
 $$
 
