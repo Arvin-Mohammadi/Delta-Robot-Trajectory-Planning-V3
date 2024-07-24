@@ -660,7 +660,24 @@ For better understanding please refer to [3] in the reference section.
 
 ### B-Spline
 
+
+
 ### Pattern Generation 
+
+This one is a bit tough to explain so bear with me for a second. When you have a certain pattern the previous trajectory planning methods won't work. Why is that? Because in the previous methods we were given a few number of points and we wanted to generate a trajectory in-between those points, but with a 'pattern' we already have the trajectory that the robot needs to go.
+
+So in this instance what we should do is to sample that pattern which results in an array of values much like before, which we will give to the PID controller of the robot as a reference to follow. How do we sample the pattern? well what I do is this: I first sample at a constant rate (based on distance) then I'll repeat the values which correspond to the sharp edges of the pattern. This way I can emphasis on the sharp ends for the PID controller so it comes out sharper (because the PID controller will have more time to reach it's destination with more precision). That's it. 
+
+
+<div align="center">
+ 	<img src="" style="width: 50%;">
+	</br>
+	
+</div>
+</br>
+
+
+
 
 <a name="section-code_review"></a>
 ## Code Review
