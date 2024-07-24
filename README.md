@@ -512,6 +512,8 @@ So yeah from my experience the best ones you can implement for your robot ... wh
 
 Multi-point trajectory generation generates a trajectory between multiple target points given as a path, along with its time information. For example if the robot needs to be moved from point A, passes point B and then stop at point C (same logic with more points, basically we have a path which contains more than the starting and final points).
 
+So like the point-to-point methods the **inputs** are the path points which want to hit, and then the **output** is the array of values (sampled from the position as a function of time) that we'll give to the PID Controller as a reference. 
+
 ### Bad Choices for Multi-Point Trajectory
 
 Probably the worst methods you can choose for a multiple-point trajectory planning are either using a high-order polynomial interpolation or one of the point-to-point methods. Let's elaborate further. 
@@ -555,6 +557,27 @@ Solving this linear system of equations will result in the values of $a_8, \dots
 Firstly how can we use a point-to-point method for multiple number of points? It's easy. Let's go with the previous example and say that we want to create a trajectory for the three values of [0, 0.2, 1]. First, We can simply create a trajectory between [0, 0.2] and then create another trajectory between [0.2, 1]. This can be done with any number of points and we can use all of the 6 mentioned point-to-point methods. Why is it a bad idea? Because the velocity and acceleration will be zero at all of the points. So assume we have a number of points that we want our robots to cross over such as $P_0, P_1, P_2, P_3, \dots, P_n$. Given that we use the method I just explained, the robot will stop at all of the points of $P_0$ to $P_n$ and start moving again ... sort of like the robot has got the hiccups, which is awful for the motors. Don't use this methods either. 
 
 ### Cubic Spline 
+
+This method basically uses multiple polynomials on end for generating a trajectory between multiple path points. So if we are given $n+1$ path points, we'll need $n$ polynomials to interpolate and create the trajectory. 
+
+Each polynomial will have a degree of $p$ based on the desired level of trajectory smoothness. As default we'll have $p=3$ which will give us a smooth velocity profile and a continuous acceleration profile
+
+So the input is:
+
+```math
+\begin{aligned}
+	path array = \[\theta_0, \theta_1, \dots, \theta_n, \theta_{n+1}\]   
+\end{aligned}
+```
+
+The overall trajectory function can be described as: 
+
+```math
+\begin{aligned}
+	\theta(t) & = \lbrace q_k(t), t\in [t_k, t_{k+1}], k=0, ..., n-1 \rbrace \\
+	\text{where} \quad q_k(t) & = a_{k0} + a_{k1}(t-t_k) + a_{k2}(t-t_k)^2 + a_{k3}(t-t_k)^3
+\end{aligned}
+```
 
 ### B-Spline
 
