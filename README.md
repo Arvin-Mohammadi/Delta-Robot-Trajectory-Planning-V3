@@ -566,7 +566,7 @@ So the input is:
 
 ```math
 \begin{aligned}
-	path array = [\theta_0, \theta_1, \dots, \theta_n, \theta_{n+1}]   
+	\text{path array} = [\theta_0, \theta_1, \dots, \theta_n, \theta_{n+1}]   
 \end{aligned}
 ```
 
@@ -590,13 +590,23 @@ Adding these conditions up will result in 4n conditions, hence 4n equations. Sol
 
 ```math
 \begin{aligned}
-	q_k(t_k) 		& = q_k, \quad q_k(t_{k+1}) = q_{k+1}, & k=0, ..., n \\
-	\dot{q_k} (t_{k+1}) 	& = \dot{q_{k+1}}(t_{k+1})=v_{k+1}, & k=0, ..., n-1\\
+	q_k(t_k) 		& = \theta_k, \quad q_k(t_{k+1}) = \theta_{k+1}, & k=0, ..., n \\
+	\dot{q_k} (t_{k+1}) 	& = \dot{q_{k+1}}(t_{k+1}), & k=0, ..., n-1\\
 	\ddot{q_k} (t_{k+1}) 	& = \ddot{q_{k+1}} (t_{k+1}), & k=0, ..., n-1\\
-	\dot{q_0} (t_0) 	& = v_0, \quad \dot{q_{n-1}} (t_n) = v_n & \\
-\end{algined}
+	\dot{q_0} (t_0) 	& = 0 , \quad \dot{q_{n-1}} (t_n) = 0 & \\
+\end{aligned}
 ```
 
+The coefficient $a_{k,i} can be computed with the following steps. First we consider each velocity at time $t_k$ to be known:
+
+```math
+\begin{aligned}
+	q_k(t_k) = a_{k0} 						& = q_k \\
+	\dot{q_k} (t_k) = a_{k1} 					& = v_k \\ 
+	q_k(t_{k+1}) = a_{k0} + a_{k1} T_k + a_{k2} T^2_k + a_{k3}T^3_k & = q_{k+1} \\ 
+	\dot{q_k} (t_{k+1}) = a_{k1} + 2a_{k2} T_k + 3 a_{k3} T^2_k 	& = v_{k+1} \\ 
+\end{aligned}
+```
 
  
 ### B-Spline
