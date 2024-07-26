@@ -278,8 +278,9 @@ Finally the overall mathematicall function can be described as:
 \end{aligned}
 ```
 
+
 <div align="center">
- 	<img src="https://github.com/user-attachments/assets/12e85bb4-e6d7-4b7a-83e4-7890e3506a0f" style="width: 50%;">
+ 	<img src="https://github.com/user-attachments/assets/e3d2bb5a-3c3e-4f1a-b4cd-2a5ebadfcd7d" style="width: 50%;">
 	</br>
 	Bang-Bang Method | Parabolic Method
 </div>
@@ -308,9 +309,8 @@ For the sake of simplicity we say that $t_0 = 0, t_1 = 1/3, t_2 = 2/3, t_3 = 1$.
   \end{cases}
 ```
 
-
 <div align="center">
- 	<img src="https://github.com/user-attachments/assets/56500e38-c4fc-462e-a887-dea3079504c5" style="width: 50%;">
+ 	<img src="https://github.com/user-attachments/assets/580f77ad-6dfa-4b17-b2b8-07fa0739bb91" style="width: 50%;">
 	</br>
 	Trapezoidal Method
 </div>
@@ -336,9 +336,8 @@ The S-curve method is somewhat similar to the trapezoidal method with the differ
 \end{aligned}
 ```
 
-
 <div align="center">
- 	<img src="https://github.com/user-attachments/assets/70db62d1-d776-4765-a389-68538a438e0e" style="width: 50%;">
+ 	<img src="https://github.com/user-attachments/assets/84d06621-bce1-4361-840f-71a673953985" style="width: 50%;">
 	</br>
 	S-Curve Method
 </div>
@@ -396,7 +395,7 @@ which means:
 ```
 
 <div align="center">
- 	<img src="https://github.com/user-attachments/assets/dee8093b-4d78-4f55-90bd-c46c7d0e57ac" style="width: 50%;">
+ 	<img src="https://github.com/user-attachments/assets/34f6998f-b737-44d6-90f1-c018b7d0799b" style="width: 50%;">
 	</br>
 	5th-order polynomial
 </div>
@@ -439,7 +438,7 @@ which means for $\theta(t)$ we have:
 ```
 
 <div align="center">
- 	<img src="https://github.com/user-attachments/assets/67bb3d24-3a9c-4c92-9cbf-19afd13afd12" style="width: 50%;">
+ 	<img src="https://github.com/user-attachments/assets/b79e04c0-35db-4c2c-8780-44855ce16d02" style="width: 50%;">
 	</br>
 	7th-order polynomial
 </div>
@@ -484,9 +483,8 @@ and we have for $\theta(t)$:
 	\theta(t) = \theta^I + (\theta^F - \theta^I)(70.t^9 - 315.t^8 + 540.t^7 - 420.t^6 + 126.t^5)
 ```
 
-
 <div align="center">
- 	<img src="https://github.com/user-attachments/assets/c8ad43ab-9485-4e7c-bc79-4aa5d9a46071" style="width: 50%;">
+ 	<img src="https://github.com/user-attachments/assets/b86a731d-fb5a-453a-b687-7651932c5570" style="width: 50%;">
 	</br>
 	9th-order polynomial
 </div>
