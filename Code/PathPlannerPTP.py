@@ -1,5 +1,4 @@
 
-
 # =================================================================================================
 # -- imports --------------------------------------------------------------------------------------
 # =================================================================================================
@@ -8,6 +7,7 @@ from SimpleMath import tand, sind, cosd
 
 import numpy as np 
 import math 
+import os 
 import matplotlib.pyplot as plt 
 
 # =================================================================================================
@@ -19,7 +19,6 @@ class PathPlannerPTP:
 		self.theta_i 			= theta_initial
 		self.theta_f 			= theta_final
 		self.sampling_frequency = 1000
-
 
 
 	def ptp_polynomial5th(self):
@@ -46,7 +45,6 @@ class PathPlannerPTP:
 		return(t, theta, theta_dot, theta_ddot, theta_dddot)
 
 
-
 	def ptp_polynomial7th(self):
 
 		# time array (n+1 time instances where n is the sampling frequency)
@@ -69,7 +67,6 @@ class PathPlannerPTP:
 		theta_dddot = (self.theta_f - self.theta_i)*s_dddot
 
 		return(t, theta, theta_dot, theta_ddot, theta_dddot)
-
 
 
 	def ptp_polynomial9th(self):
@@ -95,23 +92,25 @@ class PathPlannerPTP:
 
 		return(t, theta, theta_dot, theta_ddot, theta_dddot)
 
+
 	def ptp_bangbang(self):
 		# time array (n+1 time instances where n is the sampling frequency)
-		t = np.array(range(0, self.sampling_frequency + 1)) / self.sampling_frequency
-
+		t 				= np.array(range(0, self.sampling_frequency + 1)) / self.sampling_frequency
 		theta 			= np.zeros_like(t)
 		theta_dot 		= np.zeros_like(t)
 		theta_ddot 		= np.zeros_like(t)
 
 		for i, time in enumerate(t):
-			if time <= 0.5:  # Phase 1: Constant Acceleration
-				theta[i] = self.theta_i + 2 * (self.theta_f - self.theta_i) * time**2
-				theta_dot[i] = 4 * (self.theta_f - self.theta_i) * time
-				theta_ddot[i] = 4 * (self.theta_f - self.theta_i)
-			else:  # Phase 2: Constant Deceleration
-				theta[i] = 0.5 * (self.theta_i + self.theta_f) + 2 * (self.theta_f - self.theta_i) * (time - 0.5) + 2 * (self.theta_i - self.theta_f) * (time - 0.5)**2
-				theta_dot[i] = 2 * (self.theta_f - self.theta_i) * (1 - 2 * (time - 0.5))
-				theta_ddot[i] = -4 * (self.theta_f - self.theta_i)
+			if time <= 0.5:  		# Phase 1: Constant Acceleration
+				theta[i] 		= self.theta_i + 2 * (self.theta_f - self.theta_i) * time**2
+				theta_dot[i] 	= 4 * (self.theta_f - self.theta_i) * time
+				theta_ddot[i] 	= 4 * (self.theta_f - self.theta_i)
+
+			else:  					# Phase 2: Constant Deceleration
+				theta[i] 		= 	0.5 * (self.theta_i + self.theta_f) + 2 * (self.theta_f - self.theta_i) \
+									* (time - 0.5) + 2 * (self.theta_i - self.theta_f) * (time - 0.5)**2
+				theta_dot[i] 	= 2 * (self.theta_f - self.theta_i) * (1 - 2 * (time - 0.5))
+				theta_ddot[i] 	= -4 * (self.theta_f - self.theta_i)
 
 		return (t, theta, theta_dot, theta_ddot)
 
@@ -121,45 +120,45 @@ class PathPlannerPTP:
 		# time array (n+1 time instances where n is the sampling frequency)
 		t = np.array(range(0, self.sampling_frequency + 1)) / self.sampling_frequency
         
-		total_time = 1  	# total time normalized to 1
-		T = total_time / 3  # each phase time duration
-		v_max = (self.theta_f - self.theta_i) / (total_time - T)  # maximum velocity
-		a = 3 * v_max  # acceleration
+		total_time 	= 1  												# total time normalized to 1
+		T 			= total_time / 3  									# each phase time duration
+		v_max 		= (self.theta_f - self.theta_i) / (total_time - T)  # maximum velocity
+		a 			= 3 * v_max  										# acceleration
 
 		theta 		= np.zeros_like(t)
 		theta_dot 	= np.zeros_like(t)
 		theta_ddot 	= np.zeros_like(t)
 
 		for i, time in enumerate(t):
-			if time <= T:  								# Phase 1: Acceleration
-				theta_dot[i] = a * time
-				theta_ddot[i] = a
-				theta[i] = self.theta_i + 0.5 * a * time**2
-			elif time <= 2 * T:  						# Phase 2: Constant Velocity
-				theta_dot[i] = v_max
-				theta_ddot[i] = 0
-				theta[i] = self.theta_i + 0.5 * a * T**2 + v_max * (time - T)
+			if 		time <= T:  						# Phase 1: Acceleration
+				theta_dot[i] 	= a * time
+				theta_ddot[i] 	= a
+				theta[i] 		= self.theta_i + 0.5 * a * time**2
+			elif 	time <= 2 * T:  					# Phase 2: Constant Velocity
+				theta_dot[i] 	= v_max
+				theta_ddot[i] 	= 0
+				theta[i] 		= self.theta_i + 0.5 * a * T**2 + v_max * (time - T)
 			else:  										# Phase 3: Deceleration
-				theta_dot[i] = -a * (time - 2 * T) + v_max
-				theta_ddot[i] = -a
-				theta[i] = (self.theta_i + 0.5 * a * T**2 + v_max * T + 
-                            v_max * (time - 2 * T) - 0.5 * a * (time - 2 * T)**2)
+				theta_dot[i] 	= -a * (time - 2 * T) + v_max
+				theta_ddot[i] 	= -a
+				theta[i] 		= (self.theta_i + 0.5 * a * T**2 + v_max * T + \
+                            		v_max * (time - 2 * T) - 0.5 * a * (time - 2 * T)**2)
 
 		return (t, theta, theta_dot, theta_ddot)
 
 	def ptp_scurve(self):
 		# time array (n+1 time instances where n is the sampling frequency)
-		t = np.array(range(0, self.sampling_frequency + 1)) / self.sampling_frequency
-		total_time = 1  # total time normalized to 1
-		T = total_time / 7  # each segment time duration
+		t 				= np.array(range(0, self.sampling_frequency + 1)) / self.sampling_frequency
+		total_time 		= 1  	# total time normalized to 1
+		T 				= total_time / 7  # each segment time duration
 
 		v_max = (self.theta_f - self.theta_i)/(4*T)
 		a_max = v_max/(T*2)
 		j_max = a_max/T
 
-		theta = np.zeros_like(t)
-		theta_dot = np.zeros_like(t)
-		theta_ddot = np.zeros_like(t)
+		theta 		= np.zeros_like(t)
+		theta_dot 	= np.zeros_like(t)
+		theta_ddot 	= np.zeros_like(t)
 		theta_dddot = np.zeros_like(t)
 
 		for i, time in enumerate(t):
@@ -177,7 +176,8 @@ class PathPlannerPTP:
 				theta_dddot[i]  = - j_max
 				theta_ddot[i]   = a_max - j_max*(time - 2*T)
 				theta_dot[i]    = (1.5*a_max*T) + (a_max*(time - 2*T) - 0.5*j_max*(time - 2*T)**2)
-				theta[i]        = (self.theta_i + (7/12)*v_max*T) + (1.5*a_max*T)*(time - 2*T) + (0.5*a_max*(time - 2*T)**2 - (1/6)*j_max*(time - 2*T)**3)
+				theta[i]        = (self.theta_i + (7/12)*v_max*T) + (1.5*a_max*T)*(time - 2*T) + \
+									(0.5*a_max*(time - 2*T)**2 - (1/6)*j_max*(time - 2*T)**3)
 			elif time <= 4 * T:                 # Phase 4: Constant Velocity
 				theta_dddot[i]  = 0
 				theta_ddot[i]   = 0
@@ -197,14 +197,17 @@ class PathPlannerPTP:
 				theta_dddot[i]  = j_max
 				theta_ddot[i]   = - a_max + j_max*(time - 6*T)
 				theta_dot[i]    = ((1/4)*v_max) + ( - a_max*(time - 6*T) + 0.5*j_max*(time - 6*T)**2)
-				theta[i]        = (self.theta_i + (47/12)*v_max*T) + ((1/4)*v_max)*(time - 6*T) + ( - 0.5*a_max*(time - 6*T)**2 + (1/6)*j_max*(time - 6*T)**3)
+				theta[i]        = (self.theta_i + (47/12)*v_max*T) + ((1/4)*v_max)*(time - 6*T) + \
+									( - 0.5*a_max*(time - 6*T)**2 + (1/6)*j_max*(time - 6*T)**3)
                 # this is equal to 4.V_max.T
 
 		return (t, theta, theta_dot, theta_ddot, theta_dddot)
 
-	def plot(self, results, method_name, num_differentials=3):
-
-		if num_differentials == 3:
+	def plot(self, results, method_name, _num_differentials=3, _format='.png', _file_path='./results - point to point/'):
+		if not os.path.exists(_file_path):
+			os.makedirs(_file_path)
+		
+		if _num_differentials == 3:
 			(t, theta, theta_dot, theta_ddot, theta_dddot) = results
 
 			fig = plt.figure()
@@ -213,7 +216,6 @@ class PathPlannerPTP:
 
 			# plot theta
 			plt.subplot(411)
-			plt.grid(True)
 			plt.plot(t, theta, label=r'$\theta$')
 			plt.legend()
 			plt.title(r'value-time', fontsize=20)
@@ -223,7 +225,6 @@ class PathPlannerPTP:
 
 			# plot theta dot 
 			plt.subplot(412)
-			plt.grid(True)
 			plt.plot(t, theta_dot, label=r'$\dot{\theta}$')
 			plt.legend()
 			plt.title(r'first differential value-time', fontsize=20)
@@ -232,7 +233,6 @@ class PathPlannerPTP:
 
 			# plot theta double dot 
 			plt.subplot(413)
-			plt.grid(True)
 			plt.plot(t, theta_ddot, label=r'$\ddot{\theta}$')
 			plt.legend()
 			plt.title(r'second differential value-time', fontsize=20)
@@ -241,7 +241,6 @@ class PathPlannerPTP:
 
 			# plot theta triple dot 
 			plt.subplot(414)
-			plt.grid(True)
 			plt.plot(t, theta_dddot, label=r'$\dddot{\theta}$')
 			plt.legend()
 			plt.title(r'third differential value-time', fontsize=20)
@@ -249,10 +248,10 @@ class PathPlannerPTP:
 			plt.ylabel("third differential value", fontsize=15)
 
 			plt.tight_layout()
-			plt.savefig(method_name + ".pdf")
+			plt.savefig(_file_path + method_name + _format)
 			plt.clf()
 
-		elif num_differentials == 2:
+		elif _num_differentials == 2:
 
 			(t, theta, theta_dot, theta_ddot) = results
 
@@ -262,7 +261,6 @@ class PathPlannerPTP:
 
 			# plot theta
 			plt.subplot(311)
-			plt.grid(True)
 			plt.plot(t, theta, label=r'$\theta$')
 			plt.legend()
 			plt.title(r'value-time', fontsize=20)
@@ -272,7 +270,6 @@ class PathPlannerPTP:
 
 			# plot theta dot 
 			plt.subplot(312)
-			plt.grid(True)
 			plt.plot(t, theta_dot, label=r'$\dot{\theta}$')
 			plt.legend()
 			plt.title(r'first differential value-time', fontsize=20)
@@ -281,7 +278,6 @@ class PathPlannerPTP:
 
 			# plot theta double dot 
 			plt.subplot(313)
-			plt.grid(True)
 			plt.plot(t, theta_ddot, label=r'$\ddot{\theta}$')
 			plt.legend()
 			plt.title(r'second differential value-time', fontsize=20)
@@ -289,7 +285,7 @@ class PathPlannerPTP:
 			plt.ylabel("second differential value", fontsize=15)
 
 			plt.tight_layout()
-			plt.savefig(method_name + ".pdf")
+			plt.savefig(_file_path + method_name + _format)
 			plt.clf()
 
 
@@ -303,24 +299,24 @@ if __name__ == "__main__":
 	path_planner = PathPlannerPTP(0, 1)
 
 	# results for the 5th order polynomial
-	# results = path_planner.ptp_polynomial5th()
-	# path_planner.plot(results, "5th order polynomial")
+	results = path_planner.ptp_polynomial5th()
+	path_planner.plot(results, "5th order polynomial")
 
 	# results for the 7th order polynomial
-	# results = path_planner.ptp_polynomial7th()
-	# path_planner.plot(results, "7th order polynomial")
+	results = path_planner.ptp_polynomial7th()
+	path_planner.plot(results, "7th order polynomial")
 
 	# results for the 9th order polynomial
-	# results = path_planner.ptp_polynomial9th()
-	# path_planner.plot(results, "9th order polynomial")
+	results = path_planner.ptp_polynomial9th()
+	path_planner.plot(results, "9th order polynomial")
 
     # results for the trapezoidal velocity profile
-	# results = path_planner.ptp_trapezoidal()
-	# path_planner.plot(results, "Trapezoidal Velocity Profile", num_differentials=2)
+	results = path_planner.ptp_trapezoidal()
+	path_planner.plot(results, "Trapezoidal Velocity Profile", _num_differentials=2)
 
 	# results for the parabolic method
-	# results = path_planner.ptp_bangbang()
-	# path_planner.plot(results, "Parabolic Method", num_differentials=2)
+	results = path_planner.ptp_bangbang()
+	path_planner.plot(results, "Parabolic Method", _num_differentials=2)
 
     # results for the S-curve profile
 	results = path_planner.ptp_scurve()
