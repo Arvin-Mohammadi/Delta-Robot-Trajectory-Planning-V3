@@ -656,8 +656,22 @@ $$
 
 For better understanding please refer to [3] in the reference section. 
 
+<div align="center">
+ 	<img src="https://github.com/user-attachments/assets/b5378d53-0f15-46ef-8fdf-d1e91c8b661c" style="width: 50%;">
+	</br>
+	Cubic Spline Method
+</div>
+</br>
+
 ### B-Spline
 
+
+<div align="center">
+ 	<img src="https://github.com/user-attachments/assets/0638be6d-a0ed-40e2-bcf9-320d58f132b3" style="width: 50%;">
+	</br>
+	Cubic Spline Method
+</div>
+</br>
 
 
 ### Pattern Generation 
