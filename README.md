@@ -676,6 +676,24 @@ So in this instance what we should do is to sample that pattern which results in
 </br>
 
 
+### Discussion 
+
+So we took a look at a few multi-point methods:
+
+1. Higher-Order Polynomials for Multiple Points
+2. Trapezoidal / Cubic Polynomial / Quintic Polynomial Multi-Point (Same as Point-to-Point Methods)
+3. Cubic Spline
+4. B-Spline
+5. Pattern Generation
+
+So let's talk about why you should or shouldn't use each of these algorithms:
+
+* **Higher-order interpolating polynomial:** I can say that it works ... but it's very impracticaly. _The reason being that the calculations can not be generalized._
+* **Point-to-point methods:** being used for multiple points (Trapezoidal / Cubic Polynomial / Quintic Polynomial Multi-Point), that's just plain stupid. _The reason for that is the velocity comes down to zero at every main time instance._
+*  **Cubic Spline:** Well in my opinion this is the best method if you have a few _path points that you want to absolutely hit_. it just works well. Of course there are ways to modify it but we're not gonna go into that hell hole. just remember that you can add extra conditions for a higher order polynomial used in this. But of course you have to do the calculations from the top.
+*  **B-Spline:** In terms of smoothness this method is really good (better than the cubic spline probably) but the thing is ... _it doesn't hit the path points EXACTLY_. it's basically an approximation. So honestly if my goal was low error for the control points I've defined ... I wouldn't use this one.
+*  **Pattern Generation**: This one is just a bit messy to be honest and I don't know how to improve on it. It's got something to do with sampling rate or whatever ... but putting that aside _when you basically have a certain pattern that you want your robot to travel_ you can just make an array of the actuator parameter values based on that shape. Then add a couple of extra emphasis points on the sharp edges manually, and then you'll have a trajectory that works for your pattern. 
+
 <a name="section-code_review"></a>
 ## Code Review
 
