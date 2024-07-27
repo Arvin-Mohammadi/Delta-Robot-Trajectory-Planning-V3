@@ -669,7 +669,7 @@ For better understanding please refer to [3] in the reference section.
 <div align="center">
  	<img src="https://github.com/user-attachments/assets/0638be6d-a0ed-40e2-bcf9-320d58f132b3" style="width: 50%;">
 	</br>
-	Cubic Spline Method
+	B-Spline Method
 </div>
 </br>
 
@@ -768,19 +768,27 @@ in each of the different methods used, the ```results``` is always an array of v
 This file introduces a multi-point path planner class and for initiating the class you can write:
 
 ```python
-THETA_PATH = [0, 0.1, -0.3, 0.7, 1]
-path_planner = PathPlannerMLTP(THETA_PATH)
+# Set the path 
+PATH = [0, -0.2, 0.3, 0.8, -0.1, 1]
+
+# initialize the path planner class 
+path_planner = PathPlannerMLTP(PATH)
+
 ```
 
 Here are the multi-point trajectory planning methods implemented: 
 
 1. Cubic Spline
-
+2. B-Spline
 
 ```python
-# results for the cubic spline 
+# calculate the trajectory based on cubic spline 
 results = path_planner.mltp_cubicspline()
-path_planner.plot(results, "Cubic Spline")
+path_planner.plot(results, "cubic spline")
+
+# calculate the trajectory based on B spline 
+results = path_planner.mltp_bspline()
+path_planner.plot(results, "B spline")
 ```
 
 <a name="section-adeptcycle"></a>
