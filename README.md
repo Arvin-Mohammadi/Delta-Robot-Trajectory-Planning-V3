@@ -47,7 +47,7 @@ Disadvantages:
 Take a look at the figure below. There are four main stages to any sort of robotic operation:
 1. **Task Planning:** Figuring out what the robot is going to be doing [in order]
 2. **Path Planning:** What points in 3D space the robot is going through [in order]
-3. **Trajectory Planning:** Positon as a function of time
+3. **Trajectory Planning:** Position of the robot as a function of time
 4. **Control**: Giving the trajectory as a reference to the robot's controller
 
 </br>
@@ -94,7 +94,7 @@ The Delta robot consists of three main chains. Each chain starts from the base p
 \end{cases}
 ```
 
-The angles between $x_0$ and $\overline{O_0A_i}$ are indiacted by $\gamma_i$. The angles between $x_p$ and $\overline{O_PC_i}$ are indicated by $\beta_i$. The angles between the actuaated links and the horizon are indicated by $\theta_i$, where $i=1, 2, 3$
+The angles between $x_0$ and $\overline{O_0A_i}$ are indiacted by $\gamma_i$. The angles between $x_p$ and $\overline{O_PC_i}$ are indicated by $\beta_i$. The angles between the actuated links and the horizon are indicated by $\theta_i$, where $i=1, 2, 3$
 
 We have the following assumptions:
 
@@ -149,7 +149,7 @@ and also:
     \end{bmatrix}
 ```
 
-- Given the mentioned equations we can say that we have the following \textbf{constraint}:
+- Given the mentioned equations we can say that we have the following constraint:
 
 ```math
     l = |\overline{O_0B_i} - \overline{O_0C_i}|
@@ -196,7 +196,7 @@ Basically point-to-point trajectory planning is like interpolation between two v
 
 <ins>**NOTE**</ins>: Since the array does not include time information, the duration for the whole process is considered to be 1, hence it simplifies a lot of the calculations. We call this "normalized time". If you need the time information included you should refer to the main references. 
 
-### Bang-Bang 
+### Bang-Bang | Parabolic Method
 
 We need to define the main phases of movement at the start of each method, so for this the important time instances are:
 
@@ -286,7 +286,7 @@ Finally the overall mathematicall function can be described as:
 </div>
 </br>
 
-### Trapezoidal 
+### Trapezoidal Method
 
 As explained, the goal here is to basically use a trapezoidal diagram as a way to interpolate between two given motor rotations. The trapezoidal diagram is defined as the following:
 
@@ -317,7 +317,7 @@ For the sake of simplicity we say that $t_0 = 0, t_1 = 1/3, t_2 = 2/3, t_3 = 1$.
 </br>
 
 
-### S-curve
+### S-curve Method
 
 The S-curve method is somewhat similar to the trapezoidal method with the difference that it is smoother. So in mathemtical terms that would be: 
 
@@ -665,6 +665,7 @@ For better understanding please refer to [3] in the reference section.
 
 ### B-Spline
 
+I just used the sci-py previously implemented function lol. Idk how it works 
 
 <div align="center">
  	<img src="https://github.com/user-attachments/assets/0638be6d-a0ed-40e2-bcf9-320d58f132b3" style="width: 50%;">
