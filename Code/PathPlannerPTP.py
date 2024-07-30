@@ -112,7 +112,7 @@ class PathPlannerPTP:
 				theta_dot[i] 	= 2 * (self.theta_f - self.theta_i) * (1 - 2 * (time - 0.5))
 				theta_ddot[i] 	= -4 * (self.theta_f - self.theta_i)
 
-		return (t, theta, theta_dot, theta_ddot)
+		return (t, theta, theta_dot, theta_ddot, None)
 
 
 	def ptp_trapezoidal(self):
@@ -144,7 +144,7 @@ class PathPlannerPTP:
 				theta[i] 		= (self.theta_i + 0.5 * a * T**2 + v_max * T + \
                             		v_max * (time - 2 * T) - 0.5 * a * (time - 2 * T)**2)
 
-		return (t, theta, theta_dot, theta_ddot)
+		return (t, theta, theta_dot, theta_ddot, None)
 
 	def ptp_scurve(self):
 		# time array (n+1 time instances where n is the sampling frequency)
@@ -203,91 +203,52 @@ class PathPlannerPTP:
 
 		return (t, theta, theta_dot, theta_ddot, theta_dddot)
 
-	def plot(self, results, method_name, _num_differentials=3, _format='.png', _file_path='./results - point to point/'):
+	def plot(self, results, method_name, _format='.png', _file_path='./results - point to point/'):
 		if not os.path.exists(_file_path):
 			os.makedirs(_file_path)
 		
-		if _num_differentials == 3:
-			(t, theta, theta_dot, theta_ddot, theta_dddot) = results
+		(t, theta, theta_dot, theta_ddot, theta_dddot) = results
 
-			fig = plt.figure()
-			fig.set_figheight(15)
-			fig.set_figwidth(10)
+		fig = plt.figure()
+		fig.set_figheight(15)
+		fig.set_figwidth(10)
 
-			# plot theta
-			plt.subplot(411)
-			plt.plot(t, theta, label=r'$\theta$')
-			plt.legend()
-			plt.title(r'value-time', fontsize=20)
-			plt.xlabel("time", fontsize=15)
-			plt.ylabel("value", fontsize=15)
-
-
-			# plot theta dot 
-			plt.subplot(412)
-			plt.plot(t, theta_dot, label=r'$\dot{\theta}$')
-			plt.legend()
-			plt.title(r'first differential value-time', fontsize=20)
-			plt.xlabel("time", fontsize=15)
-			plt.ylabel("first differential value", fontsize=15)
-
-			# plot theta double dot 
-			plt.subplot(413)
-			plt.plot(t, theta_ddot, label=r'$\ddot{\theta}$')
-			plt.legend()
-			plt.title(r'second differential value-time', fontsize=20)
-			plt.xlabel("time", fontsize=15)
-			plt.ylabel("second differential value", fontsize=15)
-
-			# plot theta triple dot 
-			plt.subplot(414)
-			plt.plot(t, theta_dddot, label=r'$\dddot{\theta}$')
-			plt.legend()
-			plt.title(r'third differential value-time', fontsize=20)
-			plt.xlabel("time", fontsize=15)
-			plt.ylabel("third differential value", fontsize=15)
-
-			plt.tight_layout()
-			plt.savefig(_file_path + method_name + _format)
-			plt.clf()
-
-		elif _num_differentials == 2:
-
-			(t, theta, theta_dot, theta_ddot) = results
-
-			fig = plt.figure()
-			fig.set_figheight(15)
-			fig.set_figwidth(10)
-
-			# plot theta
-			plt.subplot(311)
-			plt.plot(t, theta, label=r'$\theta$')
-			plt.legend()
-			plt.title(r'value-time', fontsize=20)
-			plt.xlabel("time", fontsize=15)
-			plt.ylabel("value", fontsize=15)
+		# plot theta
+		plt.subplot(411)
+		plt.plot(t, theta, label=r'$\theta$')
+		plt.legend()
+		plt.title(r'value-time', fontsize=20)
+		plt.xlabel("time", fontsize=15)
+		plt.ylabel("value", fontsize=15)
 
 
-			# plot theta dot 
-			plt.subplot(312)
-			plt.plot(t, theta_dot, label=r'$\dot{\theta}$')
-			plt.legend()
-			plt.title(r'first differential value-time', fontsize=20)
-			plt.xlabel("time", fontsize=15)
-			plt.ylabel("first differential value", fontsize=15)
+		# plot theta dot 
+		plt.subplot(412)
+		plt.plot(t, theta_dot, label=r'$\dot{\theta}$')
+		plt.legend()
+		plt.title(r'first differential value-time', fontsize=20)
+		plt.xlabel("time", fontsize=15)
+		plt.ylabel("first differential value", fontsize=15)
 
-			# plot theta double dot 
-			plt.subplot(313)
-			plt.plot(t, theta_ddot, label=r'$\ddot{\theta}$')
-			plt.legend()
-			plt.title(r'second differential value-time', fontsize=20)
-			plt.xlabel("time", fontsize=15)
-			plt.ylabel("second differential value", fontsize=15)
+		# plot theta double dot 
+		plt.subplot(413)
+		plt.plot(t, theta_ddot, label=r'$\ddot{\theta}$')
+		plt.legend()
+		plt.title(r'second differential value-time', fontsize=20)
+		plt.xlabel("time", fontsize=15)
+		plt.ylabel("second differential value", fontsize=15)
 
-			plt.tight_layout()
-			plt.savefig(_file_path + method_name + _format)
-			plt.clf()
+		# plot theta triple dot 
+		plt.subplot(414)
+		plt.plot(t, theta_dddot, label=r'$\dddot{\theta}$')
+		plt.legend()
+		plt.title(r'third differential value-time', fontsize=20)
+		plt.xlabel("time", fontsize=15)
+		plt.ylabel("third differential value", fontsize=15)
 
+		plt.tight_layout()
+		plt.savefig(_file_path + method_name + _format)
+		plt.clf()
 
 # =================================================================================================
 # -- main -----------------------------------------------------------------------------------------
@@ -312,11 +273,11 @@ if __name__ == "__main__":
 
     # results for the trapezoidal velocity profile
 	results = path_planner.ptp_trapezoidal()
-	path_planner.plot(results, "Trapezoidal Velocity Profile", _num_differentials=2)
+	path_planner.plot(results, "Trapezoidal Velocity Profile")
 
 	# results for the parabolic method
 	results = path_planner.ptp_bangbang()
-	path_planner.plot(results, "Parabolic Method", _num_differentials=2)
+	path_planner.plot(results, "Parabolic Method")
 
     # results for the S-curve profile
 	results = path_planner.ptp_scurve()
