@@ -709,6 +709,22 @@ So let's talk about why you should or shouldn't use each of these algorithms:
 *  **B-Spline:** In terms of smoothness this method is really good (better than the cubic spline probably) but the thing is ... _it doesn't hit the path points EXACTLY_. it's basically an approximation. So honestly if my goal was low error for the control points I've defined ... I wouldn't use this one.
 *  **Pattern Generation**: This one is just a bit messy to be honest and I don't know how to improve on it. It's got something to do with sampling rate or whatever ... but putting that aside _when you basically have a certain pattern that you want your robot to travel_ you can just make an array of the actuator parameter values based on that shape. Then add a couple of extra emphasis points on the sharp edges manually, and then you'll have a trajectory that works for your pattern. 
 
+
+<a name="section-adeptcycle"></a>
+## Adept Cycle 
+
+Well what is adept cycle? it's basically just four points in 3D space that the robot must hit in order to perform a pick-and-place operation. it looks something like this:
+
+
+<div align="center">
+ 	<img src="https://github.com/user-attachments/assets/c8e02c75-c2b1-4d65-96eb-03779405d418" style="width: 50%;">
+	</br>
+	Adept Cycle  
+</div>
+</br>
+
+Amazing. Now that we know what adept cycle looks like, I should point out that there a number of ways 
+
 <a name="section-code_review"></a>
 ## Code Review
 
@@ -792,8 +808,8 @@ results = path_planner.mltp_bspline()
 path_planner.plot(results, "B spline")
 ```
 
-<a name="section-adeptcycle"></a>
-## Adept Cycle 
+### PathPlannerAdeptCycle.py
+
 
 
 <a name="section-references"></a>
