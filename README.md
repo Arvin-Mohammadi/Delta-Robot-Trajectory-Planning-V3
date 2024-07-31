@@ -778,12 +778,19 @@ Amazing. Now that we know what adept cycle looks like, I should say that there a
 </br>
 
 
+<div align="center">
+ 	<img src="https://github.com/user-attachments/assets/119ac36d-08ee-45b4-ab0a-10b40b777f73" style="width: 50%;">
+ 	<img src="https://github.com/user-attachments/assets/7b4f744d-d373-45de-a14b-6197ef19a5b8" style="width: 50%;">
+	</br>
+	Cubic Spline
+</div>
+</br>
 
 <div align="center">
  	<img src="https://github.com/user-attachments/assets/72c8f54a-89d5-4a74-b17a-32f19b526d09" style="width: 50%;">
  	<img src="https://github.com/user-attachments/assets/eecc827f-8996-4ea2-af92-246f70a614fb" style="width: 50%;">
 	</br>
-	Cubic Spline
+	Cubic Spline with modified Adept Cycle Points (to prevent the overshooting)
 </div>
 </br>
 
