@@ -197,7 +197,6 @@ class PathPlanner_AdeptCycle:
 		plt.xlabel("time", fontsize=15)
 		plt.ylabel("second differential value", fontsize=15)
 
-		print(x_dddot)
 		if x_dddot is not None:
 			# plot theta triple dot 
 			plt.subplot(414)
@@ -241,88 +240,103 @@ if __name__ == "__main__":
 	path_planner = PathPlanner_AdeptCycle(PATH)
 	
 	# getting the results for the cubic spline method
-	(xyz_array, xyz_results) = path_planner.point_to_point('ptp_polynomial5th')
+	(xyz_array, xyz_results) = path_planner.cubic_spline()
 
 	# path planner plot 3D 
-	# path_planner.plot3d(xyz_array, 'Point-to-Point 5th order polynomial')
-	path_planner.plot(xyz_results, 'Point-to-Point 5th order polynomial')
+	path_planner.plot3d(xyz_array, 'Cubic Spline')
+	path_planner.plot(xyz_results, 'Cubic Spline')
 
+# # -------------------------------------------------------------------------------------------------
 
-# -------------------------------------------------------------------------------------------------
+# 	# Set the path [[x1, y1, z1], [x2, y2, z2], [x3, y3, z3], [x4, y4, z4]]
+# 	PATH = [[0, 0, 0], [0, 0, 0.5], [1, 1, 0.5], [1, 1, 0]]
 
-	# Set the path [[x1, y1, z1], [x2, y2, z2], [x3, y3, z3], [x4, y4, z4]]
-	PATH = [[0, 0, 0], [0, 0, 0.5], [1, 1, 0.5], [1, 1, 0]]
-
-	# Path planner class init
-	path_planner = PathPlanner_AdeptCycle(PATH)
+# 	# Path planner class init
+# 	path_planner = PathPlanner_AdeptCycle(PATH)
 	
-	# getting the results for the cubic spline method
-	(xyz_array, xyz_results) = path_planner.point_to_point('ptp_polynomial7th')
+# 	# getting the results for the cubic spline method
+# 	(xyz_array, xyz_results) = path_planner.point_to_point('ptp_polynomial5th')
 
-	# path planner plot 3D 
-	# path_planner.plot3d(xyz_array, 'Point-to-Point 7th order polynomial')
-	path_planner.plot(xyz_results, 'Point-to-Point 7th order polynomial')
+# 	# path planner plot 3D 
+# 	# path_planner.plot3d(xyz_array, 'Point-to-Point 5th order polynomial')
+# 	path_planner.plot(xyz_results, 'Point-to-Point 5th order polynomial')
 
 
-# -------------------------------------------------------------------------------------------------
+# # -------------------------------------------------------------------------------------------------
 
-	# Set the path [[x1, y1, z1], [x2, y2, z2], [x3, y3, z3], [x4, y4, z4]]
-	PATH = [[0, 0, 0], [0, 0, 0.5], [1, 1, 0.5], [1, 1, 0]]
+# 	# Set the path [[x1, y1, z1], [x2, y2, z2], [x3, y3, z3], [x4, y4, z4]]
+# 	PATH = [[0, 0, 0], [0, 0, 0.5], [1, 1, 0.5], [1, 1, 0]]
 
-	# Path planner class init
-	path_planner = PathPlanner_AdeptCycle(PATH)
+# 	# Path planner class init
+# 	path_planner = PathPlanner_AdeptCycle(PATH)
 	
-	# getting the results for the cubic spline method
-	(xyz_array, xyz_results) = path_planner.point_to_point('ptp_polynomial9th')
+# 	# getting the results for the cubic spline method
+# 	(xyz_array, xyz_results) = path_planner.point_to_point('ptp_polynomial7th')
 
-	# path planner plot 3D 
-	# path_planner.plot3d(xyz_array, 'Point-to-Point 9th order polynomial')
-	path_planner.plot(xyz_results, 'Point-to-Point 9th order polynomial')
+# 	# path planner plot 3D 
+# 	# path_planner.plot3d(xyz_array, 'Point-to-Point 7th order polynomial')
+# 	path_planner.plot(xyz_results, 'Point-to-Point 7th order polynomial')
 
 
-# -------------------------------------------------------------------------------------------------
+# # -------------------------------------------------------------------------------------------------
 
-	# Set the path [[x1, y1, z1], [x2, y2, z2], [x3, y3, z3], [x4, y4, z4]]
-	PATH = [[0, 0, 0], [0, 0, 0.5], [1, 1, 0.5], [1, 1, 0]]
+# 	# Set the path [[x1, y1, z1], [x2, y2, z2], [x3, y3, z3], [x4, y4, z4]]
+# 	PATH = [[0, 0, 0], [0, 0, 0.5], [1, 1, 0.5], [1, 1, 0]]
 
-	# Path planner class init
-	path_planner = PathPlanner_AdeptCycle(PATH)
+# 	# Path planner class init
+# 	path_planner = PathPlanner_AdeptCycle(PATH)
 	
-	# getting the results for the cubic spline method
-	(xyz_array, xyz_results) = path_planner.point_to_point('ptp_bangbang')
+# 	# getting the results for the cubic spline method
+# 	(xyz_array, xyz_results) = path_planner.point_to_point('ptp_polynomial9th')
 
-	# path planner plot 3D 
-	# path_planner.plot3d(xyz_array, 'Point-to-Point Bang Bang')
-	path_planner.plot(xyz_results, 'Point-to-Point Bang Bang')
+# 	# path planner plot 3D 
+# 	# path_planner.plot3d(xyz_array, 'Point-to-Point 9th order polynomial')
+# 	path_planner.plot(xyz_results, 'Point-to-Point 9th order polynomial')
 
 
-# -------------------------------------------------------------------------------------------------
+# # -------------------------------------------------------------------------------------------------
 
-	# Set the path [[x1, y1, z1], [x2, y2, z2], [x3, y3, z3], [x4, y4, z4]]
-	PATH = [[0, 0, 0], [0, 0, 0.5], [1, 1, 0.5], [1, 1, 0]]
+# 	# Set the path [[x1, y1, z1], [x2, y2, z2], [x3, y3, z3], [x4, y4, z4]]
+# 	PATH = [[0, 0, 0], [0, 0, 0.5], [1, 1, 0.5], [1, 1, 0]]
 
-	# Path planner class init
-	path_planner = PathPlanner_AdeptCycle(PATH)
+# 	# Path planner class init
+# 	path_planner = PathPlanner_AdeptCycle(PATH)
 	
-	# getting the results for the cubic spline method
-	(xyz_array, xyz_results) = path_planner.point_to_point('ptp_trapezoidal')
+# 	# getting the results for the cubic spline method
+# 	(xyz_array, xyz_results) = path_planner.point_to_point('ptp_bangbang')
 
-	# path planner plot 3D 
-	# path_planner.plot3d(xyz_array, 'Point-to-Point Trapezoidal')
-	path_planner.plot(xyz_results, 'Point-to-Point Trapezoidal')
+# 	# path planner plot 3D 
+# 	# path_planner.plot3d(xyz_array, 'Point-to-Point Bang Bang')
+# 	path_planner.plot(xyz_results, 'Point-to-Point Bang Bang')
 
 
-# -------------------------------------------------------------------------------------------------
+# # -------------------------------------------------------------------------------------------------
 
-	# Set the path [[x1, y1, z1], [x2, y2, z2], [x3, y3, z3], [x4, y4, z4]]
-	PATH = [[0, 0, 0], [0, 0, 0.5], [1, 1, 0.5], [1, 1, 0]]
+# 	# Set the path [[x1, y1, z1], [x2, y2, z2], [x3, y3, z3], [x4, y4, z4]]
+# 	PATH = [[0, 0, 0], [0, 0, 0.5], [1, 1, 0.5], [1, 1, 0]]
 
-	# Path planner class init
-	path_planner = PathPlanner_AdeptCycle(PATH)
+# 	# Path planner class init
+# 	path_planner = PathPlanner_AdeptCycle(PATH)
 	
-	# getting the results for the cubic spline method
-	(xyz_array, xyz_results) = path_planner.point_to_point('ptp_scurve')
+# 	# getting the results for the cubic spline method
+# 	(xyz_array, xyz_results) = path_planner.point_to_point('ptp_trapezoidal')
 
-	# path planner plot 3D 
-	# path_planner.plot3d(xyz_array, 'Point-to-Point S-Curve')
-	path_planner.plot(xyz_results, 'Point-to-Point S-Curve')
+# 	# path planner plot 3D 
+# 	# path_planner.plot3d(xyz_array, 'Point-to-Point Trapezoidal')
+# 	path_planner.plot(xyz_results, 'Point-to-Point Trapezoidal')
+
+
+# # -------------------------------------------------------------------------------------------------
+
+# 	# Set the path [[x1, y1, z1], [x2, y2, z2], [x3, y3, z3], [x4, y4, z4]]
+# 	PATH = [[0, 0, 0], [0, 0, 0.5], [1, 1, 0.5], [1, 1, 0]]
+
+# 	# Path planner class init
+# 	path_planner = PathPlanner_AdeptCycle(PATH)
+	
+# 	# getting the results for the cubic spline method
+# 	(xyz_array, xyz_results) = path_planner.point_to_point('ptp_scurve')
+
+# 	# path planner plot 3D 
+# 	# path_planner.plot3d(xyz_array, 'Point-to-Point S-Curve')
+# 	path_planner.plot(xyz_results, 'Point-to-Point S-Curve')
