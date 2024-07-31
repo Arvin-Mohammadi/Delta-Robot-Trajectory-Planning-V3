@@ -725,46 +725,67 @@ Well what is adept cycle? it's basically just four points in 3D space that the r
 
 Amazing. Now that we know what adept cycle looks like, I should point out that there a number of ways to interpolate those 4 points (as we've been discussing). So here are the methods used and their respective plots 
 
-### Cubic Spline
 
-![Cubic Spline](https://github.com/user-attachments/assets/eecc827f-8996-4ea2-af92-246f70a614fb)
-![cubic spline](https://github.com/user-attachments/assets/72c8f54a-89d5-4a74-b17a-32f19b526d09)
-
-### Parabolic Method
-
-![Point-to-Point Bang Bang](https://github.com/user-attachments/assets/7d3fd81f-3411-4932-8bcc-647d75cc21fc)
-![parabolic](https://github.com/user-attachments/assets/8fd13a69-5cc1-49db-bb67-685fe30f8f97)
-
-
-### Trapezoidal Method
-
-![Point-to-Point Trapezoidal](https://github.com/user-attachments/assets/4f0011a4-fd8c-4174-859c-905a8c117355)
-
-![trapezoidal](https://github.com/user-attachments/assets/dcb508f5-3853-442b-987b-89395aed73c0)
-
-### S-Curve Method
-
-![Point-to-Point S-Curve](https://github.com/user-attachments/assets/aa727c05-0f36-4478-a7e9-d44627821bdd)
-![s-curve](https://github.com/user-attachments/assets/7c8a2b80-ebf3-450e-871c-48f83f1b032d)
+<div align="center">
+ 	<img src="https://github.com/user-attachments/assets/8fd13a69-5cc1-49db-bb67-685fe30f8f97" style="width: 50%;">
+ 	<img src="https://github.com/user-attachments/assets/7d3fd81f-3411-4932-8bcc-647d75cc21fc" style="width: 50%;">
+	</br>
+	Parabolic Method
+</div>
+</br>
 
 
-### Point-to-Point 5th Order Interpolating Polynomial
+<div align="center">
+ 	<img src="https://github.com/user-attachments/assets/dcb508f5-3853-442b-987b-89395aed73c0" style="width: 50%;">
+ 	<img src="https://github.com/user-attachments/assets/4f0011a4-fd8c-4174-859c-905a8c117355" style="width: 50%;">
+	</br>
+	Trapezoidal Method
+</div>
+</br>
 
-![Point-to-Point 5th order polynomial](https://github.com/user-attachments/assets/54666eba-44ee-4a94-b5a3-c70d63658ee9)
+<div align="center">
+ 	<img src="https://github.com/user-attachments/assets/7c8a2b80-ebf3-450e-871c-48f83f1b032d" style="width: 50%;">
+ 	<img src="https://github.com/user-attachments/assets/aa727c05-0f36-4478-a7e9-d44627821bdd" style="width: 50%;">
+	</br>
+	S-Curve Method	
+</div>
+</br>
 
-![5th order polynomial](https://github.com/user-attachments/assets/fe54642f-bd87-42b9-bac7-7b3bf7dd3e3b)
+<div align="center">
+ 	<img src="https://github.com/user-attachments/assets/54666eba-44ee-4a94-b5a3-c70d63658ee9" style="width: 50%;">
+ 	<img src="https://github.com/user-attachments/assets/fe54642f-bd87-42b9-bac7-7b3bf7dd3e3b" style="width: 50%;">
+	</br>
+	Point-to-Point 5th Order Interpolating Polynomial	
+</div>
+</br>
 
 
-### Point-to-Point 7th Order Interpolating Polynomial
+<div align="center">
+ 	<img src="https://github.com/user-attachments/assets/af8cb949-8093-4128-a8f9-72b66ab964f9" style="width: 50%;">
+ 	<img src="https://github.com/user-attachments/assets/5c3a91cf-6f68-427b-be2b-eb53b72609cf" style="width: 50%;">
+	</br>
+	Point-to-Point 7th Order Interpolating Polynomial	
+</div>
+</br>
 
-![Point-to-Point 7th order polynomial](https://github.com/user-attachments/assets/5c3a91cf-6f68-427b-be2b-eb53b72609cf)
 
-![7th order polynomial](https://github.com/user-attachments/assets/af8cb949-8093-4128-a8f9-72b66ab964f9)
+<div align="center">
+ 	<img src="https://github.com/user-attachments/assets/68d1caa8-e3cd-4975-8978-057cb443a89e" style="width: 50%;">
+ 	<img src="https://github.com/user-attachments/assets/641224e3-1679-46b2-9f79-c59d6bfece0f" style="width: 50%;">
+	</br>
+	Point-to-Point 9th Order Interpolating Polynomial	
+</div>
+</br>
 
-### Point-to-Point 9th Order Interpolating Polynomial
 
-![Point-to-Point 9th order polynomial](https://github.com/user-attachments/assets/641224e3-1679-46b2-9f79-c59d6bfece0f)
-![9th order polynomial](https://github.com/user-attachments/assets/68d1caa8-e3cd-4975-8978-057cb443a89e)
+
+<div align="center">
+ 	<img src="https://github.com/user-attachments/assets/72c8f54a-89d5-4a74-b17a-32f19b526d09" style="width: 50%;">
+ 	<img src="https://github.com/user-attachments/assets/eecc827f-8996-4ea2-af92-246f70a614fb" style="width: 50%;">
+	</br>
+	Cubic Spline
+</div>
+</br>
 
 <a name="section-code_review"></a>
 ## Code Review
