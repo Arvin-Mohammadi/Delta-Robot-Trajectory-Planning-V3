@@ -723,14 +723,14 @@ Well what is adept cycle? it's basically just four points in 3D space that the r
 </div>
 </br>
 
-Amazing. Now that we know what adept cycle looks like, I should point out that there a number of ways to interpolate those 4 points (as we've been discussing). So here are the methods used and their respective plots 
+Amazing. Now that we know what adept cycle looks like, I should say that there a number of ways to interpolate those 4 points (as we've been discussing). So here are the methods used and their respective plots 
 
 
 <div align="center">
  	<img src="https://github.com/user-attachments/assets/8fd13a69-5cc1-49db-bb67-685fe30f8f97" style="width: 50%;">
  	<img src="https://github.com/user-attachments/assets/7d3fd81f-3411-4932-8bcc-647d75cc21fc" style="width: 50%;">
 	</br>
-	Parabolic Method
+	Point-to-Point Parabolic Method
 </div>
 </br>
 
@@ -739,7 +739,7 @@ Amazing. Now that we know what adept cycle looks like, I should point out that t
  	<img src="https://github.com/user-attachments/assets/dcb508f5-3853-442b-987b-89395aed73c0" style="width: 50%;">
  	<img src="https://github.com/user-attachments/assets/4f0011a4-fd8c-4174-859c-905a8c117355" style="width: 50%;">
 	</br>
-	Trapezoidal Method
+	Point-to-Point Trapezoidal Method
 </div>
 </br>
 
@@ -747,13 +747,13 @@ Amazing. Now that we know what adept cycle looks like, I should point out that t
  	<img src="https://github.com/user-attachments/assets/7c8a2b80-ebf3-450e-871c-48f83f1b032d" style="width: 50%;">
  	<img src="https://github.com/user-attachments/assets/aa727c05-0f36-4478-a7e9-d44627821bdd" style="width: 50%;">
 	</br>
-	S-Curve Method	
+	Point-to-Point S-Curve Method	
 </div>
 </br>
 
 <div align="center">
- 	<img src="https://github.com/user-attachments/assets/54666eba-44ee-4a94-b5a3-c70d63658ee9" style="width: 50%;">
  	<img src="https://github.com/user-attachments/assets/fe54642f-bd87-42b9-bac7-7b3bf7dd3e3b" style="width: 50%;">
+ 	<img src="https://github.com/user-attachments/assets/54666eba-44ee-4a94-b5a3-c70d63658ee9" style="width: 50%;">
 	</br>
 	Point-to-Point 5th Order Interpolating Polynomial	
 </div>
@@ -875,19 +875,29 @@ path_planner.plot(results, "B spline")
 Here's an example of the adept cycle usage. figure it out yourself 
 
 ```python
-	# Set the path [[x1, y1, z1], [x2, y2, z2], [x3, y3, z3], [x4, y4, z4]]
-	PATH = [[0, 0, 0], [0.15, 0.15, 0.5], [0.85, 0.85, 0.5], [1, 1, 0]]
+# Set the path [[x1, y1, z1], [x2, y2, z2], [x3, y3, z3], [x4, y4, z4]]
+PATH = [[0, 0, 0], [0.15, 0.15, 0.5], [0.85, 0.85, 0.5], [1, 1, 0]]
 
-	# Path planner class init
-	path_planner = PathPlanner_AdeptCycle(PATH)
-	
-	# getting the results for the cubic spline method
-	(xyz_array, xyz_results) = path_planner.cubic_spline()
+# Path planner class init
+path_planner = PathPlanner_AdeptCycle(PATH)
 
-	# path planner plot 3D 
-	path_planner.plot3d(xyz_array, 'Cubic Spline')
-	path_planner.plot(xyz_results, 'Cubic Spline')
+# getting the results for the cubic spline method
+(xyz_array, xyz_results) = path_planner.cubic_spline()
+
+# path planner plot 3D 
+path_planner.plot3d(xyz_array, 'Cubic Spline')
+path_planner.plot(xyz_results, 'Cubic Spline')
 ```
+
+The methods used for trajectory generation are ```cubic_spline()``` and ```point_to_point(interpolation_method)``` where the interpolation method can be the following values:
+
+* ```interpolation_method = 'ptp_polynomial5th'```
+* ```interpolation_method = 'ptp_polynomial7th'```
+* ```interpolation_method = 'ptp_polynomial9th'```
+* ```interpolation_method = 'ptp_bangbang'```
+* ```interpolation_method = 'ptp_trapezoidal'```
+* ```interpolation_method = 'ptp_scurve'```
+
 
 <a name="section-references"></a>
 ## References
