@@ -625,6 +625,7 @@ So yeah from my experience the best ones you can implement for your robot ... wh
 <a name="section-multipoint_trajectory_generation"></a>
 ## Theoretical Study - Multi-Point Trajectory Generation
 
+</br>
 <div align="center">
  	<img src="https://github.com/user-attachments/assets/deeacfa3-7191-4cb6-983b-3795b64b6b93" style="width: 50%;">
 	</br>
@@ -638,7 +639,17 @@ So like the point-to-point methods the **inputs** are the path points which want
 
 ### Point-to-Point Methods 
 
-Firstly how can we use a point-to-point method for multiple number of points? It's easy. Let's go with the previous example and say that we want to create a trajectory for the three values of [0, 0.2, 1]. First, We can simply create a trajectory between [0, 0.2] and then create another trajectory between [0.2, 1]. This can be done with any number of points and we can use all of the 6 mentioned point-to-point methods. Why is it a bad idea? Because the velocity and acceleration will be zero at all of the points. So assume we have a number of points that we want our robots to cross over such as $P_0, P_1, P_2, P_3, \dots, P_n$. Given that we use the method I just explained, the robot will stop at all of the points of $P_0$ to $P_n$ and start moving again ... sort of like the robot has got the hiccups, which is awful for the motors. Don't use this methods either. 
+**How can we use a point-to-point method for multiple points?** It’s straightforward. Let's revisit the previous example, where we want to create a trajectory for the values [0, 0.2, 1]. First, we can generate a trajectory between [0, 0.2], and then create another trajectory between [0.2, 1]. This approach works for any number of points and can be applied using any of the six point-to-point methods mentioned. **However, this method might not be suitable for certain tasks.** For instance, in applications where smooth, continuous motion is required, we may not want to stop at each path point. In such cases, using these point-to-point methods may not be the best idea. Here's an example of where this method might be applied:
+
+</br>
+<div align="center">
+ 	<img src="https://github.com/user-attachments/assets/02cdf85e-d61f-4f3b-afe9-3974e3a63551" style="width: 50%;">
+	</br>
+	Multi-point movement
+</div>
+</br>
+
+
 
 ### High-Order Polynomial Interpolation
 
