@@ -381,6 +381,20 @@ The S-curve method is somewhat similar to the trapezoidal method with the differ
 \end{aligned}
 ```
 
+We'll do the same thing as the trapezoidal method and calculate the entire movement based on $\theta, \dot{\theta}, \ddot{\theta}, \dddot{\theta}$. First is $\dddot{\theta}$: 
+
+```math
+\begin{aligned}
+	\dddot{\theta}(t) & = j_{\text{max}} & \quad \text{for} \quad 0 \leq t \leq T \\
+	\dddot{\theta}(t) & = 0 & \quad \text{for} \quad T \leq t \leq 2T \\
+	\dddot{\theta}(t) & = - j_{\text{max}} & \quad \text{for} \quad 2T \leq t \leq 3T \\
+	\dddot{\theta}(t) & = 0 & \quad \text{for} \quad 3T \leq t \leq 4T \\
+	\dddot{\theta}(t) & = - j_{\text{max}} & \quad \text{for} \quad 4T \leq t \leq 5T \\
+	\dddot{\theta}(t) & = 0 & \quad \text{for} \quad 5T \leq t \leq 6T \\
+	\dddot{\theta}(t) & = j_{\text{max}} & \quad \text{for} \quad 6T \leq t \leq 7T \\
+\end{aligned}
+```
+
 <div align="center">
  	<img src="https://github.com/user-attachments/assets/84d06621-bce1-4361-840f-71a673953985" style="width: 50%;">
 	</br>
