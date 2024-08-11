@@ -321,6 +321,39 @@ For the sake of simplicity we say that $t_0 = 0, t_1 = 1/3, t_2 = 2/3, t_3 = 1$.
   \end{cases}
 ```
 
+
+So we can calculate all of the $\theta, \dot{\theta}, \ddot{\theta}$. First let's go for the easiest one, $\ddot{\theta}$:
+
+
+```math
+\begin{aligned}
+	\ddot{\theta}(t) & = a & \quad \text{for} \quad 0 \leq t \leq T \\
+	\ddot{\theta}(t) & = 0 & \quad \text{for} \quad T \leq t \leq 2T \\
+	\ddot{\theta}(t) & = -a & \quad \text{for} \quad 2T \leq t \leq 1 \\
+\end{aligned}
+```
+
+Next up is $\dot{\theta}$: 
+
+```math
+\begin{aligned}
+	\dot{\theta}(t) & = a t & \quad \text{for} \quad 0 \leq t \leq T \\
+	\dot{\theta}(t) & = v_{\text{max}} & \quad \text{for} \quad T \leq t \leq 2T \\
+	\dot{\theta}(t) & = -a(t - 2T) + v_{\text{max}} & \quad \text{for} \quad 2T \leq t \leq 1 \\
+\end{aligned}
+```
+
+And the next is $\theta$:
+
+```math
+\begin{aligned}
+	\theta(t) & = \theta_0 + \frac{1}{2} a t^2 & \quad \text{for} \quad 0 \leq t \leq T \\
+	\theta(t) & = \theta_0 + \frac{1}{2} a T^2 + v_{\text{max}} (t - T) & \quad \text{for} \quad T \leq t \leq 2T \\
+	\theta(t) & = \theta_0 + \frac{1}{2} a T^2 + v_{\text{max}} T + v_{\text{max}} (t - 2T) - \frac{1}{2} a (t - 2T)^2 & \quad \text{for} \quad 2T \leq t \leq 1 \\
+\end{aligned}
+```
+
+
 <div align="center">
  	<img src="https://github.com/user-attachments/assets/580f77ad-6dfa-4b17-b2b8-07fa0739bb91" style="width: 50%;">
 	</br>
