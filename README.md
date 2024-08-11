@@ -40,12 +40,6 @@ Disadvantages:
 1. Small Workspace
 2. Small Workload
 
-<div align="center">
- 	<img src="https://github.com/user-attachments/assets/5aab2c7c-5e96-4978-9880-9c58a5b184c5" style="width: 50%;">
-	</br>
-	Simple robotics tasks are carried out as the depicted model.
-</div>
-</br>
 
 <ins>**Trajectory Planning**</ins> 
 
@@ -55,6 +49,12 @@ Take a look at the figure below. There are four main stages to any sort of robot
 3. **Trajectory Planning:** Position of the robot as a function of time
 4. **Control**: Giving the trajectory as a reference to the robot's controller
 
+</br>
+<div align="center">
+ 	<img src="https://github.com/user-attachments/assets/5aab2c7c-5e96-4978-9880-9c58a5b184c5" style="width: 50%;">
+	</br>
+	Simple robotics tasks are carried out as the depicted model.
+</div>
 </br>
 
 <a name="section-deltarobot_kinematics"></a>
@@ -186,6 +186,14 @@ If you need a plug and place code that **JUST WORKS** i suggest the following co
 
 <a name="subsection-point2point_trajectory_generation"></a>
 ## Theoretical Study - Point-to-Point Trajectory Generation
+
+
+<div align="center">
+ 	<img src="https://github.com/user-attachments/assets/9ce531d2-bc5e-4fe1-b94d-7343e57593a2" style="width: 50%;">
+	</br>
+	Point-to-Point movement
+</div>
+</br>
 
 Basically point-to-point trajectory planning is like interpolation between two values (let's call them $\theta^I$ and $\theta^F$), and to us it outputs an interpolation of these two values as a function of time; then we take that function and sample it at a constant sampling frequency, take the resulting array of values and give that array to the robot's PID controller. 
 
@@ -512,6 +520,13 @@ So yeah from my experience the best ones you can implement for your robot ... wh
 <a name="section-multipoint_trajectory_generation"></a>
 ## Theoretical Study - Multi-Point Trajectory Generation
 
+<div align="center">
+ 	<img src="https://github.com/user-attachments/assets/deeacfa3-7191-4cb6-983b-3795b64b6b93" style="width: 50%;">
+	</br>
+	Multi-point movement
+</div>
+</br>
+
 Multi-point trajectory generation generates a trajectory between multiple target points given as a path, along with its time information. For example if the robot needs to be moved from point A, passes point B and then stop at point C (same logic with more points, basically we have a path which contains more than the starting and final points).
 
 So like the point-to-point methods the **inputs** are the path points which want to hit, and then the **output** is the array of values (sampled from the position as a function of time) that we'll give to the PID Controller as a reference. 
@@ -667,18 +682,6 @@ For better understanding please refer to [3] in the reference section.
 </div>
 </br>
 
-### B-Spline
-
-I just used the sci-py previously implemented function lol. Idk how it works 
-
-<div align="center">
- 	<img src="https://github.com/user-attachments/assets/0638be6d-a0ed-40e2-bcf9-320d58f132b3" style="width: 50%;">
-	</br>
-	B-Spline Method
-</div>
-</br>
-
-
 ### Pattern Generation 
 
 This one is a bit tough to explain so bear with me for a second. When you have a certain pattern the previous trajectory planning methods won't work. Why is that? Because in the previous methods we were given a few number of points and we wanted to generate a trajectory in-between those points, but with a 'pattern' we already have the trajectory that the robot needs to go.
@@ -721,11 +724,12 @@ Well what is adept cycle? it's basically just four points in 3D space that the r
 
 
 <div align="center">
- 	<img src="https://github.com/user-attachments/assets/c8e02c75-c2b1-4d65-96eb-03779405d418" style="width: 50%;">
+ 	<img src="https://github.com/user-attachments/assets/78efffa4-90ac-4bd5-b245-08d04c101c30" style="width: 50%;">
 	</br>
 	Adept Cycle  
 </div>
 </br>
+
 
 Amazing. Now that we know what adept cycle looks like, I should say that there a number of ways to interpolate those 4 points (as we've been discussing). So here are the methods used and their respective plots 
 
