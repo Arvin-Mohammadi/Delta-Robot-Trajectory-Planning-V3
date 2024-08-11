@@ -208,7 +208,7 @@ Basically point-to-point trajectory planning is like interpolation between two v
 
 <ins>**NOTE**</ins>: Since the array does not include time information, the duration for the whole process is considered to be 1, hence it simplifies a lot of the calculations. We call this "normalized time". If you need the time information included you should refer to the main references. 
 
-### Bang-Bang | Parabolic Method
+### Parabolic Method
 
 We need to define the main phases of movement at the start of each method, so for this the important time instances are:
 
@@ -353,6 +353,10 @@ And the next is $\theta$:
 \end{aligned}
 ```
 
+where 
+- $ T = \frac{1}{3} $
+- $ v_{\text{max}} = \frac{\theta_f - \theta_i}{1 - T} $
+- $ a = 3 v_{\text{max}} $
 
 <div align="center">
  	<img src="https://github.com/user-attachments/assets/580f77ad-6dfa-4b17-b2b8-07fa0739bb91" style="width: 50%;">
