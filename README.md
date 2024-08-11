@@ -787,12 +787,14 @@ $$
 
 For better understanding please refer to [3] in the reference section. 
 
+</br>
 <div align="center">
- 	<img src="https://github.com/user-attachments/assets/b5378d53-0f15-46ef-8fdf-d1e91c8b661c" style="width: 50%;">
+ 	<img src="https://github.com/user-attachments/assets/0a68a360-92fd-484d-ab30-4535dd30bc71" style="width: 50%;">
 	</br>
 	Cubic Spline Method
 </div>
 </br>
+
 
 ### Pattern Generation 
 
