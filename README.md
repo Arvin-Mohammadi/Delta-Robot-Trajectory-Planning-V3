@@ -401,6 +401,58 @@ We'll do the same thing as the trapezoidal method and calculate the entire movem
 \end{aligned}
 ```
 
+Next is $\ddot{\theta}$: 
+
+```math
+\begin{aligned}
+	\ddot{\theta}(t) & = j_{\text{max}} t & \quad \text{for} \quad 0 \leq t \leq T \\
+	\ddot{\theta}(t) & = a_{\text{max}} & \quad \text{for} \quad T \leq t \leq 2T \\
+	\ddot{\theta}(t) & = a_{\text{max}} - j_{\text{max}} (t - 2T) & \quad \text{for} \quad 2T \leq t \leq 3T \\
+	\ddot{\theta}(t) & = 0 & \quad \text{for} \quad 3T \leq t \leq 4T \\
+	\ddot{\theta}(t) & = - j_{\text{max}} (t - 4T) & \quad \text{for} \quad 4T \leq t \leq 5T \\
+	\ddot{\theta}(t) & = - a_{\text{max}} & \quad \text{for} \quad 5T \leq t \leq 6T \\
+	\ddot{\theta}(t) & = - a_{\text{max}} + j_{\text{max}} (t - 6T) & \quad \text{for} \quad 6T \leq t \leq 7T \\
+\end{aligned}
+```
+
+Next is $\dot{\theta}$: 
+
+
+```math
+\begin{aligned}
+	\dot{\theta}(t) & = \frac{1}{2} j_{\text{max}} t^2 & \quad \text{Phase} 1\\
+	\dot{\theta}(t) & = \frac{1}{2} a_{\text{max}} T + a_{\text{max}} (t - T) & \quad \text{Phase} 2 \\
+	\dot{\theta}(t) & = \frac{3}{2} a_{\text{max}} T + a_{\text{max}} (t - 2T) - \frac{1}{2} j_{\text{max}} (t - 2T)^2 & \quad \text{Phase} 3\\
+	\dot{\theta}(t) & = v_{\text{max}} &  \quad \text{Phase} 4\\
+	\dot{\theta}(t) & = v_{\text{max}} - \frac{1}{2} j_{\text{max}} (t - 4T)^2 &  \quad \text{Phase} 5 \\
+	\dot{\theta}(t) & = \frac{3}{4} v_{\text{max}} - a_{\text{max}} (t - 5T) &  \quad \text{Phase} 6\\
+	\dot{\theta}(t) & = \frac{1}{4} v_{\text{max}} - a_{\text{max}} (t - 6T) + \frac{1}{2} j_{\text{max}} (t - 6T)^2 &  \quad \text{Phase} 7 \\
+\end{aligned}
+```
+
+Finally it's $\theta$: 
+
+
+```math
+\begin{aligned}
+	\theta(t) & = \theta_0 + \frac{1}{6} j_{\text{max}} t^3 & \quad \text{Phase} 1\\
+	\theta(t) & = \theta_0 + \frac{1}{12} v_{\text{max}} T + \frac{1}{2} a_{\text{max}} T(t - T) + \frac{1}{2} a_{\text{max}} (t - T)^2 &  \quad \text{Phase} 2\\
+	\theta(t) & = \theta_0 + \frac{7}{12} v_{\text{max}} T + \frac{3}{2} a_{\text{max}} T(t - 2T) + \frac{1}{2} a_{\text{max}} (t - 2T)^2 - \frac{1}{6} j_{\text{max}} (t - 2T)^3 &  \quad \text{Phase} 3\\
+	\theta(t) & = \theta_0 + \frac{3}{2} v_{\text{max}} T + v_{\text{max}} (t - 3T) &  \quad \text{Phase} 4 \\
+	\theta(t) & = \theta_0 + \frac{5}{2} v_{\text{max}} T + v_{\text{max}} (t - 4T) - \frac{1}{6} j_{\text{max}} (t - 4T)^3 & \quad \text{Phase} 5\\
+	\theta(t) & = \theta_0 + \frac{41}{12} v_{\text{max}} T + \frac{3}{4} v_{\text{max}} (t - 5T) - \frac{1}{2} a_{\text{max}} (t - 5T)^2 &  \quad \text{Phase} 6\\
+	\theta(t) & = \theta_0 + \frac{47}{12} v_{\text{max}} T + \frac{1}{4} v_{\text{max}} (t - 6T) - \frac{1}{2} a_{\text{max}} (t - 6T)^2 + \frac{1}{6} j_{\text{max}} (t - 6T)^3 & \quad \text{Phase} 7 \\
+\end{aligned}
+```
+
+Where:
+- $T = \frac{1}{7}$
+- $v_{\text{max}} = \frac{\theta_f - \theta_i}{4T}$
+- $a_{\text{max}} = \frac{v_{\text{max}}}{2T}$
+- $j_{\text{max}} = \frac{a_{\text{max}}}{T}$
+
+
+</br>
 <div align="center">
  	<img src="https://github.com/user-attachments/assets/84d06621-bce1-4361-840f-71a673953985" style="width: 50%;">
 	</br>
