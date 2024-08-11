@@ -291,6 +291,7 @@ Finally the overall mathematicall function can be described as:
 ```
 
 
+</br>
 <div align="center">
  	<img src="https://github.com/user-attachments/assets/e3d2bb5a-3c3e-4f1a-b4cd-2a5ebadfcd7d" style="width: 50%;">
 	</br>
@@ -354,10 +355,11 @@ And the next is $\theta$:
 ```
 
 where 
-- $ T = \frac{1}{3} $
-- $ v_{\text{max}} = \frac{\theta_f - \theta_i}{1 - T} $
-- $ a = 3 v_{\text{max}} $
+- $T = \frac{1}{3}$
+- $v_{\text{max}} = \frac{\theta_f - \theta_i}{1 - T}$
+- $a = 3 v_{\text{max}}$
 
+</br>
 <div align="center">
  	<img src="https://github.com/user-attachments/assets/580f77ad-6dfa-4b17-b2b8-07fa0739bb91" style="width: 50%;">
 	</br>
