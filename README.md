@@ -636,11 +636,11 @@ Multi-point trajectory generation generates a trajectory between multiple target
 
 So like the point-to-point methods the **inputs** are the path points which want to hit, and then the **output** is the array of values (sampled from the position as a function of time) that we'll give to the PID Controller as a reference. 
 
-### Bad Choices for Multi-Point Trajectory
+### Point-to-Point Methods 
 
-Probably the worst methods you can choose for a multiple-point trajectory planning are either using a high-order polynomial interpolation or one of the point-to-point methods. Let's elaborate further. 
+Firstly how can we use a point-to-point method for multiple number of points? It's easy. Let's go with the previous example and say that we want to create a trajectory for the three values of [0, 0.2, 1]. First, We can simply create a trajectory between [0, 0.2] and then create another trajectory between [0.2, 1]. This can be done with any number of points and we can use all of the 6 mentioned point-to-point methods. Why is it a bad idea? Because the velocity and acceleration will be zero at all of the points. So assume we have a number of points that we want our robots to cross over such as $P_0, P_1, P_2, P_3, \dots, P_n$. Given that we use the method I just explained, the robot will stop at all of the points of $P_0$ to $P_n$ and start moving again ... sort of like the robot has got the hiccups, which is awful for the motors. Don't use this methods either. 
 
-#### High-Order Polynomial Interpolation
+### High-Order Polynomial Interpolation
 
 Assume you have a set of values such as [0, 0.2, 1] and you wanted to create a trajectory for these values with a polynomial:
 
@@ -673,10 +673,6 @@ And the equations will be something like:
 ```
 
 Solving this linear system of equations will result in the values of $a_8, \dots, a_0$. And it works. But why is it a bad choice? Simply because it can't be generalized. Meaning that if we have 4 points of interest that we want to cross (so instead of [0, 0.2, 1] we would have [0, -0.4, 0.2, 1]) then the calculations we just did will completely fall apart. So there's that. It works ... but isn't practical. Don't use this method.
-
-#### Point-to-Point Methods 
-
-Firstly how can we use a point-to-point method for multiple number of points? It's easy. Let's go with the previous example and say that we want to create a trajectory for the three values of [0, 0.2, 1]. First, We can simply create a trajectory between [0, 0.2] and then create another trajectory between [0.2, 1]. This can be done with any number of points and we can use all of the 6 mentioned point-to-point methods. Why is it a bad idea? Because the velocity and acceleration will be zero at all of the points. So assume we have a number of points that we want our robots to cross over such as $P_0, P_1, P_2, P_3, \dots, P_n$. Given that we use the method I just explained, the robot will stop at all of the points of $P_0$ to $P_n$ and start moving again ... sort of like the robot has got the hiccups, which is awful for the motors. Don't use this methods either. 
 
 ### Cubic Spline 
 
