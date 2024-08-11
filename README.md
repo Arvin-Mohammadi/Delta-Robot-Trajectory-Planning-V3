@@ -645,7 +645,7 @@ So like the point-to-point methods the **inputs** are the path points which want
 <div align="center">
  	<img src="https://github.com/user-attachments/assets/02cdf85e-d61f-4f3b-afe9-3974e3a63551" style="width: 50%;">
 	</br>
-	Multi-point movement
+	In this application of petridish sampling in microorganism culturings (which my team implemented) the robot is required to stop at each of the path points because we need to leave a liquid drop at each of them. 
 </div>
 </br>
 
