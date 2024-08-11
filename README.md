@@ -39,8 +39,13 @@ Advantages:
 Disadvantages:
 1. Small Workspace
 2. Small Workload
-<img align="right" src="https://github.com/Arvin-Mohammadi/Delta-Robot-Trajectory-Planning-V3/assets/69509720/5924887e-6c97-4af0-b3d5-d6d9a3c5c459" width=30%>
 
+<div align="center">
+ 	<img src="https://github.com/user-attachments/assets/5aab2c7c-5e96-4978-9880-9c58a5b184c5" style="width: 50%;">
+	</br>
+	Simple robotics tasks are carried out as the depicted model.
+</div>
+</br>
 
 <ins>**Trajectory Planning**</ins> 
 
@@ -54,7 +59,6 @@ Take a look at the figure below. There are four main stages to any sort of robot
 
 <a name="section-deltarobot_kinematics"></a>
 ## Delta Robot Kinematics
-<img align="right" src="https://github.com/Arvin-Mohammadi/Delta-Robot-Trajectory-Planning-V3/assets/69509720/a06639cb-afbb-47c5-8a0d-340a20674f84" width=30%>
 
 <ins>**What are Forward and Inverse Kinematics**</ins> 
 
@@ -75,7 +79,7 @@ This basically has the same logic as the FK and IK but this time instead of conv
 <div align="center">
  	<img src="https://github.com/Arvin-Mohammadi/Delta-Robot-Trajectory-Planning-V3/assets/69509720/b34332cf-6016-42b2-83ac-fc2824447b97" style="width: 50%;">
 	</br>
-	_Note: The solution is from the reference #1_
+	Note: The solution is from the reference #1
 </div>
 
 </br>
