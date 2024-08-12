@@ -640,7 +640,17 @@ and we have for $\theta(t)$:
 ```
 
 
-### Discussion 
+
+
+|         <img src="https://github.com/user-attachments/assets/e3d2bb5a-3c3e-4f1a-b4cd-2a5ebadfcd7d" style="width: 85%;">         |         <img src="https://github.com/user-attachments/assets/580f77ad-6dfa-4b17-b2b8-07fa0739bb91" style="width: 85%;">         |         <img src="https://github.com/user-attachments/assets/84d06621-bce1-4361-840f-71a673953985" style="width: 85%;">         |
+|:--------------------:|:--------------------:|:--------------------:|
+|   Parabolic Method |   Trapezoidal Method  |    S-Curve Method    |
+|         <img src="https://github.com/user-attachments/assets/34f6998f-b737-44d6-90f1-c018b7d0799b" style="width: 85%;">         |         <img src="https://github.com/user-attachments/assets/b79e04c0-35db-4c2c-8780-44855ce16d02" style="width: 85%;">         |         <img src="https://github.com/user-attachments/assets/b86a731d-fb5a-453a-b687-7651932c5570" style="width: 85%;">         |
+| 5th-order polynomial | 7th-order polynomial | 9th-order polynomial |
+
+
+
+## Discussion 
 
 So we took a look at six different methods:
 
@@ -654,14 +664,6 @@ So we took a look at six different methods:
 All of them are usable, but from my experience for point-to-point movement the polynomials are generally better and what's more, 7th order polynomial is probably the best one. Why is that? Well firstly it's kind of hard for the PID controller to follow trajectories such as trapezoidal (for some reason) rather than the polynomials (maybe because they are smoother in relation to the other three methods). But then why choose 7th order? well because it controls the jerk (unlike the 5th order). The 9th order polynomial ain't bad either. it controls the snap at the start and finish as well as the jerk. 
 
 So yeah from my experience the best ones you can implement for your robot ... whatever it is ... is probably the 7th or 9th order polynomial. It's easy to calculate, easy to implement, reliable, and also the PID controller won't have a problem following it. 
-
-
-
-|         <img src="https://github.com/user-attachments/assets/e3d2bb5a-3c3e-4f1a-b4cd-2a5ebadfcd7d" style="width: 85%;">         |         <img src="https://github.com/user-attachments/assets/580f77ad-6dfa-4b17-b2b8-07fa0739bb91" style="width: 85%;">         |         <img src="https://github.com/user-attachments/assets/84d06621-bce1-4361-840f-71a673953985" style="width: 85%;">         |
-|:--------------------:|:--------------------:|:--------------------:|
-|   Parabolic Method |   Trapezoidal Method  |    S-Curve Method    |
-|         <img src="https://github.com/user-attachments/assets/34f6998f-b737-44d6-90f1-c018b7d0799b" style="width: 85%;">         |         <img src="https://github.com/user-attachments/assets/b79e04c0-35db-4c2c-8780-44855ce16d02" style="width: 85%;">         |         <img src="https://github.com/user-attachments/assets/b86a731d-fb5a-453a-b687-7651932c5570" style="width: 85%;">         |
-| 5th-order polynomial | 7th-order polynomial | 9th-order polynomial |
 
 
 
@@ -689,7 +691,7 @@ So yeah from my experience the best ones you can implement for your robot ... wh
 
 
 <a name="section-multipoint_trajectory_generation"></a>
-## Theoretical Study - Multi-Point Trajectory Generation
+# Theoretical Study - Multi-Point Trajectory Generation
 
 </br>
 <div align="center">
@@ -703,7 +705,7 @@ Multi-point trajectory generation generates a trajectory between multiple target
 
 So like the point-to-point methods the **inputs** are the path points which want to hit, and then the **output** is the array of values (sampled from the position as a function of time) that we'll give to the PID Controller as a reference. 
 
-### Point-to-Point Methods 
+## Point-to-Point Methods 
 
 **How can we use a point-to-point method for multiple points?** It’s straightforward. Let's revisit the previous example, where we want to create a trajectory for the values [0, 0.2, 1]. First, we can generate a trajectory between [0, 0.2], and then create another trajectory between [0.2, 1]. This approach works for any number of points and can be applied using any of the six point-to-point methods mentioned. **However, this method might not be suitable for certain tasks.** For instance, in applications where smooth, continuous motion is required, we may not want to stop at each path point. In such cases, using these point-to-point methods may not be the best idea. Here's an example of where this method might be applied:
 
@@ -724,7 +726,7 @@ And the overall idea is to interpolate between each two points in the path, with
 | 5th order polynomial | 7th order polynomial | 9th order polynomial |
 
 
-### High-Order Polynomial Interpolation
+## High-Order Polynomial Interpolation
 
 Say we are interpolating a set of values such as [0, 1, -1, 0] and we wanted to create a trajectory for these values with a single polynomial: 
 
@@ -745,7 +747,7 @@ Based on if we want to control the value of jerk and snap, this'll give us three
 2. 9th order polynomial (controls jerk but doesn't control snap)
 3. 11th order polynomial (controls both jerk and snap)
 
-#### 7th-order polynomial
+### 7th-order polynomial
 
 Defining the polynomial:
 
@@ -778,16 +780,8 @@ The polynomial solution for $a_i$:
 \end{aligned}
 ```
 
-</br>
-<div align="center">
- 	<img src="https://github.com/user-attachments/assets/f7a3fc74-be4f-43f4-beb8-516da174b9a2" style="width: 50%;">
-	</br>
-	7th-order polynomial
-</div>
-</br>
 
-
-#### 9th-order polynomial
+### 9th-order polynomial
 
 Defining the polynomial:
 
@@ -823,15 +817,8 @@ The polynomial solution for $a_i$:
 \end{aligned}
 ```
 
-</br>
-<div align="center">
- 	<img src="https://github.com/user-attachments/assets/fb5da484-0f0b-4f6c-8ed8-561af719a61f" style="width: 50%;">
-	</br>
-	9th-order polynomial
-</div>
-</br>
 
-#### 11th-order polynomial
+### 11th-order polynomial
 
 Defining the polynomial:
 
@@ -869,6 +856,25 @@ The polynomial solution for $a_i$:
 \end{aligned}
 ```
 
+|         <img src="https://github.com/user-attachments/assets/f7a3fc74-be4f-43f4-beb8-516da174b9a2" style="width: 85%;">         |         <img src="https://github.com/user-attachments/assets/fb5da484-0f0b-4f6c-8ed8-561af719a61f" style="width: 85%;">         |         <img src="https://github.com/user-attachments/assets/126baa6d-a905-417c-a8c0-76cacbbab709" style="width: 85%;">         |
+|:--------------------:|:--------------------:|:--------------------:|
+|   7th-order polynomial   |  9th-order polynomial  |   11th-order polynomial    |
+
+</br>
+<div align="center">
+ 	<img src="https://github.com/user-attachments/assets/f7a3fc74-be4f-43f4-beb8-516da174b9a2" style="width: 50%;">
+	</br>
+	7th-order polynomial
+</div>
+</br>
+
+</br>
+<div align="center">
+ 	<img src="https://github.com/user-attachments/assets/fb5da484-0f0b-4f6c-8ed8-561af719a61f" style="width: 50%;">
+	</br>
+	9th-order polynomial
+</div>
+</br>
 </br>
 <div align="center">
  	<img src="https://github.com/user-attachments/assets/126baa6d-a905-417c-a8c0-76cacbbab709" style="width: 50%;">
