@@ -7,29 +7,55 @@ Overview:
 - [Delta Robot Kinematics](#section-deltarobot_kinematics)
 - [Theoretical Study - Point-to-Point Trajectory Generation](#section-point2point_trajectory_generation)
 - [Theoretical Study - Multi-Point Trajectory Generation](#section-multipoint_trajectory_generation)
-- [Adept Cycle](#section-adeptcycle) 
+- [Experimental Study - Adept Cycle Trajectory Generation](#section-adeptcycle) 
 - [References](#section-references)
 - [Ending Note](#section-endnote)
-
 </br>
 
 
-<a name="section-introduction"></a>
-## Introduction
 
-<ins>**What is a Delta Robot and Why is it Important**</ins> 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<a name="section-introduction"></a>
+# Introduction
+
+<details>
+<summary><ins>What is a Delta Robot and Why is it Important</ins></summary>
 
 People who search for this repository already know what the delta robot is and know why it's important. Delta robot parallel kinematic structure and high-speed capabilities make them ideal for precise and speedy tasks, particularly in pick-and-place operations. This repository studies trajectory planning methods for Delta robots, focusing on smooth motion for the end-effector while minimizing deviations.
 
-**The applications of Delta robots** are virtually endless but mainly they come down to a certain pattern of pick-and-place or 3D printing or tasks that require somewhat similar movements to these two. Here's three applications that I worked on (PLEASE CITE MY 4 PAPERS):
+The applications of Delta robots are virtually endless but mainly they come down to a certain pattern of pick-and-place or 3D printing or tasks that require somewhat similar movements to these two. Here's three applications that I worked on (PLEASE CITE MY 4 PAPERS):
 
 - Pick-and-Place Operations: [LINK](https://ieeexplore.ieee.org/abstract/document/10334699)
 - Automated Pipetting Operation: [LINK](https://ieeexplore.ieee.org/abstract/document/10412424)
 - Food Packaging - Not Published Yet
 - Automated Pipetting Operation: Not Published Yet
+</details>
 
-<ins>**Pros and Cons of Delta Robot**</ins>
 
+<details>
+<summary><ins>Pros and Cons of Delta Robot</ins></summary>
+	
 Delta robot has basically two advantages at the cost of two things (I'm talking about the important ones). 
 
 Advantages: 
@@ -39,9 +65,9 @@ Advantages:
 Disadvantages:
 1. Small Workspace
 2. Small Workload
+</details>
 
-
-<ins>**Trajectory Planning**</ins> 
+<ins>Trajectory Planning</ins>
 
 Take a look at the figure below. There are four main stages to any sort of robotic operation:
 1. **Task Planning:** Figuring out what the robot is going to be doing [in order]
@@ -57,35 +83,57 @@ Take a look at the figure below. There are four main stages to any sort of robot
 </div>
 </br>
 
-<a name="section-deltarobot_kinematics"></a>
-## Delta Robot Kinematics
 
-<ins>**What are Forward and Inverse Kinematics**</ins> 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<a name="section-deltarobot_kinematics"></a>
+# Delta Robot Kinematics
+
+<ins>What are Forward and Inverse Kinematics</ins>
 
 Look at the figure below. Let's say our robot has actuated joints of $\[\theta_1, \theta_2, \theta_3\]$ and the position of the end-effector is $\[x, y, z\]$:
-
+	
 - **Forward Kinematics:** Given the actuated joint parameters to calculate the position of end-effector
 - **Inverse Kinematics:** Given the position of the end-effector to calculate the actuated joint parameters
 
-<ins>**What is the Jacobian of a Robot**</ins> 
-
-This basically has the same logic as the FK and IK but this time instead of converting between positions and angles, the conversion occurs between velocity of the end-effector and the velocity of the joint parameters. 
-
-
+<details>
+<summary><ins>What is the Jacobian of a Robot</ins></summary>
+This basically has the same logic as the FK and IK but this time instead of converting between positions and angles, the conversion occurs between velocity of the end-effector and the velocity of the joint parameters.
+</details>
 </br>
 
-### Theoretical Solution of Forward and Inverse Kinematics in Delta Robot
+## Theoretical Solution of Forward and Inverse Kinematics in Delta Robot
 
+</br>
 <div align="center">
  	<img src="https://github.com/Arvin-Mohammadi/Delta-Robot-Trajectory-Planning-V3/assets/69509720/b34332cf-6016-42b2-83ac-fc2824447b97" style="width: 50%;">
 	</br>
 	Note: The solution is from the reference #1
 </div>
-
 </br>
 
-
-<ins>**Given Data & Assumptions**</ins> 
+<ins>Given Data & Assumptions</ins>
 
 The Delta robot consists of three main chains. Each chain starts from the base platform($O_0$), connects to the upper arm via the pin joint ($A_i$), connects to the lower arm via the universal joint ($B_i$), and finally connects to the end-effector via the universal joint ($C_i$). This results in a movement behaviour, where the end-effector moves parallel to the base platform and can move along three translational axes of ($x, y, z$) in 3D space. 
 
@@ -117,7 +165,7 @@ and also:
 \gamma_1 = \frac{1}{2}\gamma_2 = \frac{1}{3}\gamma_3 = \beta_1 = \frac{1}{2}\beta_2 = \frac{1}{3}\beta_3 = 120\degree
 ```
 
-<ins>**Calculating Relative Positions**</ins> 
+<ins>Calculating Relative Positions</ins> 
 
 - The position of $A_i$ in relation to the $\{O_0\}$-frame:
 
@@ -169,7 +217,7 @@ and also:
     \end{bmatrix}
 ```
 
-<ins>**Solution of Foward and Inverse Kinematics**</ins> 
+<ins>Solution of Foward and Inverse Kinematics</ins>
 
 1. For FK we numerically solve the above constraint equation for $(X_P, Y_P, Z_P)$ given $\theta_i$
 
@@ -179,9 +227,19 @@ and also:
 
 
 <a name="section-point2point_trajectory_generation"></a>
-### Experimental Solution of Forward and Inverse Kinematics in Delta Robot
+## Experimental Solution of Forward and Inverse Kinematics in Delta Robot
 
 If you need a plug and place code that **JUST WORKS** i suggest the following code: [LINK](https://github.com/Arvin-Mohammadi/Delta-Robot-Trajectory-Planning-V3/blob/main/References/Inverse%20Kinematics%20(Delta%20Robot).pdf) - Reference #2
+
+The same code as in the reference is implemented in the file ```DeltaKinematics.py``` ([LINK](https://github.com/Arvin-Mohammadi/Delta-Robot-Trajectory-Planning-V3/blob/main/Code/DeltaKinematics.py))
+
+
+
+
+
+
+
+
 
 
 
@@ -201,7 +259,7 @@ If you need a plug and place code that **JUST WORKS** i suggest the following co
 
 
 <a name="subsection-point2point_trajectory_generation"></a>
-## Theoretical Study - Point-to-Point Trajectory Generation
+# Theoretical Study - Point-to-Point Trajectory Generation
 
 
 <div align="center">
@@ -220,11 +278,13 @@ Basically point-to-point trajectory planning is like interpolation between two v
   \end{cases}
 ```
 
-<ins>**NOTE**</ins>: The output array does not include any time information, the time information comes into play when we want to give the PID controller the next target point from the array. So basically when the robot wants to move from Point A to  B in either 2 seconds or 3 seconds, the interpolation array for both of these actions are the same. 
+> [!NOTE]
+> The output array does not include any time information, the time information comes into play when we want to give the PID controller the next target point from the array. So basically when the robot wants to move from Point A to  B in either 2 seconds or 3 seconds, the interpolation array for both of these actions are the same. 
 
-<ins>**NOTE**</ins>: Since the array does not include time information, the duration for the whole process is considered to be 1, hence it simplifies a lot of the calculations. We call this "normalized time". If you need the time information included you should refer to the main references. 
+> [!NOTE]
+> Since the array does not include time information, the duration for the whole process is considered to be 1, hence it simplifies a lot of the calculations. We call this "normalized time". If you need the time information included you should refer to the main references. 
 
-### Parabolic Method
+## Parabolic Method
 
 We need to define the main phases of movement at the start of each method, so for this the important time instances are:
 
@@ -306,16 +366,7 @@ Finally the overall mathematicall function can be described as:
 \end{aligned}
 ```
 
-
-</br>
-<div align="center">
- 	<img src="https://github.com/user-attachments/assets/e3d2bb5a-3c3e-4f1a-b4cd-2a5ebadfcd7d" style="width: 50%;">
-	</br>
-	Bang-Bang Method | Parabolic Method
-</div>
-</br>
-
-### Trapezoidal Method
+## Trapezoidal Method
 
 As explained, the goal here is to basically use a trapezoidal diagram as a way to interpolate between two given motor rotations. The trapezoidal diagram is defined as the following:
 
@@ -375,16 +426,9 @@ where
 - $v_{\text{max}} = \frac{\theta_f - \theta_i}{1 - T}$
 - $a = 3 v_{\text{max}}$
 
-</br>
-<div align="center">
- 	<img src="https://github.com/user-attachments/assets/580f77ad-6dfa-4b17-b2b8-07fa0739bb91" style="width: 50%;">
-	</br>
-	Trapezoidal Method
-</div>
-</br>
 
 
-### S-curve Method
+## S-curve Method
 
 The S-curve method is somewhat similar to the trapezoidal method with the difference that it is smoother. So in mathemtical terms that would be: 
 
@@ -468,15 +512,8 @@ Where:
 - $j_{\text{max}} = \frac{a_{\text{max}}}{T}$
 
 
-</br>
-<div align="center">
- 	<img src="https://github.com/user-attachments/assets/84d06621-bce1-4361-840f-71a673953985" style="width: 50%;">
-	</br>
-	S-Curve Method
-</div>
-</br>
 
-### Interpolating Polynomials
+## Interpolating Polynomials
 
 
 When interpolating between $\theta^I$ and $\theta^F$ we can use a polynomial such as $s(t)$ where $0 \leq t \leq 1$ since the time is normalized in this context and also $0 \leq s \leq 1$. And then you relate $s(t)$ with $\theta(t)$ as written below:
@@ -487,7 +524,7 @@ When interpolating between $\theta^I$ and $\theta^F$ we can use a polynomial suc
 
 Now knowing that, we can talk about $s(t)$ and we are gonna use the 5th, 7th, and 9th degree polynomials for this. 
 
-#### 5th order polynomial 
+### 5th order polynomial 
 
 The $s(t)$ polynomial can be written as: 
 
@@ -527,15 +564,8 @@ which means:
 	\theta(t) = \theta^I + (\theta^F - \theta^I)(6.t^5 - 15.t^4 + 10.t^3)
 ```
 
-<div align="center">
- 	<img src="https://github.com/user-attachments/assets/34f6998f-b737-44d6-90f1-c018b7d0799b" style="width: 50%;">
-	</br>
-	5th-order polynomial
-</div>
-</br>
 
-
-#### 7th order polynomial
+### 7th order polynomial
 
 
 We go through the same process of as before in the 5th order polynomial. First it is to write down $s(t)$:
@@ -570,15 +600,8 @@ which means for $\theta(t)$ we have:
 	\theta(t) = \theta^I + (\theta^F - \theta^I)(-20.t^7 + 70.t^6 - 84.t^5 + 35.t^4)
 ```
 
-<div align="center">
- 	<img src="https://github.com/user-attachments/assets/b79e04c0-35db-4c2c-8780-44855ce16d02" style="width: 50%;">
-	</br>
-	7th-order polynomial
-</div>
-</br>
 
-
-#### 9th order polynomial
+### 9th order polynomial
 
 Again the same shit is both 5th and 7th order polynomial. First $s(t)$:
 
@@ -616,14 +639,20 @@ and we have for $\theta(t)$:
 	\theta(t) = \theta^I + (\theta^F - \theta^I)(70.t^9 - 315.t^8 + 540.t^7 - 420.t^6 + 126.t^5)
 ```
 
-<div align="center">
- 	<img src="https://github.com/user-attachments/assets/b86a731d-fb5a-453a-b687-7651932c5570" style="width: 50%;">
-	</br>
-	9th-order polynomial
-</div>
 </br>
+<p align="center">
+	<ins><strong>POINT TO POINT TRAJECTORY GENERATION METHODS</strong></ins>
+</p>
 
-### Discussion 
+|         <img src="https://github.com/user-attachments/assets/e3d2bb5a-3c3e-4f1a-b4cd-2a5ebadfcd7d" style="width: 85%;">         |         <img src="https://github.com/user-attachments/assets/580f77ad-6dfa-4b17-b2b8-07fa0739bb91" style="width: 85%;">         |         <img src="https://github.com/user-attachments/assets/84d06621-bce1-4361-840f-71a673953985" style="width: 85%;">         |
+|:--------------------:|:--------------------:|:--------------------:|
+|   Parabolic Method |   Trapezoidal Method  |    S-Curve Method    |
+|         <img src="https://github.com/user-attachments/assets/34f6998f-b737-44d6-90f1-c018b7d0799b" style="width: 85%;">         |         <img src="https://github.com/user-attachments/assets/b79e04c0-35db-4c2c-8780-44855ce16d02" style="width: 85%;">         |         <img src="https://github.com/user-attachments/assets/b86a731d-fb5a-453a-b687-7651932c5570" style="width: 85%;">         |
+| 5th-order polynomial | 7th-order polynomial | 9th-order polynomial |
+
+
+
+## Discussion 
 
 So we took a look at six different methods:
 
@@ -655,8 +684,16 @@ So yeah from my experience the best ones you can implement for your robot ... wh
 
 
 
+
+
+
+
+
+
+
+
 <a name="section-multipoint_trajectory_generation"></a>
-## Theoretical Study - Multi-Point Trajectory Generation
+# Theoretical Study - Multi-Point Trajectory Generation
 
 </br>
 <div align="center">
@@ -670,7 +707,7 @@ Multi-point trajectory generation generates a trajectory between multiple target
 
 So like the point-to-point methods the **inputs** are the path points which want to hit, and then the **output** is the array of values (sampled from the position as a function of time) that we'll give to the PID Controller as a reference. 
 
-### Point-to-Point Methods 
+## Point-to-Point Methods 
 
 **How can we use a point-to-point method for multiple points?** It’s straightforward. Let's revisit the previous example, where we want to create a trajectory for the values [0, 0.2, 1]. First, we can generate a trajectory between [0, 0.2], and then create another trajectory between [0.2, 1]. This approach works for any number of points and can be applied using any of the six point-to-point methods mentioned. **However, this method might not be suitable for certain tasks.** For instance, in applications where smooth, continuous motion is required, we may not want to stop at each path point. In such cases, using these point-to-point methods may not be the best idea. Here's an example of where this method might be applied:
 
@@ -684,6 +721,12 @@ So like the point-to-point methods the **inputs** are the path points which want
 
 And the overall idea is to interpolate between each two points in the path, with a point-to-point method. If we interpolate between four values of [0, 1, -1, 0], the following diagrams are what we're getting:
 
+
+</br>
+<p align="center">
+	<ins><strong>POINT TO POINT TRAJECTORY GENERATION METHODS USED FOR MULTIPLE POINTS</strong></ins>
+</p>
+
 |         <img src="https://github.com/user-attachments/assets/137ab35f-2ea1-4918-b6b8-3b3a9fb56e39" style="width: 85%;">         |         <img src="https://github.com/user-attachments/assets/1efdd144-be52-4558-b8a7-aa63724a99bf" style="width: 85%;">         |         <img src="https://github.com/user-attachments/assets/0d4f480d-b3c2-4870-a477-c1bda64c38a9" style="width: 85%;">         |
 |:--------------------:|:--------------------:|:--------------------:|
 |   Parabolic Method   |  Trapezoidal Method  |    S-curve Method    |
@@ -691,7 +734,7 @@ And the overall idea is to interpolate between each two points in the path, with
 | 5th order polynomial | 7th order polynomial | 9th order polynomial |
 
 
-### High-Order Polynomial Interpolation
+## High-Order Polynomial Interpolation
 
 Say we are interpolating a set of values such as [0, 1, -1, 0] and we wanted to create a trajectory for these values with a single polynomial: 
 
@@ -712,7 +755,7 @@ Based on if we want to control the value of jerk and snap, this'll give us three
 2. 9th order polynomial (controls jerk but doesn't control snap)
 3. 11th order polynomial (controls both jerk and snap)
 
-#### 7th-order polynomial
+### 7th-order polynomial
 
 Defining the polynomial:
 
@@ -745,16 +788,8 @@ The polynomial solution for $a_i$:
 \end{aligned}
 ```
 
-</br>
-<div align="center">
- 	<img src="https://github.com/user-attachments/assets/f7a3fc74-be4f-43f4-beb8-516da174b9a2" style="width: 50%;">
-	</br>
-	7th-order polynomial
-</div>
-</br>
 
-
-#### 9th-order polynomial
+### 9th-order polynomial
 
 Defining the polynomial:
 
@@ -790,15 +825,8 @@ The polynomial solution for $a_i$:
 \end{aligned}
 ```
 
-</br>
-<div align="center">
- 	<img src="https://github.com/user-attachments/assets/fb5da484-0f0b-4f6c-8ed8-561af719a61f" style="width: 50%;">
-	</br>
-	9th-order polynomial
-</div>
-</br>
 
-#### 11th-order polynomial
+### 11th-order polynomial
 
 Defining the polynomial:
 
@@ -837,24 +865,20 @@ The polynomial solution for $a_i$:
 ```
 
 </br>
-<div align="center">
- 	<img src="https://github.com/user-attachments/assets/126baa6d-a905-417c-a8c0-76cacbbab709" style="width: 50%;">
-	</br>
-	11th-order polynomial
-</div>
-</br>
+<p align="center">
+	<ins><strong>HIGHER ORDER POLYNOMIAL METHODS USED FOR MULTIPLE POINTS INTERPOLATION</strong></ins>
+</p>
+
+|         <img src="https://github.com/user-attachments/assets/f7a3fc74-be4f-43f4-beb8-516da174b9a2" style="width: 85%;">         |         <img src="https://github.com/user-attachments/assets/fb5da484-0f0b-4f6c-8ed8-561af719a61f" style="width: 85%;">         |         <img src="https://github.com/user-attachments/assets/126baa6d-a905-417c-a8c0-76cacbbab709" style="width: 85%;">         |
+|:--------------------:|:--------------------:|:--------------------:|
+|   7th-order polynomial   |  9th-order polynomial  |   11th-order polynomial    |
 
 
 
 
 
 
-
-
-
-
-
-### Cubic Spline 
+## Cubic Spline 
 
 This method basically uses multiple polynomials on end for generating a trajectory between multiple path points. So if we are given $n+1$ path points, we'll need $n$ polynomials to interpolate and create the trajectory. 
 
@@ -965,7 +989,7 @@ For better understanding please refer to [3] in the reference section.
 </br>
 
 
-### Pattern Generation 
+## Pattern Generation 
 
 This one is a bit tough to explain so bear with me for a second. When you have a certain pattern the previous trajectory planning methods won't work. Why is that? Because in the previous methods we were given a few number of points and we wanted to generate a trajectory in-between those points, but with a 'pattern' we already have the trajectory that the robot needs to go.
 
@@ -981,7 +1005,7 @@ So in this instance what we should do is to sample that pattern which results in
 </br>
 
 
-### Discussion 
+## Discussion 
 
 So we took a look at a few multi-point methods:
 
@@ -1001,7 +1025,7 @@ So let's talk about why you should or shouldn't use each of these algorithms:
 
 
 <a name="section-adeptcycle"></a>
-## Adept Cycle 
+# Adept Cycle 
 
 Well what is adept cycle? it's basically just four points in 3D space that the robot must hit in order to perform a pick-and-place operation. it looks something like this:
 
@@ -1013,77 +1037,6 @@ Well what is adept cycle? it's basically just four points in 3D space that the r
 </div>
 </br>
 
-
-Amazing. Now that we know what adept cycle looks like, I should say that there a number of ways to interpolate those 4 points (as we've been discussing). So here are the methods used and their respective plots 
-
-
-<div align="center">
- 	<img src="https://github.com/user-attachments/assets/8fd13a69-5cc1-49db-bb67-685fe30f8f97" style="width: 50%;">
- 	<img src="https://github.com/user-attachments/assets/7d3fd81f-3411-4932-8bcc-647d75cc21fc" style="width: 50%;">
-	</br>
-	Point-to-Point Parabolic Method
-</div>
-</br>
-
-
-<div align="center">
- 	<img src="https://github.com/user-attachments/assets/dcb508f5-3853-442b-987b-89395aed73c0" style="width: 50%;">
- 	<img src="https://github.com/user-attachments/assets/4f0011a4-fd8c-4174-859c-905a8c117355" style="width: 50%;">
-	</br>
-	Point-to-Point Trapezoidal Method
-</div>
-</br>
-
-<div align="center">
- 	<img src="https://github.com/user-attachments/assets/7c8a2b80-ebf3-450e-871c-48f83f1b032d" style="width: 50%;">
- 	<img src="https://github.com/user-attachments/assets/aa727c05-0f36-4478-a7e9-d44627821bdd" style="width: 50%;">
-	</br>
-	Point-to-Point S-Curve Method	
-</div>
-</br>
-
-<div align="center">
- 	<img src="https://github.com/user-attachments/assets/fe54642f-bd87-42b9-bac7-7b3bf7dd3e3b" style="width: 50%;">
- 	<img src="https://github.com/user-attachments/assets/54666eba-44ee-4a94-b5a3-c70d63658ee9" style="width: 50%;">
-	</br>
-	Point-to-Point 5th Order Interpolating Polynomial	
-</div>
-</br>
-
-
-<div align="center">
- 	<img src="https://github.com/user-attachments/assets/af8cb949-8093-4128-a8f9-72b66ab964f9" style="width: 50%;">
- 	<img src="https://github.com/user-attachments/assets/5c3a91cf-6f68-427b-be2b-eb53b72609cf" style="width: 50%;">
-	</br>
-	Point-to-Point 7th Order Interpolating Polynomial	
-</div>
-</br>
-
-
-<div align="center">
- 	<img src="https://github.com/user-attachments/assets/68d1caa8-e3cd-4975-8978-057cb443a89e" style="width: 50%;">
- 	<img src="https://github.com/user-attachments/assets/641224e3-1679-46b2-9f79-c59d6bfece0f" style="width: 50%;">
-	</br>
-	Point-to-Point 9th Order Interpolating Polynomial	
-</div>
-</br>
-
-
-<div align="center">
- 	<img src="https://github.com/user-attachments/assets/119ac36d-08ee-45b4-ab0a-10b40b777f73" style="width: 50%;">
- 	<img src="https://github.com/user-attachments/assets/7b4f744d-d373-45de-a14b-6197ef19a5b8" style="width: 50%;">
-	</br>
-	Cubic Spline
-</div>
-</br>
-
-<div align="center">
- 	<img src="https://github.com/user-attachments/assets/72c8f54a-89d5-4a74-b17a-32f19b526d09" style="width: 50%;">
- 	<img src="https://github.com/user-attachments/assets/eecc827f-8996-4ea2-af92-246f70a614fb" style="width: 50%;">
-	</br>
-	Cubic Spline with modified Adept Cycle Points (to prevent the overshooting)
-</div>
-</br>
 
 <a name="section-code_review"></a>
 ## Code Review
