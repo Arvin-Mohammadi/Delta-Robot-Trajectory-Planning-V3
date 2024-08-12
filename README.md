@@ -738,6 +738,15 @@ The polynomial solution for $a_i$:
 \end{aligned}
 ```
 
+</br>
+<div align="center">
+ 	<img src="https://github.com/user-attachments/assets/f7a3fc74-be4f-43f4-beb8-516da174b9a2" style="width: 50%;">
+	</br>
+	7th-order polynomial
+</div>
+</br>
+
+
 #### 9th-order polynomial
 
 Defining the polynomial:
@@ -773,6 +782,14 @@ The polynomial solution for $a_i$:
 	a_9 & = 803.8125\,\theta_0 -1230.1875\,\theta_1 +1230.1875\,\theta_2 -803.8125\,\theta_3 
 \end{aligned}
 ```
+
+</br>
+<div align="center">
+ 	<img src="https://github.com/user-attachments/assets/fb5da484-0f0b-4f6c-8ed8-561af719a61f" style="width: 50%;">
+	</br>
+	9th-order polynomial
+</div>
+</br>
 
 #### 11th-order polynomial
 
@@ -812,7 +829,13 @@ The polynomial solution for $a_i$:
 \end{aligned}
 ```
 
-
+</br>
+<div align="center">
+ 	<img src="https://github.com/user-attachments/assets/126baa6d-a905-417c-a8c0-76cacbbab709" style="width: 50%;">
+	</br>
+	11th-order polynomial
+</div>
+</br>
 
 
 
