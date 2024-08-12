@@ -39,7 +39,6 @@ Advantages:
 Disadvantages:
 1. Small Workspace
 2. Small Workload
-<img align="right" src="https://github.com/Arvin-Mohammadi/Delta-Robot-Trajectory-Planning-V3/assets/69509720/5924887e-6c97-4af0-b3d5-d6d9a3c5c459" width=30%>
 
 
 <ins>**Trajectory Planning**</ins> 
@@ -51,10 +50,15 @@ Take a look at the figure below. There are four main stages to any sort of robot
 4. **Control**: Giving the trajectory as a reference to the robot's controller
 
 </br>
+<div align="center">
+ 	<img src="https://github.com/user-attachments/assets/5aab2c7c-5e96-4978-9880-9c58a5b184c5" style="width: 50%;">
+	</br>
+	Simple robotics tasks are carried out as the depicted model.
+</div>
+</br>
 
 <a name="section-deltarobot_kinematics"></a>
 ## Delta Robot Kinematics
-<img align="right" src="https://github.com/Arvin-Mohammadi/Delta-Robot-Trajectory-Planning-V3/assets/69509720/a06639cb-afbb-47c5-8a0d-340a20674f84" width=30%>
 
 <ins>**What are Forward and Inverse Kinematics**</ins> 
 
@@ -75,7 +79,7 @@ This basically has the same logic as the FK and IK but this time instead of conv
 <div align="center">
  	<img src="https://github.com/Arvin-Mohammadi/Delta-Robot-Trajectory-Planning-V3/assets/69509720/b34332cf-6016-42b2-83ac-fc2824447b97" style="width: 50%;">
 	</br>
-	_Note: The solution is from the reference #1_
+	Note: The solution is from the reference #1
 </div>
 
 </br>
@@ -180,8 +184,32 @@ and also:
 If you need a plug and place code that **JUST WORKS** i suggest the following code: [LINK](https://github.com/Arvin-Mohammadi/Delta-Robot-Trajectory-Planning-V3/blob/main/References/Inverse%20Kinematics%20(Delta%20Robot).pdf) - Reference #2
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <a name="subsection-point2point_trajectory_generation"></a>
 ## Theoretical Study - Point-to-Point Trajectory Generation
+
+
+<div align="center">
+ 	<img src="https://github.com/user-attachments/assets/9ce531d2-bc5e-4fe1-b94d-7343e57593a2" style="width: 50%;">
+	</br>
+	Point-to-Point movement
+</div>
+</br>
 
 Basically point-to-point trajectory planning is like interpolation between two values (let's call them $\theta^I$ and $\theta^F$), and to us it outputs an interpolation of these two values as a function of time; then we take that function and sample it at a constant sampling frequency, take the resulting array of values and give that array to the robot's PID controller. 
 
@@ -196,7 +224,7 @@ Basically point-to-point trajectory planning is like interpolation between two v
 
 <ins>**NOTE**</ins>: Since the array does not include time information, the duration for the whole process is considered to be 1, hence it simplifies a lot of the calculations. We call this "normalized time". If you need the time information included you should refer to the main references. 
 
-### Bang-Bang | Parabolic Method
+### Parabolic Method
 
 We need to define the main phases of movement at the start of each method, so for this the important time instances are:
 
@@ -279,6 +307,7 @@ Finally the overall mathematicall function can be described as:
 ```
 
 
+</br>
 <div align="center">
  	<img src="https://github.com/user-attachments/assets/e3d2bb5a-3c3e-4f1a-b4cd-2a5ebadfcd7d" style="width: 50%;">
 	</br>
@@ -309,6 +338,44 @@ For the sake of simplicity we say that $t_0 = 0, t_1 = 1/3, t_2 = 2/3, t_3 = 1$.
   \end{cases}
 ```
 
+
+So we can calculate all of the $\theta, \dot{\theta}, \ddot{\theta}$. First let's go for the easiest one, $\ddot{\theta}$:
+
+
+```math
+\begin{aligned}
+	\ddot{\theta}(t) & = a & \quad \text{for} \quad 0 \leq t \leq T \\
+	\ddot{\theta}(t) & = 0 & \quad \text{for} \quad T \leq t \leq 2T \\
+	\ddot{\theta}(t) & = -a & \quad \text{for} \quad 2T \leq t \leq 1 \\
+\end{aligned}
+```
+
+Next up is $\dot{\theta}$: 
+
+```math
+\begin{aligned}
+	\dot{\theta}(t) & = a t & \quad \text{for} \quad 0 \leq t \leq T \\
+	\dot{\theta}(t) & = v_{\text{max}} & \quad \text{for} \quad T \leq t \leq 2T \\
+	\dot{\theta}(t) & = -a(t - 2T) + v_{\text{max}} & \quad \text{for} \quad 2T \leq t \leq 1 \\
+\end{aligned}
+```
+
+And the next is $\theta$:
+
+```math
+\begin{aligned}
+	\theta(t) & = \theta_0 + \frac{1}{2} a t^2 & \quad \text{for} \quad 0 \leq t \leq T \\
+	\theta(t) & = \theta_0 + \frac{1}{2} a T^2 + v_{\text{max}} (t - T) & \quad \text{for} \quad T \leq t \leq 2T \\
+	\theta(t) & = \theta_0 + \frac{1}{2} a T^2 + v_{\text{max}} T + v_{\text{max}} (t - 2T) - \frac{1}{2} a (t - 2T)^2 & \quad \text{for} \quad 2T \leq t \leq 1 \\
+\end{aligned}
+```
+
+where 
+- $T = \frac{1}{3}$
+- $v_{\text{max}} = \frac{\theta_f - \theta_i}{1 - T}$
+- $a = 3 v_{\text{max}}$
+
+</br>
 <div align="center">
  	<img src="https://github.com/user-attachments/assets/580f77ad-6dfa-4b17-b2b8-07fa0739bb91" style="width: 50%;">
 	</br>
@@ -336,6 +403,72 @@ The S-curve method is somewhat similar to the trapezoidal method with the differ
 \end{aligned}
 ```
 
+We'll do the same thing as the trapezoidal method and calculate the entire movement based on $\theta, \dot{\theta}, \ddot{\theta}, \dddot{\theta}$. First is $\dddot{\theta}$: 
+
+```math
+\begin{aligned}
+	\dddot{\theta}(t) & = j_{\text{max}} & \quad \text{for} \quad 0 \leq t \leq T \\
+	\dddot{\theta}(t) & = 0 & \quad \text{for} \quad T \leq t \leq 2T \\
+	\dddot{\theta}(t) & = - j_{\text{max}} & \quad \text{for} \quad 2T \leq t \leq 3T \\
+	\dddot{\theta}(t) & = 0 & \quad \text{for} \quad 3T \leq t \leq 4T \\
+	\dddot{\theta}(t) & = - j_{\text{max}} & \quad \text{for} \quad 4T \leq t \leq 5T \\
+	\dddot{\theta}(t) & = 0 & \quad \text{for} \quad 5T \leq t \leq 6T \\
+	\dddot{\theta}(t) & = j_{\text{max}} & \quad \text{for} \quad 6T \leq t \leq 7T \\
+\end{aligned}
+```
+
+Next is $\ddot{\theta}$: 
+
+```math
+\begin{aligned}
+	\ddot{\theta}(t) & = j_{\text{max}} t & \quad \text{for} \quad 0 \leq t \leq T \\
+	\ddot{\theta}(t) & = a_{\text{max}} & \quad \text{for} \quad T \leq t \leq 2T \\
+	\ddot{\theta}(t) & = a_{\text{max}} - j_{\text{max}} (t - 2T) & \quad \text{for} \quad 2T \leq t \leq 3T \\
+	\ddot{\theta}(t) & = 0 & \quad \text{for} \quad 3T \leq t \leq 4T \\
+	\ddot{\theta}(t) & = - j_{\text{max}} (t - 4T) & \quad \text{for} \quad 4T \leq t \leq 5T \\
+	\ddot{\theta}(t) & = - a_{\text{max}} & \quad \text{for} \quad 5T \leq t \leq 6T \\
+	\ddot{\theta}(t) & = - a_{\text{max}} + j_{\text{max}} (t - 6T) & \quad \text{for} \quad 6T \leq t \leq 7T \\
+\end{aligned}
+```
+
+Next is $\dot{\theta}$: 
+
+
+```math
+\begin{aligned}
+	\dot{\theta}(t) & = \frac{1}{2} j_{\text{max}} t^2 & \quad \text{Phase} 1\\
+	\dot{\theta}(t) & = \frac{1}{2} a_{\text{max}} T + a_{\text{max}} (t - T) & \quad \text{Phase} 2 \\
+	\dot{\theta}(t) & = \frac{3}{2} a_{\text{max}} T + a_{\text{max}} (t - 2T) - \frac{1}{2} j_{\text{max}} (t - 2T)^2 & \quad \text{Phase} 3\\
+	\dot{\theta}(t) & = v_{\text{max}} &  \quad \text{Phase} 4\\
+	\dot{\theta}(t) & = v_{\text{max}} - \frac{1}{2} j_{\text{max}} (t - 4T)^2 &  \quad \text{Phase} 5 \\
+	\dot{\theta}(t) & = \frac{3}{4} v_{\text{max}} - a_{\text{max}} (t - 5T) &  \quad \text{Phase} 6\\
+	\dot{\theta}(t) & = \frac{1}{4} v_{\text{max}} - a_{\text{max}} (t - 6T) + \frac{1}{2} j_{\text{max}} (t - 6T)^2 &  \quad \text{Phase} 7 \\
+\end{aligned}
+```
+
+Finally it's $\theta$: 
+
+
+```math
+\begin{aligned}
+	\theta(t) & = \theta_0 + \frac{1}{6} j_{\text{max}} t^3 & \quad \text{Phase} 1\\
+	\theta(t) & = \theta_0 + \frac{1}{12} v_{\text{max}} T + \frac{1}{2} a_{\text{max}} T(t - T) + \frac{1}{2} a_{\text{max}} (t - T)^2 &  \quad \text{Phase} 2\\
+	\theta(t) & = \theta_0 + \frac{7}{12} v_{\text{max}} T + \frac{3}{2} a_{\text{max}} T(t - 2T) + \frac{1}{2} a_{\text{max}} (t - 2T)^2 - \frac{1}{6} j_{\text{max}} (t - 2T)^3 &  \quad \text{Phase} 3\\
+	\theta(t) & = \theta_0 + \frac{3}{2} v_{\text{max}} T + v_{\text{max}} (t - 3T) &  \quad \text{Phase} 4 \\
+	\theta(t) & = \theta_0 + \frac{5}{2} v_{\text{max}} T + v_{\text{max}} (t - 4T) - \frac{1}{6} j_{\text{max}} (t - 4T)^3 & \quad \text{Phase} 5\\
+	\theta(t) & = \theta_0 + \frac{41}{12} v_{\text{max}} T + \frac{3}{4} v_{\text{max}} (t - 5T) - \frac{1}{2} a_{\text{max}} (t - 5T)^2 &  \quad \text{Phase} 6\\
+	\theta(t) & = \theta_0 + \frac{47}{12} v_{\text{max}} T + \frac{1}{4} v_{\text{max}} (t - 6T) - \frac{1}{2} a_{\text{max}} (t - 6T)^2 + \frac{1}{6} j_{\text{max}} (t - 6T)^3 & \quad \text{Phase} 7 \\
+\end{aligned}
+```
+
+Where:
+- $T = \frac{1}{7}$
+- $v_{\text{max}} = \frac{\theta_f - \theta_i}{4T}$
+- $a_{\text{max}} = \frac{v_{\text{max}}}{2T}$
+- $j_{\text{max}} = \frac{a_{\text{max}}}{T}$
+
+
+</br>
 <div align="center">
  	<img src="https://github.com/user-attachments/assets/84d06621-bce1-4361-840f-71a673953985" style="width: 50%;">
 	</br>
@@ -494,7 +627,7 @@ and we have for $\theta(t)$:
 
 So we took a look at six different methods:
 
-1. Bang-Bang | Parabolic Trajectory
+1. Parabolic Trajectory
 2. Trapezoidal Velocity Trajectory
 3. S-Curve Velocity Trajectory
 4. 5th Order Interpolating Polynomial
@@ -505,20 +638,62 @@ All of them are usable, but from my experience for point-to-point movement the p
 
 So yeah from my experience the best ones you can implement for your robot ... whatever it is ... is probably the 7th or 9th order polynomial. It's easy to calculate, easy to implement, reliable, and also the PID controller won't have a problem following it. 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <a name="section-multipoint_trajectory_generation"></a>
 ## Theoretical Study - Multi-Point Trajectory Generation
+
+</br>
+<div align="center">
+ 	<img src="https://github.com/user-attachments/assets/deeacfa3-7191-4cb6-983b-3795b64b6b93" style="width: 50%;">
+	</br>
+	Multi-point movement
+</div>
+</br>
 
 Multi-point trajectory generation generates a trajectory between multiple target points given as a path, along with its time information. For example if the robot needs to be moved from point A, passes point B and then stop at point C (same logic with more points, basically we have a path which contains more than the starting and final points).
 
 So like the point-to-point methods the **inputs** are the path points which want to hit, and then the **output** is the array of values (sampled from the position as a function of time) that we'll give to the PID Controller as a reference. 
 
-### Bad Choices for Multi-Point Trajectory
+### Point-to-Point Methods 
 
-Probably the worst methods you can choose for a multiple-point trajectory planning are either using a high-order polynomial interpolation or one of the point-to-point methods. Let's elaborate further. 
+**How can we use a point-to-point method for multiple points?** It’s straightforward. Let's revisit the previous example, where we want to create a trajectory for the values [0, 0.2, 1]. First, we can generate a trajectory between [0, 0.2], and then create another trajectory between [0.2, 1]. This approach works for any number of points and can be applied using any of the six point-to-point methods mentioned. **However, this method might not be suitable for certain tasks.** For instance, in applications where smooth, continuous motion is required, we may not want to stop at each path point. In such cases, using these point-to-point methods may not be the best idea. Here's an example of where this method might be applied:
 
-#### High-Order Polynomial Interpolation
+</br>
+<div align="center">
+ 	<img src="https://github.com/user-attachments/assets/02cdf85e-d61f-4f3b-afe9-3974e3a63551" style="width: 50%;">
+	</br>
+	In this application of petri dish sampling in microorganism culturing (which my team implemented), the robot is required to stop at each path point because a liquid drop needs to be placed at each location.
+</div>
+</br>
 
-Assume you have a set of values such as [0, 0.2, 1] and you wanted to create a trajectory for these values with a polynomial:
+And the overall idea is to interpolate between each two points in the path, with a point-to-point method. If we interpolate between four values of [0, 1, -1, 0], the following diagrams are what we're getting:
+
+|         <img src="https://github.com/user-attachments/assets/137ab35f-2ea1-4918-b6b8-3b3a9fb56e39" style="width: 85%;">         |         <img src="https://github.com/user-attachments/assets/1efdd144-be52-4558-b8a7-aa63724a99bf" style="width: 85%;">         |         <img src="https://github.com/user-attachments/assets/0d4f480d-b3c2-4870-a477-c1bda64c38a9" style="width: 85%;">         |
+|:--------------------:|:--------------------:|:--------------------:|
+|   Parabolic Method   |  Trapezoidal Method  |    S-curve Method    |
+|         <img src="https://github.com/user-attachments/assets/9194bb02-9a99-4314-9f1c-f3428874364b" style="width: 85%;">         |         <img src="https://github.com/user-attachments/assets/3aedda25-22ec-43df-9f43-ce6109bb2838" style="width: 85%;">         |         <img src="https://github.com/user-attachments/assets/0bf7c180-96a3-4058-9c9f-c3fc0fbc41a7" style="width: 85%;">         |
+| 5th order polynomial | 7th order polynomial | 9th order polynomial |
+
+
+### High-Order Polynomial Interpolation
+
+Say we are interpolating a set of values such as [0, 1, -1, 0] and we wanted to create a trajectory for these values with a single polynomial: 
 
 ```math
 	s(t) = a_n.t^n + \dots + a_1.t + a_0
@@ -526,33 +701,158 @@ Assume you have a set of values such as [0, 0.2, 1] and you wanted to create a t
 
 So given this information we list the conditions for creating the polynomial function: 
 
-1. The three positions of [0, 0.2, 1]: Conditions x3
+1. The three positions of [0, 1, -1, 0]: Conditions x4
 2. Initial and final velocity values [0, 0]: Conditions x2
 3. Initial and final acceleration values [0, 0]: Conditions x2
 4. Initial and final jerk values [0, 0]: Conditions x2
+5. Initial and final snap values [0, 0]: Conditions x2
 
-So that gives us 9 conditions in total. For 9 conditions we need an 8th-order polynomial to be able to create a linear system of equations for the coefficients. Meaning the polynomial would be: 
+Based on if we want to control the value of jerk and snap, this'll give us three choices: 
+1. 7th order polynomial (doesn't control jerk or snap)
+2. 9th order polynomial (controls jerk but doesn't control snap)
+3. 11th order polynomial (controls both jerk and snap)
+
+#### 7th-order polynomial
+
+Defining the polynomial:
 
 ```math
-	s(t) = a_8.t^8 + \dots + a_1.t + a_0
+	\theta(t) = a_7.t^7 + \dots + a_1.t + a_0
 ```
 
-And the equations will be something like: 
 
 ```math
 \begin{aligned}
-	s(0) 		& = 0, \quad s(0.2) 		= 0.2, \quad s(1) = 1 \\
-	\dot{s}(0) 	& = 0, \quad \dot{s}(1) 	= 0 \\
-	\ddot{s}(0) 	& = 0, \quad \ddot{s}(1) 	= 0 \\
-	\dddot{s}(0) 	& = 0. \quad \dddot{s}(1) 	= 0 
+	\theta(0) 		& = \theta_0, 	\quad \theta(1/3) 		& = \theta_1 \\
+	\theta(2/3) 		& = \theta_2, 	\quad \theta(1) 		& = \theta_3 \\
+	\dot{\theta}(0) 	& = 0, 		\quad \dot{\theta}(1) 		& = 0 \\
+	\ddot{\theta}(0) 	& = 0, 		\quad \ddot{\theta}(1) 		& = 0 \\
 \end{aligned}
 ```
 
-Solving this linear system of equations will result in the values of $a_8, \dots, a_0$. And it works. But why is it a bad choice? Simply because it can't be generalized. Meaning that if we have 4 points of interest that we want to cross (so instead of [0, 0.2, 1] we would have [0, -0.4, 0.2, 1]) then the calculations we just did will completely fall apart. So there's that. It works ... but isn't practical. Don't use this method.
+The polynomial solution for $a_i$: 
 
-#### Point-to-Point Methods 
+```math
+\begin{aligned}
+	a_0 & = \theta_0 \\
+	a_1 & = 0 \\
+	a_2 & = 0 \\
+	a_3 & = 182.25\,\theta_1 -134.875\,\theta_0 -91.125\,\theta_2 +43.75\,\theta_3 \\
+	a_4 & = 548.25\,\theta_0 -820.125\,\theta_1 +546.75\,\theta_2 -274.875\,\theta_3 \\
+	a_5 & = 1366.875\,\theta_1 -856.5\,\theta_0 -1093.5\,\theta_2 +583.125\,\theta_3 \\
+	a_6 & = 600.75\,\theta_0 -1002.375\,\theta_1 +911.25\,\theta_2 -509.625\,\theta_3 \\
+	a_7 & = 273.375\,\theta_1 -158.625\,\theta_0 -273.375\,\theta_2 +158.625\,\theta_3 
+\end{aligned}
+```
 
-Firstly how can we use a point-to-point method for multiple number of points? It's easy. Let's go with the previous example and say that we want to create a trajectory for the three values of [0, 0.2, 1]. First, We can simply create a trajectory between [0, 0.2] and then create another trajectory between [0.2, 1]. This can be done with any number of points and we can use all of the 6 mentioned point-to-point methods. Why is it a bad idea? Because the velocity and acceleration will be zero at all of the points. So assume we have a number of points that we want our robots to cross over such as $P_0, P_1, P_2, P_3, \dots, P_n$. Given that we use the method I just explained, the robot will stop at all of the points of $P_0$ to $P_n$ and start moving again ... sort of like the robot has got the hiccups, which is awful for the motors. Don't use this methods either. 
+</br>
+<div align="center">
+ 	<img src="https://github.com/user-attachments/assets/f7a3fc74-be4f-43f4-beb8-516da174b9a2" style="width: 50%;">
+	</br>
+	7th-order polynomial
+</div>
+</br>
+
+
+#### 9th-order polynomial
+
+Defining the polynomial:
+
+```math
+	s(t) = a_9.t^9 + \dots + a_1.t + a_0
+```
+
+
+```math
+\begin{aligned}
+	\theta(0) 		& = \theta_0, 	\quad \theta(1/3) 		& = \theta_1 \\
+	\theta(2/3) 		& = \theta_2, 	\quad \theta(1) 		& = \theta_3 \\
+	\dot{\theta}(0) 	& = 0, 		\quad \dot{\theta}(1) 		& = 0 \\
+	\ddot{\theta}(0) 	& = 0, 		\quad \ddot{\theta}(1) 		& = 0 \\
+	\dddot{\theta}(0) 	& = 0. 		\quad \dddot{\theta}(1) 	& = 0 
+\end{aligned}
+```
+
+The polynomial solution for $a_i$: 
+
+```math
+\begin{aligned}
+	a_0 & = \theta_0 \\ 
+	a_1 & = 0 \\ 
+	a_2 & = 0 \\ 
+	a_3 & = 0 \\ 
+	a_4 & = 820.125\,\theta_1 -641.9375\,\theta_0 -410.0625\,\theta_2 +231.875\,\theta_3 \\
+	a_5 & = 3315.5625\,\theta_0 -4510.6875\,\theta_1 +2870.4375\,\theta_2 -1675.3125\,\theta_3 \\ 
+	a_6 & = 9841.5\,\theta_1 -6926.875\,\theta_0 -7381.125\,\theta_2 +4466.5\,\theta_3 \\
+	a_7 & = 7270.625\,\theta_0 -10661.625\,\theta_1 +9021.375\,\theta_2 -5630.375\,\theta_3 \\
+	a_8 & = 5740.875\,\theta_1 -3822.1875\,\theta_0 -5330.8125\,\theta_2 +3412.125\,\theta_3 \\
+	a_9 & = 803.8125\,\theta_0 -1230.1875\,\theta_1 +1230.1875\,\theta_2 -803.8125\,\theta_3 
+\end{aligned}
+```
+
+</br>
+<div align="center">
+ 	<img src="https://github.com/user-attachments/assets/fb5da484-0f0b-4f6c-8ed8-561af719a61f" style="width: 50%;">
+	</br>
+	9th-order polynomial
+</div>
+</br>
+
+#### 11th-order polynomial
+
+Defining the polynomial:
+
+```math
+	s(t) = a_{11}.t^{11} + \dots + a_1.t + a_0
+```
+
+```math
+\begin{aligned}
+	\theta(0) 		& = \theta_0, 	\quad \theta(1/3) 		& = \theta_1 \\
+	\theta(2/3) 		& = \theta_2, 	\quad \theta(1) 		& = \theta_3 \\
+	\dot{\theta}(0) 	& = 0, 		\quad \dot{\theta}(1) 		& = 0 \\
+	\ddot{\theta}(0) 	& = 0, 		\quad \ddot{\theta}(1) 		& = 0 \\
+	\dddot{\theta}(0) 	& = 0. 		\quad \dddot{\theta}(1) 	& = 0 \\
+	\ddot{\ddot{\theta}}(0) & = 0. 		\quad \ddot{\ddot{\theta}}(1) 	& = 0 \\
+\end{aligned}
+```
+
+The polynomial solution for $a_i$: 
+
+```math
+\begin{aligned}
+	a_0 & = \theta_0 \\ 
+	a_1 & = 0 \\ 
+	a_2 & = 0 \\ 
+	a_3 & = 0 \\ 
+	a_4 & = 0 \\
+	a_5 & = 3690.5625\,\theta_1 -3014.71875\,\theta_0 -1845.28125\,\theta_2 +1169.4375\,\theta_3 \\
+	a_6 & = 18795.75\,\theta_0 -23988.65625\,\theta_1 +14762.25\,\theta_2 -9569.34375\,\theta_3 \\
+	a_7 & = 64584.84375\,\theta_1 -49087.96875\,\theta_0 -46132.03125\,\theta_2 +30635.15625\,\theta_3 \\
+	a_8 & = 68523.75\,\theta_0 -92264.0625\,\theta_1 +73811.25\,\theta_2 -50070.9375\,\theta_3 \\
+	a_9 & = 73811.25\,\theta_1 -53835.15625\,\theta_0 -64584.84375\,\theta_2 +44608.75\,\theta_3 \\
+	a_{10} & = 22549.5\,\theta_0 -31369.78125\,\theta_1 +29524.5\,\theta_2 -20704.21875\,\theta_3 \\
+	a_{11} & = 5535.84375\,\theta_1 -3932.15625\,\theta_0 -5535.84375\,\theta_2 +3932.15625\,\theta_3 
+\end{aligned}
+```
+
+</br>
+<div align="center">
+ 	<img src="https://github.com/user-attachments/assets/126baa6d-a905-417c-a8c0-76cacbbab709" style="width: 50%;">
+	</br>
+	11th-order polynomial
+</div>
+</br>
+
+
+
+
+
+
+
+
+
+
 
 ### Cubic Spline 
 
@@ -656,21 +956,11 @@ $$
 
 For better understanding please refer to [3] in the reference section. 
 
+</br>
 <div align="center">
- 	<img src="https://github.com/user-attachments/assets/b5378d53-0f15-46ef-8fdf-d1e91c8b661c" style="width: 50%;">
+ 	<img src="https://github.com/user-attachments/assets/0a68a360-92fd-484d-ab30-4535dd30bc71" style="width: 50%;">
 	</br>
 	Cubic Spline Method
-</div>
-</br>
-
-### B-Spline
-
-I just used the sci-py previously implemented function lol. Idk how it works 
-
-<div align="center">
- 	<img src="https://github.com/user-attachments/assets/0638be6d-a0ed-40e2-bcf9-320d58f132b3" style="width: 50%;">
-	</br>
-	B-Spline Method
 </div>
 </br>
 
@@ -717,11 +1007,12 @@ Well what is adept cycle? it's basically just four points in 3D space that the r
 
 
 <div align="center">
- 	<img src="https://github.com/user-attachments/assets/c8e02c75-c2b1-4d65-96eb-03779405d418" style="width: 50%;">
+ 	<img src="https://github.com/user-attachments/assets/78efffa4-90ac-4bd5-b245-08d04c101c30" style="width: 50%;">
 	</br>
 	Adept Cycle  
 </div>
 </br>
+
 
 Amazing. Now that we know what adept cycle looks like, I should say that there a number of ways to interpolate those 4 points (as we've been discussing). So here are the methods used and their respective plots 
 
