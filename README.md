@@ -700,6 +700,21 @@ And the overall idea is to interpolate between each two points in the path, with
 	right side: 
 </div>
 
+</br>
+<div align="center" style="display: flex; justify-content: space-between;">
+    <img src="https://github.com/user-attachments/assets/02cdf85e-d61f-4f3b-afe9-3974e3a63551" style="width: 30%; margin-right: 1%;">
+    <img src="https://github.com/user-attachments/assets/02cdf85e-d61f-4f3b-afe9-3974e3a63551" style="width: 30%; margin-right: 1%;">
+    <img src="https://github.com/user-attachments/assets/02cdf85e-d61f-4f3b-afe9-3974e3a63551" style="width: 30%;">
+</div>
+</br>
+<div style="display: flex; justify-content: space-between;">
+    <div align="left">left side:</div>
+    <div align="center" style="flex-grow: 1; text-align: center;">center:</div>
+    <div align="right">right side:</div>
+</div>
+</br>
+
+
 ### High-Order Polynomial Interpolation
 
 Say we are interpolating a set of values such as [0, 1, -1, 0] and we wanted to create a trajectory for these values with a single polynomial: 
