@@ -258,7 +258,6 @@ The same code as in the reference is implemented in the file ```DeltaKinematics.
 
 
 
-
 <a name="subsection-point2point_trajectory_generation"></a>
 ## Theoretical Study - Point-to-Point Trajectory Generation
 
@@ -661,52 +660,21 @@ So yeah from my experience the best ones you can implement for your robot ... wh
 
 |         <img src="https://github.com/user-attachments/assets/e3d2bb5a-3c3e-4f1a-b4cd-2a5ebadfcd7d" style="width: 85%;">         |         <img src="https://github.com/user-attachments/assets/580f77ad-6dfa-4b17-b2b8-07fa0739bb91" style="width: 85%;">         |         <img src="https://github.com/user-attachments/assets/84d06621-bce1-4361-840f-71a673953985" style="width: 85%;">         |
 |:--------------------:|:--------------------:|:--------------------:|
-|   Bang-Bang Method | Parabolic Method   |  Trapezoidal Method  |    S-Curve Method    |
+|   Parabolic Method |   Trapezoidal Method  |    S-Curve Method    |
 |         <img src="https://github.com/user-attachments/assets/34f6998f-b737-44d6-90f1-c018b7d0799b" style="width: 85%;">         |         <img src="https://github.com/user-attachments/assets/b79e04c0-35db-4c2c-8780-44855ce16d02" style="width: 85%;">         |         <img src="https://github.com/user-attachments/assets/b86a731d-fb5a-453a-b687-7651932c5570" style="width: 85%;">         |
 | 5th-order polynomial | 7th-order polynomial | 9th-order polynomial |
 
-</br>
-<div align="center">
- 	<img src="https://github.com/user-attachments/assets/e3d2bb5a-3c3e-4f1a-b4cd-2a5ebadfcd7d" style="width: 50%;">
-	</br>
-	Bang-Bang Method | Parabolic Method
-</div>
-</br>
-</br>
-<div align="center">
- 	<img src="https://github.com/user-attachments/assets/580f77ad-6dfa-4b17-b2b8-07fa0739bb91" style="width: 50%;">
-	</br>
-	Trapezoidal Method
-</div>
-</br>
 
-</br>
-<div align="center">
- 	<img src="https://github.com/user-attachments/assets/84d06621-bce1-4361-840f-71a673953985" style="width: 50%;">
-	</br>
-	S-Curve Method
-</div>
-</br>
-<div align="center">
- 	<img src="https://github.com/user-attachments/assets/34f6998f-b737-44d6-90f1-c018b7d0799b" style="width: 50%;">
-	</br>
-	5th-order polynomial
-</div>
-</br>
 
-<div align="center">
- 	<img src="https://github.com/user-attachments/assets/b79e04c0-35db-4c2c-8780-44855ce16d02" style="width: 50%;">
-	</br>
-	7th-order polynomial
-</div>
-</br>
 
-<div align="center">
- 	<img src="https://github.com/user-attachments/assets/b86a731d-fb5a-453a-b687-7651932c5570" style="width: 50%;">
-	</br>
-	9th-order polynomial
-</div>
-</br>
+
+
+
+
+
+
+
+
 
 
 
