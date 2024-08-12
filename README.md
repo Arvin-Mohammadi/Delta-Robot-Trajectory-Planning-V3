@@ -687,23 +687,9 @@ And the overall idea is to interpolate between each two points in the path, with
 |         <img src="https://github.com/user-attachments/assets/137ab35f-2ea1-4918-b6b8-3b3a9fb56e39" style="width: 85%;">         |         <img src="https://github.com/user-attachments/assets/1efdd144-be52-4558-b8a7-aa63724a99bf" style="width: 85%;">         |         <img src="https://github.com/user-attachments/assets/0d4f480d-b3c2-4870-a477-c1bda64c38a9" style="width: 85%;">         |
 |:--------------------:|:--------------------:|:--------------------:|
 |   Parabolic Method   |  Trapezoidal Method  |    S-curve Method    |
-|         img4         |         img5         |         img6         |
+|         <img src="https://github.com/user-attachments/assets/9194bb02-9a99-4314-9f1c-f3428874364b" style="width: 85%;">         |         <img src="https://github.com/user-attachments/assets/3aedda25-22ec-43df-9f43-ce6109bb2838" style="width: 85%;">         |         <img src="https://github.com/user-attachments/assets/0bf7c180-96a3-4058-9c9f-c3fc0fbc41a7" style="width: 85%;">         |
 | 5th order polynomial | 7th order polynomial | 9th order polynomial |
 
-
-</br>
-<div align="center" style="display: flex; justify-content: space-between;">
-    <img src="https://github.com/user-attachments/assets/137ab35f-2ea1-4918-b6b8-3b3a9fb56e39" style="width: 30%; margin-right: 1%;">
-    <img src="https://github.com/user-attachments/assets/1efdd144-be52-4558-b8a7-aa63724a99bf" style="width: 30%; margin-right: 1%;">
-    <img src="https://github.com/user-attachments/assets/0d4f480d-b3c2-4870-a477-c1bda64c38a9" style="width: 30%;">
-</div>
-</br>
-<div style="display: flex; justify-content: space-between;">
-    <div align="left">parabolic</div>
-    <div align="center" style="flex-grow: 1; text-align: center;">trapezoidal</div>
-    <div align="right">s-curve</div>
-</div>
-</br>
 
 ### High-Order Polynomial Interpolation
 
