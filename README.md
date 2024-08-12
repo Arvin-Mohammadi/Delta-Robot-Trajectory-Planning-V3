@@ -17,7 +17,7 @@ Overview:
 ## Introduction
 
 <ins>**What is a Delta Robot and Why is it Important**</ins> 
-
+<details>
 People who search for this repository already know what the delta robot is and know why it's important. Delta robot parallel kinematic structure and high-speed capabilities make them ideal for precise and speedy tasks, particularly in pick-and-place operations. This repository studies trajectory planning methods for Delta robots, focusing on smooth motion for the end-effector while minimizing deviations.
 
 **The applications of Delta robots** are virtually endless but mainly they come down to a certain pattern of pick-and-place or 3D printing or tasks that require somewhat similar movements to these two. Here's three applications that I worked on (PLEASE CITE MY 4 PAPERS):
@@ -26,9 +26,11 @@ People who search for this repository already know what the delta robot is and k
 - Automated Pipetting Operation: [LINK](https://ieeexplore.ieee.org/abstract/document/10412424)
 - Food Packaging - Not Published Yet
 - Automated Pipetting Operation: Not Published Yet
+</details>
+
 
 <ins>**Pros and Cons of Delta Robot**</ins>
-
+<details>
 Delta robot has basically two advantages at the cost of two things (I'm talking about the important ones). 
 
 Advantages: 
@@ -38,7 +40,7 @@ Advantages:
 Disadvantages:
 1. Small Workspace
 2. Small Workload
-
+</details>
 
 <ins>**Trajectory Planning**</ins> 
 
