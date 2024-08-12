@@ -684,36 +684,20 @@ So like the point-to-point methods the **inputs** are the path points which want
 
 And the overall idea is to interpolate between each two points in the path, with a point-to-point method. If we interpolate between four values of [0, 1, -1, 0], the following diagrams are what we're getting:
 
-</br>
-<div align="center">
-	<img src="https://github.com/user-attachments/assets/02cdf85e-d61f-4f3b-afe9-3974e3a63551" style="width: 30%; display: inline-block; margin-right: 1%;">
-	<img src="https://github.com/user-attachments/assets/02cdf85e-d61f-4f3b-afe9-3974e3a63551" style="width: 30%; display: inline-block; margin-right: 1%;">
-	<img src="https://github.com/user-attachments/assets/02cdf85e-d61f-4f3b-afe9-3974e3a63551" style="width: 30%; display: inline-block;">
-</div>
-<div align="left">
-	left side: 
-</div>
-<div align="center">
-	left side: 
-</div>
-<div align="right">
-	right side: 
-</div>
 
 </br>
 <div align="center" style="display: flex; justify-content: space-between;">
-    <img src="https://github.com/user-attachments/assets/02cdf85e-d61f-4f3b-afe9-3974e3a63551" style="width: 30%; margin-right: 1%;">
-    <img src="https://github.com/user-attachments/assets/02cdf85e-d61f-4f3b-afe9-3974e3a63551" style="width: 30%; margin-right: 1%;">
-    <img src="https://github.com/user-attachments/assets/02cdf85e-d61f-4f3b-afe9-3974e3a63551" style="width: 30%;">
+    <img src="https://github.com/user-attachments/assets/137ab35f-2ea1-4918-b6b8-3b3a9fb56e39" style="width: 30%; margin-right: 1%;">
+    <img src="https://github.com/user-attachments/assets/1efdd144-be52-4558-b8a7-aa63724a99bf" style="width: 30%; margin-right: 1%;">
+    <img src="https://github.com/user-attachments/assets/0d4f480d-b3c2-4870-a477-c1bda64c38a9" style="width: 30%;">
 </div>
 </br>
 <div style="display: flex; justify-content: space-between;">
-    <div align="left">left side:</div>
-    <div align="center" style="flex-grow: 1; text-align: center;">center:</div>
-    <div align="right">right side:</div>
+    <div align="left">parabolic</div>
+    <div align="center" style="flex-grow: 1; text-align: center;">trapezoidal</div>
+    <div align="right">s-curve</div>
 </div>
 </br>
-
 
 ### High-Order Polynomial Interpolation
 
