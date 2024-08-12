@@ -1039,11 +1039,32 @@ Well what is adept cycle? it's basically just four points in 3D space that the r
 
 
 <a name="section-code_review"></a>
-## Code Review
+# Code Review
 
 In this section I'll explain each of the code files and how to use them. Firstly there is a ```SimpleMath.py``` file which you don't have to worry about too much since it only introduces functions of ```sind```, ```cosd```, and ```tand``` which are based on their corresponding numpy functions with the difference of getting inputs in degrees rather than radians. 
 
-### PathPlannerPTP.py
+
+## DeltaKinematics.py
+
+This file calculates the delta robot inverse and forward kinematics 
+
+```python
+UPPER_LINK 	= 0.2
+LOWER_LINK 	= 0.46
+BASE_RADIUS 	= 0.1
+EE_RADIUS 	= 0.074
+
+P1 = [0, -0.15, -0.42]
+
+delta_robot = DeltaKinematics(UPPER_LINK, LOWER_LINK, BASE_RADIUS, EE_RADIUS)
+inverse_kinematics = delta_robot.ik(P1)
+forward_kinematics = delta_robot.fk(inverse_kinematics)
+
+print(ik)
+print(fk)
+```
+	
+## PathPlannerPTP.py
 
 This file introduces a point-to-point path planner class and for initiating the class you can write:
 
@@ -1055,7 +1076,7 @@ path_planner = PathPlannerPTP(THETA_I, THETA_F)
 
 As discussed in the previous sections there are 6 point to point methods implemented: 
 
-1. Parabolic | Bang-Bang Method
+1. Parabolic
 2. Trapezoidal Velocity Method
 3. S-Curve Velocity Method
 4. 5th-Order Interpolating Polynomial
@@ -1108,47 +1129,54 @@ path_planner = PathPlannerMLTP(PATH)
 
 Here are the multi-point trajectory planning methods implemented: 
 
-1. Cubic Spline
-2. B-Spline
+1. Point to Point Methods - Used for multiple points
+2. Higher-order Polynomial Multi-Point Interpolation
+3. Cubic Spline
 
 ```python
+# Set the path 
+PATH = [0, 1, -1, 0]
+
+# initialize the path planner class 
+path_planner = PathPlannerMLTP(PATH)
+
+# point to point methods for multiple points
+results = path_planner.mltp_ptpmethods("ptp_polynomial5th")
+path_planner.plot(results, "mltp - ptp polynomial5th")
+# point to point methods for multiple points
+results = path_planner.mltp_ptpmethods("ptp_polynomial7th")
+path_planner.plot(results, "mltp - ptp polynomial7th")
+# point to point methods for multiple points
+results = path_planner.mltp_ptpmethods("ptp_polynomial9th")
+path_planner.plot(results, "mltp - ptp polynomial9th")
+# point to point methods for multiple points
+results = path_planner.mltp_ptpmethods("ptp_bangbang")
+path_planner.plot(results, "mltp - ptp bangbang")
+# point to point methods for multiple points
+results = path_planner.mltp_ptpmethods("ptp_trapezoidal")
+path_planner.plot(results, "mltp - ptp trapezoidal")
+# point to point methods for multiple points
+results = path_planner.mltp_ptpmethods("ptp_scurve")
+path_planner.plot(results, "mltp - ptp scurve")
+
+# calculate the trajectory based on cubic spline 
+results = path_planner.mltp_polynomial7th_4point()
+path_planner.plot(results, "7th order polynomial")
+# calculate the trajectory based on cubic spline 
+results = path_planner.mltp_polynomial9th_4point()
+path_planner.plot(results, "9th order polynomial")
+# calculate the trajectory based on cubic spline 
+results = path_planner.mltp_polynomial11th_4point()
+path_planner.plot(results, "11th order polynomial")
+
 # calculate the trajectory based on cubic spline 
 results = path_planner.mltp_cubicspline()
 path_planner.plot(results, "cubic spline")
-
-# calculate the trajectory based on B spline 
-results = path_planner.mltp_bspline()
-path_planner.plot(results, "B spline")
 ```
 
-### PathPlannerAdeptCycle.py
+### DeltaPathPlanner.py
 
-Here's an example of the adept cycle usage. figure it out yourself 
-
-```python
-# Set the path [[x1, y1, z1], [x2, y2, z2], [x3, y3, z3], [x4, y4, z4]]
-PATH = [[0, 0, 0], [0.15, 0.15, 0.5], [0.85, 0.85, 0.5], [1, 1, 0]]
-
-# Path planner class init
-path_planner = PathPlanner_AdeptCycle(PATH)
-
-# getting the results for the cubic spline method
-(xyz_array, xyz_results) = path_planner.cubic_spline()
-
-# path planner plot 3D 
-path_planner.plot3d(xyz_array, 'Cubic Spline')
-path_planner.plot(xyz_results, 'Cubic Spline')
-```
-
-The methods used for trajectory generation are ```cubic_spline()``` and ```point_to_point(interpolation_method)``` where the interpolation method can be the following values:
-
-* ```interpolation_method = 'ptp_polynomial5th'```
-* ```interpolation_method = 'ptp_polynomial7th'```
-* ```interpolation_method = 'ptp_polynomial9th'```
-* ```interpolation_method = 'ptp_bangbang'```
-* ```interpolation_method = 'ptp_trapezoidal'```
-* ```interpolation_method = 'ptp_scurve'```
-
+-
 
 <a name="section-references"></a>
 ## References
