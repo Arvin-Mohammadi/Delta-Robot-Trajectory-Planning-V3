@@ -285,7 +285,7 @@ Basically point-to-point trajectory planning is like interpolation between two v
 > Since the array does not include time information, the duration for the whole process is considered to be 1, hence it simplifies a lot of the calculations. We call this "normalized time". If you need the time information included you should refer to the main references. 
 
 ### Parabolic Method
-
+<details><p>
 We need to define the main phases of movement at the start of each method, so for this the important time instances are:
 
 ```math
@@ -365,7 +365,7 @@ Finally the overall mathematicall function can be described as:
 	\theta_b(t) & = \frac{\theta^I+\theta^F}{2} + 2(\theta^F - \theta^I)(t - 0.5) + 2(\theta^I - \theta^F)(t - 0.5)^2 &‌ \quad\text{for}\quad 0.5 \leq t \leq 1
 \end{aligned}
 ```
-
+</p></details>
 
 ### Trapezoidal Method
 
