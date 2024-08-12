@@ -684,6 +684,25 @@ So like the point-to-point methods the **inputs** are the path points which want
 
 And the overall idea is to interpolate between each two points in the path, with a point-to-point method. If we interpolate between four values of [0, 1, -1, 0], the following diagrams are what we're getting:
 
+</br>
+<div align="center" style="display: flex; justify-content: space-between;">
+    <div style="width: 30%; text-align: center;">
+        <img src="https://github.com/user-attachments/assets/02cdf85e-d61f-4f3b-afe9-3974e3a63551" style="width: 100%;">
+        <p>Caption for Image 1</p>
+    </div>
+    <div style="width: 30%; text-align: center;">
+        <img src="https://github.com/user-attachments/assets/02cdf85e-d61f-4f3b-afe9-3974e3a63551" style="width: 100%;">
+        <p>Caption for Image 2</p>
+    </div>
+    <div style="width: 30%; text-align: center;">
+        <img src="https://github.com/user-attachments/assets/02cdf85e-d61f-4f3b-afe9-3974e3a63551" style="width: 100%;">
+        <p>Caption for Image 3</p>
+    </div>
+</div>
+</br>
+
+
+
 ### High-Order Polynomial Interpolation
 
 Say we are interpolating a set of values such as [0, 1, -1, 0] and we wanted to create a trajectory for these values with a single polynomial: 
