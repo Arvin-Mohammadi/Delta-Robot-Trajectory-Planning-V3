@@ -868,6 +868,7 @@ The polynomial solution for $a_i$:
 <p align="center">
 	<ins><strong>HIGHER ORDER POLYNOMIAL METHODS USED FOR MULTIPLE POINTS INTERPOLATION</strong></ins>
 </p>
+
 |         <img src="https://github.com/user-attachments/assets/f7a3fc74-be4f-43f4-beb8-516da174b9a2" style="width: 85%;">         |         <img src="https://github.com/user-attachments/assets/fb5da484-0f0b-4f6c-8ed8-561af719a61f" style="width: 85%;">         |         <img src="https://github.com/user-attachments/assets/126baa6d-a905-417c-a8c0-76cacbbab709" style="width: 85%;">         |
 |:--------------------:|:--------------------:|:--------------------:|
 |   7th-order polynomial   |  9th-order polynomial  |   11th-order polynomial    |
