@@ -730,11 +730,11 @@ The polynomial solution for $a_i$:
 	a_0 & = \theta_0 \\
 	a_1 & = 0 \\
 	a_2 & = 0 \\
-	a_3 & = 0 \\
-	a_4 & = 364.5\,\theta_1 -328.4375\,\theta_0 -45.5625\,\theta_2 +9.5\,\theta_3 \\
-	a_5 & = 1099.1875\,\theta_0 -1275.75\,\theta_1 +227.8125\,\theta_2 -51.25\,\theta_3 \\
-	a_6 & = 1458.0\,\theta_1 -1220.0625\,\theta_0 -318.9375\,\theta_2 +81.0\,\theta_3 \\
-	a_7 & = 448.3125\,\theta_0 -546.75\,\theta_1 +136.6875\,\theta_2 -38.25\,\theta_3 
+	a_3 & = 182.25\,\theta_1 -134.875\,\theta_0 -91.125\,\theta_2 +43.75\,\theta_3 \\
+	a_4 & = 548.25\,\theta_0 -820.125\,\theta_1 +546.75\,\theta_2 -274.875\,\theta_3 \\
+	a_5 & = 1366.875\,\theta_1 -856.5\,\theta_0 -1093.5\,\theta_2 +583.125\,\theta_3 \\
+	a_6 & = 600.75\,\theta_0 -1002.375\,\theta_1 +911.25\,\theta_2 -509.625\,\theta_3 \\
+	a_7 & = 273.375\,\theta_1 -158.625\,\theta_0 -273.375\,\theta_2 +158.625\,\theta_3 
 \end{aligned}
 ```
 
@@ -761,10 +761,18 @@ The polynomial solution for $a_i$:
 
 ```math
 \begin{aligned}
-	a_0 & = 
+	a_0 & = \theta_0 \\ 
+	a_1 & = 0 \\ 
+	a_2 & = 0 \\ 
+	a_3 & = 0 \\ 
+	a_4 & = 820.125\,\theta_1 -641.9375\,\theta_0 -410.0625\,\theta_2 +231.875\,\theta_3 \\
+	a_5 & = 3315.5625\,\theta_0 -4510.6875\,\theta_1 +2870.4375\,\theta_2 -1675.3125\,\theta_3 \\ 
+	a_6 & = 9841.5\,\theta_1 -6926.875\,\theta_0 -7381.125\,\theta_2 +4466.5\,\theta_3 \\
+	a_7 & = 7270.625\,\theta_0 -10661.625\,\theta_1 +9021.375\,\theta_2 -5630.375\,\theta_3 \\
+	a_8 & = 5740.875\,\theta_1 -3822.1875\,\theta_0 -5330.8125\,\theta_2 +3412.125\,\theta_3 \\
+	a_9 & = 803.8125\,\theta_0 -1230.1875\,\theta_1 +1230.1875\,\theta_2 -803.8125\,\theta_3 
 \end{aligned}
 ```
-
 
 #### 11th-order polynomial
 
@@ -790,6 +798,17 @@ The polynomial solution for $a_i$:
 ```math
 \begin{aligned}
 	a_0 & = 
+	a_1 & = 
+	a_2 & = 
+	a_3 & = 
+	a_4 & = 
+	a_5 & = 
+	a_6 & = 
+	a_7 & = 
+	a_8 & = 
+	a_9 & = 
+	a_{10} & = 
+	a_{11} & = 
 \end{aligned}
 ```
 
