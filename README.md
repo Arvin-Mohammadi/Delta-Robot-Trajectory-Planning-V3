@@ -860,40 +860,12 @@ The polynomial solution for $a_i$:
 |:--------------------:|:--------------------:|:--------------------:|
 |   7th-order polynomial   |  9th-order polynomial  |   11th-order polynomial    |
 
-</br>
-<div align="center">
- 	<img src="https://github.com/user-attachments/assets/f7a3fc74-be4f-43f4-beb8-516da174b9a2" style="width: 50%;">
-	</br>
-	7th-order polynomial
-</div>
-</br>
-
-</br>
-<div align="center">
- 	<img src="https://github.com/user-attachments/assets/fb5da484-0f0b-4f6c-8ed8-561af719a61f" style="width: 50%;">
-	</br>
-	9th-order polynomial
-</div>
-</br>
-</br>
-<div align="center">
- 	<img src="https://github.com/user-attachments/assets/126baa6d-a905-417c-a8c0-76cacbbab709" style="width: 50%;">
-	</br>
-	11th-order polynomial
-</div>
-</br>
 
 
 
 
 
-
-
-
-
-
-
-### Cubic Spline 
+## Cubic Spline 
 
 This method basically uses multiple polynomials on end for generating a trajectory between multiple path points. So if we are given $n+1$ path points, we'll need $n$ polynomials to interpolate and create the trajectory. 
 
@@ -1004,7 +976,7 @@ For better understanding please refer to [3] in the reference section.
 </br>
 
 
-### Pattern Generation 
+## Pattern Generation 
 
 This one is a bit tough to explain so bear with me for a second. When you have a certain pattern the previous trajectory planning methods won't work. Why is that? Because in the previous methods we were given a few number of points and we wanted to generate a trajectory in-between those points, but with a 'pattern' we already have the trajectory that the robot needs to go.
 
@@ -1020,7 +992,7 @@ So in this instance what we should do is to sample that pattern which results in
 </br>
 
 
-### Discussion 
+## Discussion 
 
 So we took a look at a few multi-point methods:
 
@@ -1040,7 +1012,7 @@ So let's talk about why you should or shouldn't use each of these algorithms:
 
 
 <a name="section-adeptcycle"></a>
-## Adept Cycle 
+# Adept Cycle 
 
 Well what is adept cycle? it's basically just four points in 3D space that the robot must hit in order to perform a pick-and-place operation. it looks something like this:
 
@@ -1052,77 +1024,6 @@ Well what is adept cycle? it's basically just four points in 3D space that the r
 </div>
 </br>
 
-
-Amazing. Now that we know what adept cycle looks like, I should say that there a number of ways to interpolate those 4 points (as we've been discussing). So here are the methods used and their respective plots 
-
-
-<div align="center">
- 	<img src="https://github.com/user-attachments/assets/8fd13a69-5cc1-49db-bb67-685fe30f8f97" style="width: 50%;">
- 	<img src="https://github.com/user-attachments/assets/7d3fd81f-3411-4932-8bcc-647d75cc21fc" style="width: 50%;">
-	</br>
-	Point-to-Point Parabolic Method
-</div>
-</br>
-
-
-<div align="center">
- 	<img src="https://github.com/user-attachments/assets/dcb508f5-3853-442b-987b-89395aed73c0" style="width: 50%;">
- 	<img src="https://github.com/user-attachments/assets/4f0011a4-fd8c-4174-859c-905a8c117355" style="width: 50%;">
-	</br>
-	Point-to-Point Trapezoidal Method
-</div>
-</br>
-
-<div align="center">
- 	<img src="https://github.com/user-attachments/assets/7c8a2b80-ebf3-450e-871c-48f83f1b032d" style="width: 50%;">
- 	<img src="https://github.com/user-attachments/assets/aa727c05-0f36-4478-a7e9-d44627821bdd" style="width: 50%;">
-	</br>
-	Point-to-Point S-Curve Method	
-</div>
-</br>
-
-<div align="center">
- 	<img src="https://github.com/user-attachments/assets/fe54642f-bd87-42b9-bac7-7b3bf7dd3e3b" style="width: 50%;">
- 	<img src="https://github.com/user-attachments/assets/54666eba-44ee-4a94-b5a3-c70d63658ee9" style="width: 50%;">
-	</br>
-	Point-to-Point 5th Order Interpolating Polynomial	
-</div>
-</br>
-
-
-<div align="center">
- 	<img src="https://github.com/user-attachments/assets/af8cb949-8093-4128-a8f9-72b66ab964f9" style="width: 50%;">
- 	<img src="https://github.com/user-attachments/assets/5c3a91cf-6f68-427b-be2b-eb53b72609cf" style="width: 50%;">
-	</br>
-	Point-to-Point 7th Order Interpolating Polynomial	
-</div>
-</br>
-
-
-<div align="center">
- 	<img src="https://github.com/user-attachments/assets/68d1caa8-e3cd-4975-8978-057cb443a89e" style="width: 50%;">
- 	<img src="https://github.com/user-attachments/assets/641224e3-1679-46b2-9f79-c59d6bfece0f" style="width: 50%;">
-	</br>
-	Point-to-Point 9th Order Interpolating Polynomial	
-</div>
-</br>
-
-
-<div align="center">
- 	<img src="https://github.com/user-attachments/assets/119ac36d-08ee-45b4-ab0a-10b40b777f73" style="width: 50%;">
- 	<img src="https://github.com/user-attachments/assets/7b4f744d-d373-45de-a14b-6197ef19a5b8" style="width: 50%;">
-	</br>
-	Cubic Spline
-</div>
-</br>
-
-<div align="center">
- 	<img src="https://github.com/user-attachments/assets/72c8f54a-89d5-4a74-b17a-32f19b526d09" style="width: 50%;">
- 	<img src="https://github.com/user-attachments/assets/eecc827f-8996-4ea2-af92-246f70a614fb" style="width: 50%;">
-	</br>
-	Cubic Spline with modified Adept Cycle Points (to prevent the overshooting)
-</div>
-</br>
 
 <a name="section-code_review"></a>
 ## Code Review
