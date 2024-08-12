@@ -1134,12 +1134,6 @@ Here are the multi-point trajectory planning methods implemented:
 3. Cubic Spline
 
 ```python
-# Set the path 
-PATH = [0, 1, -1, 0]
-
-# initialize the path planner class 
-path_planner = PathPlannerMLTP(PATH)
-
 # point to point methods for multiple points
 results = path_planner.mltp_ptpmethods("ptp_polynomial5th")
 path_planner.plot(results, "mltp - ptp polynomial5th")
