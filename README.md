@@ -67,16 +67,13 @@ Disadvantages:
 2. Small Workload
 </details>
 
-
-<details>
-<summary><ins>Trajectory Planning</ins></summary>
+<ins>Trajectory Planning</ins>
 
 Take a look at the figure below. There are four main stages to any sort of robotic operation:
 1. **Task Planning:** Figuring out what the robot is going to be doing [in order]
 2. **Path Planning:** What points in 3D space the robot is going through [in order]
 3. **Trajectory Planning:** Position of the robot as a function of time
 4. **Control**: Giving the trajectory as a reference to the robot's controller
-</details>
 
 </br>
 <div align="center">
@@ -120,9 +117,10 @@ Look at the figure below. Let's say our robot has actuated joints of $\[\theta_1
 - **Forward Kinematics:** Given the actuated joint parameters to calculate the position of end-effector
 - **Inverse Kinematics:** Given the position of the end-effector to calculate the actuated joint parameters
 
-<ins>What is the Jacobian of a Robot</ins>
-
+<details>
+<summary><ins>What is the Jacobian of a Robot</ins></summary>
 This basically has the same logic as the FK and IK but this time instead of converting between positions and angles, the conversion occurs between velocity of the end-effector and the velocity of the joint parameters.
+</details>
 </br>
 
 ### Theoretical Solution of Forward and Inverse Kinematics in Delta Robot
@@ -281,9 +279,11 @@ Basically point-to-point trajectory planning is like interpolation between two v
   \end{cases}
 ```
 
-<ins>**NOTE**</ins>: The output array does not include any time information, the time information comes into play when we want to give the PID controller the next target point from the array. So basically when the robot wants to move from Point A to  B in either 2 seconds or 3 seconds, the interpolation array for both of these actions are the same. 
+> [!NOTE]
+> The output array does not include any time information, the time information comes into play when we want to give the PID controller the next target point from the array. So basically when the robot wants to move from Point A to  B in either 2 seconds or 3 seconds, the interpolation array for both of these actions are the same. 
 
-<ins>**NOTE**</ins>: Since the array does not include time information, the duration for the whole process is considered to be 1, hence it simplifies a lot of the calculations. We call this "normalized time". If you need the time information included you should refer to the main references. 
+> [!NOTE]
+> Since the array does not include time information, the duration for the whole process is considered to be 1, hence it simplifies a lot of the calculations. We call this "normalized time". If you need the time information included you should refer to the main references. 
 
 ### Parabolic Method
 
