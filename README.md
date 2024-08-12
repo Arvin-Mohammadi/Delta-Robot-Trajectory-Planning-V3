@@ -641,7 +641,7 @@ and we have for $\theta(t)$:
 
 
 
-
+| Point to Point Trajectory Planning Methods |
 |         <img src="https://github.com/user-attachments/assets/e3d2bb5a-3c3e-4f1a-b4cd-2a5ebadfcd7d" style="width: 85%;">         |         <img src="https://github.com/user-attachments/assets/580f77ad-6dfa-4b17-b2b8-07fa0739bb91" style="width: 85%;">         |         <img src="https://github.com/user-attachments/assets/84d06621-bce1-4361-840f-71a673953985" style="width: 85%;">         |
 |:--------------------:|:--------------------:|:--------------------:|
 |   Parabolic Method |   Trapezoidal Method  |    S-Curve Method    |
