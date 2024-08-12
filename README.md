@@ -611,7 +611,7 @@ and we have for $\theta(t)$:
 
 So we took a look at six different methods:
 
-1. Bang-Bang | Parabolic Trajectory
+1. Parabolic Trajectory
 2. Trapezoidal Velocity Trajectory
 3. S-Curve Velocity Trajectory
 4. 5th Order Interpolating Polynomial
@@ -653,7 +653,7 @@ And the overall idea is to interpolate between each two points in the path, with
 
 ### High-Order Polynomial Interpolation
 
-Assume you have a set of values such as [0, 0.2, 1] and you wanted to create a trajectory for these values with a polynomial:
+Say we are interpolating a set of values such as [0, 1, -1, 0] and we wanted to create a trajectory for these values with a single polynomial: 
 
 ```math
 	s(t) = a_n.t^n + \dots + a_1.t + a_0
@@ -661,27 +661,70 @@ Assume you have a set of values such as [0, 0.2, 1] and you wanted to create a t
 
 So given this information we list the conditions for creating the polynomial function: 
 
-1. The three positions of [0, 0.2, 1]: Conditions x3
+1. The three positions of [0, 1, -1, 0]: Conditions x4
 2. Initial and final velocity values [0, 0]: Conditions x2
 3. Initial and final acceleration values [0, 0]: Conditions x2
 4. Initial and final jerk values [0, 0]: Conditions x2
+5. Initial and final snap values [0, 0]: Conditions x2
 
-So that gives us 9 conditions in total. For 9 conditions we need an 8th-order polynomial to be able to create a linear system of equations for the coefficients. Meaning the polynomial would be: 
+Based on if we want to control the value of jerk and snap, this'll give us three choices: 
+1. 7th order polynomial (doesn't control jerk or snap)
+2. 9th order polynomial (controls jerk but doesn't control snap)
+3. 11th order polynomial (controls both jerk and snap)
+
+#### 7th-order polynomial
+
+So the 
 
 ```math
-	s(t) = a_8.t^8 + \dots + a_1.t + a_0
+	\theta(t) = a_7.t^7 + \dots + a_1.t + a_0
 ```
 
-And the equations will be something like: 
 
 ```math
 \begin{aligned}
-	s(0) 		& = 0, \quad s(0.2) 		= 0.2, \quad s(1) = 1 \\
-	\dot{s}(0) 	& = 0, \quad \dot{s}(1) 	= 0 \\
-	\ddot{s}(0) 	& = 0, \quad \ddot{s}(1) 	= 0 \\
-	\dddot{s}(0) 	& = 0. \quad \dddot{s}(1) 	= 0 
+	\theta(0) 		& = \theta_0, 	\quad \theta(1/3) 		= \theta_1 \\
+	\theta(2/3) 		& = \theta_2, 	\quad \theta(1) 		= \theta_3 \\
+	\dot{\theta}(0) 	& = 0, 		\quad \dot{\theta}(1) 		= 0 \\
+	\ddot{\theta}(0) 	& = 0, 		\quad \ddot{\theta}(1) 		= 0 \\
 \end{aligned}
 ```
+
+
+#### 9th-order polynomial
+
+```math
+	s(t) = a_9.t^9 + \dots + a_1.t + a_0
+```
+
+
+```math
+\begin{aligned}
+	\theta(0) 		& = \theta_0, 	\quad \theta(1/3) 		= \theta_1 \\
+	\theta(2/3) 		& = \theta_2, 	\quad \theta(1) 		= \theta_3 \\
+	\dot{\theta}(0) 	& = 0, 		\quad \dot{\theta}(1) 		= 0 \\
+	\ddot{\theta}(0) 	& = 0, 		\quad \ddot{\theta}(1) 		= 0 \\
+	\dddot{\theta}(0) 	& = 0. 		\quad \dddot{\theta}(1) 	= 0 
+\end{aligned}
+```
+
+#### 11th-order polynomial
+
+```math
+	s(t) = a_11.t^11 + \dots + a_1.t + a_0
+```
+
+```math
+\begin{aligned}
+	\theta(0) 		& = \theta_0, 	\quad \theta(1/3) 		= \theta_1 \\
+	\theta(2/3) 		& = \theta_2, 	\quad \theta(1) 		= \theta_3 \\
+	\dot{\theta}(0) 	& = 0, 		\quad \dot{\theta}(1) 		= 0 \\
+	\ddot{\theta}(0) 	& = 0, 		\quad \ddot{\theta}(1) 		= 0 \\
+	\dddot{\theta}(0) 	& = 0. 		\quad \dddot{\theta}(1) 	= 0 \\
+	\ddot{\ddot{\theta}}(0) & = 0. 		\quad \ddot{\ddot{\theta}}(1) 	= 0 \\
+\end{aligned}
+```
+And the equations will be something like: 
 
 Solving this linear system of equations will result in the values of $a_8, \dots, a_0$. And it works. But why is it a bad choice? Simply because it can't be generalized. Meaning that if we have 4 points of interest that we want to cross (so instead of [0, 0.2, 1] we would have [0, -0.4, 0.2, 1]) then the calculations we just did will completely fall apart. So there's that. It works ... but isn't practical. Don't use this method.
 
