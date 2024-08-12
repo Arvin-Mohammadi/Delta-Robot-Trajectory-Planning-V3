@@ -184,6 +184,22 @@ and also:
 If you need a plug and place code that **JUST WORKS** i suggest the following code: [LINK](https://github.com/Arvin-Mohammadi/Delta-Robot-Trajectory-Planning-V3/blob/main/References/Inverse%20Kinematics%20(Delta%20Robot).pdf) - Reference #2
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <a name="subsection-point2point_trajectory_generation"></a>
 ## Theoretical Study - Point-to-Point Trajectory Generation
 
@@ -622,6 +638,23 @@ All of them are usable, but from my experience for point-to-point movement the p
 
 So yeah from my experience the best ones you can implement for your robot ... whatever it is ... is probably the 7th or 9th order polynomial. It's easy to calculate, easy to implement, reliable, and also the PID controller won't have a problem following it. 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <a name="section-multipoint_trajectory_generation"></a>
 ## Theoretical Study - Multi-Point Trajectory Generation
 
@@ -690,8 +723,20 @@ Defining the polynomial:
 \end{aligned}
 ```
 
-The polynomial solution: 
+The polynomial solution for $a_i$: 
 
+```math
+\begin{aligned}
+	a_0 & = \theta_0 \\
+	a_1 & = 0 \\
+	a_2 & = 0 \\
+	a_3 & = 0 \\
+	a_4 & = 364.5\,\theta_1 -328.4375\,\theta_0 -45.5625\,\theta_2 +9.5\,\theta_3 \\
+	a_5 & = 1099.1875\,\theta_0 -1275.75\,\theta_1 +227.8125\,\theta_2 -51.25\,\theta_3 \\
+	a_6 & = 1458.0\,\theta_1 -1220.0625\,\theta_0 -318.9375\,\theta_2 +81.0\,\theta_3 \\
+	a_7 & = 448.3125\,\theta_0 -546.75\,\theta_1 +136.6875\,\theta_2 -38.25\,\theta_3 
+\end{aligned}
+```
 
 #### 9th-order polynomial
 
@@ -712,7 +757,14 @@ Defining the polynomial:
 \end{aligned}
 ```
 
-The polynomial solution: 
+The polynomial solution for $a_i$: 
+
+```math
+\begin{aligned}
+	a_0 & = 
+\end{aligned}
+```
+
 
 #### 11th-order polynomial
 
@@ -733,7 +785,29 @@ Defining the polynomial:
 \end{aligned}
 ```
 
-The polynomial solution: 
+The polynomial solution for $a_i$: 
+
+```math
+\begin{aligned}
+	a_0 & = 
+\end{aligned}
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ### Cubic Spline 
 
