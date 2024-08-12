@@ -674,7 +674,7 @@ Based on if we want to control the value of jerk and snap, this'll give us three
 
 #### 7th-order polynomial
 
-So the 
+Defining the polynomial:
 
 ```math
 	\theta(t) = a_7.t^7 + \dots + a_1.t + a_0
@@ -690,8 +690,12 @@ So the
 \end{aligned}
 ```
 
+The polynomial solution: 
+
 
 #### 9th-order polynomial
+
+Defining the polynomial:
 
 ```math
 	s(t) = a_9.t^9 + \dots + a_1.t + a_0
@@ -708,7 +712,11 @@ So the
 \end{aligned}
 ```
 
+The polynomial solution: 
+
 #### 11th-order polynomial
+
+Defining the polynomial:
 
 ```math
 	s(t) = a_{11}.t^{11} + \dots + a_1.t + a_0
@@ -724,9 +732,8 @@ So the
 	\ddot{\ddot{\theta}}(0) & = 0. 		\quad \ddot{\ddot{\theta}}(1) 	& = 0 \\
 \end{aligned}
 ```
-And the equations will be something like: 
 
-Solving this linear system of equations will result in the values of $a_8, \dots, a_0$. And it works. But why is it a bad choice? Simply because it can't be generalized. Meaning that if we have 4 points of interest that we want to cross (so instead of [0, 0.2, 1] we would have [0, -0.4, 0.2, 1]) then the calculations we just did will completely fall apart. So there's that. It works ... but isn't practical. Don't use this method.
+The polynomial solution: 
 
 ### Cubic Spline 
 
