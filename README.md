@@ -7,10 +7,9 @@ Overview:
 - [Delta Robot Kinematics](#section-deltarobot_kinematics)
 - [Theoretical Study - Point-to-Point Trajectory Generation](#section-point2point_trajectory_generation)
 - [Theoretical Study - Multi-Point Trajectory Generation](#section-multipoint_trajectory_generation)
-- [Adept Cycle](#section-adeptcycle) 
+- [Experimental Study - Adept Cycle Trajectory Generation](#section-adeptcycle) 
 - [References](#section-references)
 - [Ending Note](#section-endnote)
-
 </br>
 
 
@@ -183,7 +182,7 @@ and also:
 
 If you need a plug and place code that **JUST WORKS** i suggest the following code: [LINK](https://github.com/Arvin-Mohammadi/Delta-Robot-Trajectory-Planning-V3/blob/main/References/Inverse%20Kinematics%20(Delta%20Robot).pdf) - Reference #2
 
-
+The same code as in the reference is implemented in the file ```DeltaKinematics.py``` ([LINK](https://github.com/Arvin-Mohammadi/Delta-Robot-Trajectory-Planning-V3/blob/main/Code/DeltaKinematics.py))
 
 
 
