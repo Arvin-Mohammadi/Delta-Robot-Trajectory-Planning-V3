@@ -113,18 +113,16 @@ Take a look at the figure below. There are four main stages to any sort of robot
 <a name="section-deltarobot_kinematics"></a>
 ## Delta Robot Kinematics
 
-<details>
-<summary><ins>What are Forward and Inverse Kinematics</ins></summary>
+<ins>What are Forward and Inverse Kinematics</ins>
+
 Look at the figure below. Let's say our robot has actuated joints of $\[\theta_1, \theta_2, \theta_3\]$ and the position of the end-effector is $\[x, y, z\]$:
 	
 - **Forward Kinematics:** Given the actuated joint parameters to calculate the position of end-effector
 - **Inverse Kinematics:** Given the position of the end-effector to calculate the actuated joint parameters
-</details>
 
-<details>
-<summary><ins>What is the Jacobian of a Robot</ins></summary>
+<ins>What is the Jacobian of a Robot</ins>
+
 This basically has the same logic as the FK and IK but this time instead of converting between positions and angles, the conversion occurs between velocity of the end-effector and the velocity of the joint parameters.
-</details>
 </br>
 
 ### Theoretical Solution of Forward and Inverse Kinematics in Delta Robot
@@ -137,9 +135,7 @@ This basically has the same logic as the FK and IK but this time instead of conv
 </div>
 </br>
 
-
-<details>
-<summary><ins>Given Data & Assumptions</ins></summary>
+<ins>Given Data & Assumptions</ins>
 
 The Delta robot consists of three main chains. Each chain starts from the base platform($O_0$), connects to the upper arm via the pin joint ($A_i$), connects to the lower arm via the universal joint ($B_i$), and finally connects to the end-effector via the universal joint ($C_i$). This results in a movement behaviour, where the end-effector moves parallel to the base platform and can move along three translational axes of ($x, y, z$) in 3D space. 
 
@@ -222,15 +218,13 @@ and also:
         - L\sin\theta_i - Z_P
     \end{bmatrix}
 ```
-</details>
 
+<ins>Solution of Foward and Inverse Kinematics</ins>
 
-<details>
-<summary><ins>Solution of Foward and Inverse Kinematics</ins></summary>
 1. For FK we numerically solve the above constraint equation for $(X_P, Y_P, Z_P)$ given $\theta_i$
 
 2. For IK we assume a variable change of $t_i = \tan(\theta_i/2)$, which gives us $\sin(\theta_i) = \frac{2t}{t^2+1}$ and $\cos(\theta_i) = \frac{1 - t^2}{t^2+1}$. Applying this, we solve the constraint equation for $t_i$, which in turn, gives us $\theta_i$.
-</details>
+
 
 
 
