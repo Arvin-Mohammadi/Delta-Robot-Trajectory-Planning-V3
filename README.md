@@ -13,11 +13,35 @@ Overview:
 </br>
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <a name="section-introduction"></a>
 ## Introduction
 
-<ins>**What is a Delta Robot and Why is it Important**</ins> 
 <details>
+<summary><ins>**What is a Delta Robot and Why is it Important**</ins></summary>
+
 People who search for this repository already know what the delta robot is and know why it's important. Delta robot parallel kinematic structure and high-speed capabilities make them ideal for precise and speedy tasks, particularly in pick-and-place operations. This repository studies trajectory planning methods for Delta robots, focusing on smooth motion for the end-effector while minimizing deviations.
 
 **The applications of Delta robots** are virtually endless but mainly they come down to a certain pattern of pick-and-place or 3D printing or tasks that require somewhat similar movements to these two. Here's three applications that I worked on (PLEASE CITE MY 4 PAPERS):
@@ -29,8 +53,9 @@ People who search for this repository already know what the delta robot is and k
 </details>
 
 
-<ins>**Pros and Cons of Delta Robot**</ins>
 <details>
+<summary><ins>**Pros and Cons of Delta Robot**</ins></summary>
+	
 Delta robot has basically two advantages at the cost of two things (I'm talking about the important ones). 
 
 Advantages: 
@@ -42,13 +67,16 @@ Disadvantages:
 2. Small Workload
 </details>
 
-<ins>**Trajectory Planning**</ins> 
+
+<details>
+<summary><ins>**Trajectory Planning**</ins></summary>
 
 Take a look at the figure below. There are four main stages to any sort of robotic operation:
 1. **Task Planning:** Figuring out what the robot is going to be doing [in order]
 2. **Path Planning:** What points in 3D space the robot is going through [in order]
 3. **Trajectory Planning:** Position of the robot as a function of time
 4. **Control**: Giving the trajectory as a reference to the robot's controller
+</details>
 
 </br>
 <div align="center">
@@ -58,35 +86,60 @@ Take a look at the figure below. There are four main stages to any sort of robot
 </div>
 </br>
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <a name="section-deltarobot_kinematics"></a>
 ## Delta Robot Kinematics
 
-<ins>**What are Forward and Inverse Kinematics**</ins> 
-
+<details>
+<summary><ins>**What are Forward and Inverse Kinematics**</ins></summary>
 Look at the figure below. Let's say our robot has actuated joints of $\[\theta_1, \theta_2, \theta_3\]$ and the position of the end-effector is $\[x, y, z\]$:
-
+	
 - **Forward Kinematics:** Given the actuated joint parameters to calculate the position of end-effector
 - **Inverse Kinematics:** Given the position of the end-effector to calculate the actuated joint parameters
+</details>
 
-<ins>**What is the Jacobian of a Robot**</ins> 
-
-This basically has the same logic as the FK and IK but this time instead of converting between positions and angles, the conversion occurs between velocity of the end-effector and the velocity of the joint parameters. 
-
-
+<details>
+<summary><ins>**What is the Jacobian of a Robot**</ins></summary>
+This basically has the same logic as the FK and IK but this time instead of converting between positions and angles, the conversion occurs between velocity of the end-effector and the velocity of the joint parameters.
+</details>
 </br>
 
 ### Theoretical Solution of Forward and Inverse Kinematics in Delta Robot
 
+</br>
 <div align="center">
  	<img src="https://github.com/Arvin-Mohammadi/Delta-Robot-Trajectory-Planning-V3/assets/69509720/b34332cf-6016-42b2-83ac-fc2824447b97" style="width: 50%;">
 	</br>
 	Note: The solution is from the reference #1
 </div>
-
 </br>
 
 
-<ins>**Given Data & Assumptions**</ins> 
+<details>
+<summary><ins>**Given Data & Assumptions**</ins></summary>
 
 The Delta robot consists of three main chains. Each chain starts from the base platform($O_0$), connects to the upper arm via the pin joint ($A_i$), connects to the lower arm via the universal joint ($B_i$), and finally connects to the end-effector via the universal joint ($C_i$). This results in a movement behaviour, where the end-effector moves parallel to the base platform and can move along three translational axes of ($x, y, z$) in 3D space. 
 
@@ -169,13 +222,15 @@ and also:
         - L\sin\theta_i - Z_P
     \end{bmatrix}
 ```
+</details>
 
-<ins>**Solution of Foward and Inverse Kinematics**</ins> 
 
+<details>
+<summary><ins>**Solution of Foward and Inverse Kinematics**</ins></summary>
 1. For FK we numerically solve the above constraint equation for $(X_P, Y_P, Z_P)$ given $\theta_i$
 
 2. For IK we assume a variable change of $t_i = \tan(\theta_i/2)$, which gives us $\sin(\theta_i) = \frac{2t}{t^2+1}$ and $\cos(\theta_i) = \frac{1 - t^2}{t^2+1}$. Applying this, we solve the constraint equation for $t_i$, which in turn, gives us $\theta_i$.
-
+</details>
 
 
 
@@ -185,6 +240,17 @@ and also:
 If you need a plug and place code that **JUST WORKS** i suggest the following code: [LINK](https://github.com/Arvin-Mohammadi/Delta-Robot-Trajectory-Planning-V3/blob/main/References/Inverse%20Kinematics%20(Delta%20Robot).pdf) - Reference #2
 
 The same code as in the reference is implemented in the file ```DeltaKinematics.py``` ([LINK](https://github.com/Arvin-Mohammadi/Delta-Robot-Trajectory-Planning-V3/blob/main/Code/DeltaKinematics.py))
+
+
+
+
+
+
+
+
+
+
+
 
 
 
