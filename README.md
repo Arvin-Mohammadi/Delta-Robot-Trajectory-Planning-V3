@@ -40,11 +40,11 @@ Overview:
 ## Introduction
 
 <details>
-<summary><ins>**What is a Delta Robot and Why is it Important**</ins></summary>
+<summary><ins>What is a Delta Robot and Why is it Important</ins></summary>
 
 People who search for this repository already know what the delta robot is and know why it's important. Delta robot parallel kinematic structure and high-speed capabilities make them ideal for precise and speedy tasks, particularly in pick-and-place operations. This repository studies trajectory planning methods for Delta robots, focusing on smooth motion for the end-effector while minimizing deviations.
 
-**The applications of Delta robots** are virtually endless but mainly they come down to a certain pattern of pick-and-place or 3D printing or tasks that require somewhat similar movements to these two. Here's three applications that I worked on (PLEASE CITE MY 4 PAPERS):
+The applications of Delta robots are virtually endless but mainly they come down to a certain pattern of pick-and-place or 3D printing or tasks that require somewhat similar movements to these two. Here's three applications that I worked on (PLEASE CITE MY 4 PAPERS):
 
 - Pick-and-Place Operations: [LINK](https://ieeexplore.ieee.org/abstract/document/10334699)
 - Automated Pipetting Operation: [LINK](https://ieeexplore.ieee.org/abstract/document/10412424)
@@ -54,7 +54,7 @@ People who search for this repository already know what the delta robot is and k
 
 
 <details>
-<summary><ins>**Pros and Cons of Delta Robot**</ins></summary>
+<summary><ins>Pros and Cons of Delta Robot</ins></summary>
 	
 Delta robot has basically two advantages at the cost of two things (I'm talking about the important ones). 
 
@@ -69,7 +69,7 @@ Disadvantages:
 
 
 <details>
-<summary><ins>**Trajectory Planning**</ins></summary>
+<summary><ins>Trajectory Planning</ins></summary>
 
 Take a look at the figure below. There are four main stages to any sort of robotic operation:
 1. **Task Planning:** Figuring out what the robot is going to be doing [in order]
@@ -114,7 +114,7 @@ Take a look at the figure below. There are four main stages to any sort of robot
 ## Delta Robot Kinematics
 
 <details>
-<summary><ins>**What are Forward and Inverse Kinematics**</ins></summary>
+<summary><ins>What are Forward and Inverse Kinematics</ins></summary>
 Look at the figure below. Let's say our robot has actuated joints of $\[\theta_1, \theta_2, \theta_3\]$ and the position of the end-effector is $\[x, y, z\]$:
 	
 - **Forward Kinematics:** Given the actuated joint parameters to calculate the position of end-effector
@@ -122,7 +122,7 @@ Look at the figure below. Let's say our robot has actuated joints of $\[\theta_1
 </details>
 
 <details>
-<summary><ins>**What is the Jacobian of a Robot**</ins></summary>
+<summary><ins>What is the Jacobian of a Robot</ins></summary>
 This basically has the same logic as the FK and IK but this time instead of converting between positions and angles, the conversion occurs between velocity of the end-effector and the velocity of the joint parameters.
 </details>
 </br>
@@ -139,7 +139,7 @@ This basically has the same logic as the FK and IK but this time instead of conv
 
 
 <details>
-<summary><ins>**Given Data & Assumptions**</ins></summary>
+<summary><ins>Given Data & Assumptions</ins></summary>
 
 The Delta robot consists of three main chains. Each chain starts from the base platform($O_0$), connects to the upper arm via the pin joint ($A_i$), connects to the lower arm via the universal joint ($B_i$), and finally connects to the end-effector via the universal joint ($C_i$). This results in a movement behaviour, where the end-effector moves parallel to the base platform and can move along three translational axes of ($x, y, z$) in 3D space. 
 
@@ -171,7 +171,7 @@ and also:
 \gamma_1 = \frac{1}{2}\gamma_2 = \frac{1}{3}\gamma_3 = \beta_1 = \frac{1}{2}\beta_2 = \frac{1}{3}\beta_3 = 120\degree
 ```
 
-<ins>**Calculating Relative Positions**</ins> 
+<ins>Calculating Relative Positions</ins> 
 
 - The position of $A_i$ in relation to the $\{O_0\}$-frame:
 
@@ -226,7 +226,7 @@ and also:
 
 
 <details>
-<summary><ins>**Solution of Foward and Inverse Kinematics**</ins></summary>
+<summary><ins>Solution of Foward and Inverse Kinematics</ins></summary>
 1. For FK we numerically solve the above constraint equation for $(X_P, Y_P, Z_P)$ given $\theta_i$
 
 2. For IK we assume a variable change of $t_i = \tan(\theta_i/2)$, which gives us $\sin(\theta_i) = \frac{2t}{t^2+1}$ and $\cos(\theta_i) = \frac{1 - t^2}{t^2+1}$. Applying this, we solve the constraint equation for $t_i$, which in turn, gives us $\theta_i$.
