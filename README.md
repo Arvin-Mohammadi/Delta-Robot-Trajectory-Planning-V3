@@ -641,7 +641,7 @@ and we have for $\theta(t)$:
 
 </br>
 <p align="center">
-	POINT TO POINT TRAJECTORY GENERATION METHODS
+	<ins><strong>POINT TO POINT TRAJECTORY GENERATION METHODS</strong></ins>
 </p>
 
 |         <img src="https://github.com/user-attachments/assets/e3d2bb5a-3c3e-4f1a-b4cd-2a5ebadfcd7d" style="width: 85%;">         |         <img src="https://github.com/user-attachments/assets/580f77ad-6dfa-4b17-b2b8-07fa0739bb91" style="width: 85%;">         |         <img src="https://github.com/user-attachments/assets/84d06621-bce1-4361-840f-71a673953985" style="width: 85%;">         |
@@ -720,6 +720,12 @@ So like the point-to-point methods the **inputs** are the path points which want
 </br>
 
 And the overall idea is to interpolate between each two points in the path, with a point-to-point method. If we interpolate between four values of [0, 1, -1, 0], the following diagrams are what we're getting:
+
+
+</br>
+<p align="center">
+	<ins><strong>POINT TO POINT TRAJECTORY GENERATION METHODS USED FOR MULTIPLE POINTS</strong></ins>
+</p>
 
 |         <img src="https://github.com/user-attachments/assets/137ab35f-2ea1-4918-b6b8-3b3a9fb56e39" style="width: 85%;">         |         <img src="https://github.com/user-attachments/assets/1efdd144-be52-4558-b8a7-aa63724a99bf" style="width: 85%;">         |         <img src="https://github.com/user-attachments/assets/0d4f480d-b3c2-4870-a477-c1bda64c38a9" style="width: 85%;">         |
 |:--------------------:|:--------------------:|:--------------------:|
@@ -858,6 +864,10 @@ The polynomial solution for $a_i$:
 \end{aligned}
 ```
 
+</br>
+<p align="center">
+	<ins><strong>HIGHER ORDER POLYNOMIAL METHODS USED FOR MULTIPLE POINTS INTERPOLATION</strong></ins>
+</p>
 |         <img src="https://github.com/user-attachments/assets/f7a3fc74-be4f-43f4-beb8-516da174b9a2" style="width: 85%;">         |         <img src="https://github.com/user-attachments/assets/fb5da484-0f0b-4f6c-8ed8-561af719a61f" style="width: 85%;">         |         <img src="https://github.com/user-attachments/assets/126baa6d-a905-417c-a8c0-76cacbbab709" style="width: 85%;">         |
 |:--------------------:|:--------------------:|:--------------------:|
 |   7th-order polynomial   |  9th-order polynomial  |   11th-order polynomial    |
