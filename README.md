@@ -689,15 +689,19 @@ And the overall idea is to interpolate between each two points in the path, with
 	<img src="https://github.com/user-attachments/assets/02cdf85e-d61f-4f3b-afe9-3974e3a63551" style="width: 30%; display: inline-block; margin-right: 1%;">
 	<img src="https://github.com/user-attachments/assets/02cdf85e-d61f-4f3b-afe9-3974e3a63551" style="width: 30%; display: inline-block; margin-right: 1%;">
 	<img src="https://github.com/user-attachments/assets/02cdf85e-d61f-4f3b-afe9-3974e3a63551" style="width: 30%; display: inline-block;">
-	</br>
-	left side: 
-	</br>
-	center side:
-	</br>
-	right side:
 </div>
 </br>
-
+<div align="left">
+	left side: 
+</div>
+</br>
+<div align="center">
+	left side: 
+</div>
+</br>
+<div align="right">
+	right side: 
+</div>
 
 ### High-Order Polynomial Interpolation
 
