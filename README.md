@@ -686,16 +686,16 @@ And the overall idea is to interpolate between each two points in the path, with
 
 </br>
 <div align="center" style="display: flex; justify-content: space-between;">
-    <div style="width: 30%; text-align: center;">
-        <img src="https://github.com/user-attachments/assets/02cdf85e-d61f-4f3b-afe9-3974e3a63551" style="width: 100%;">
+    <div style="width: 30%; align: center;">
+        <img src="https://github.com/user-attachments/assets/02cdf85e-d61f-4f3b-afe9-3974e3a63551" style="width: 30%;">
         <p>Caption for Image 1</p>
     </div>
     <div style="width: 30%; text-align: center;">
-        <img src="https://github.com/user-attachments/assets/02cdf85e-d61f-4f3b-afe9-3974e3a63551" style="width: 100%;">
+        <img src="https://github.com/user-attachments/assets/02cdf85e-d61f-4f3b-afe9-3974e3a63551" style="width: 30%;">
         <p>Caption for Image 2</p>
     </div>
     <div style="width: 30%; text-align: center;">
-        <img src="https://github.com/user-attachments/assets/02cdf85e-d61f-4f3b-afe9-3974e3a63551" style="width: 100%;">
+        <img src="https://github.com/user-attachments/assets/02cdf85e-d61f-4f3b-afe9-3974e3a63551" style="width: 30%;">
         <p>Caption for Image 3</p>
     </div>
 </div>
