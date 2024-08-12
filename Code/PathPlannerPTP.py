@@ -15,10 +15,10 @@ import matplotlib.pyplot as plt
 # =================================================================================================
 
 class PathPlannerPTP: 
-	def __init__(self, theta_initial, theta_final):
+	def __init__(self, theta_initial, theta_final, sampling_frequency=100):
 		self.theta_i 			= theta_initial
 		self.theta_f 			= theta_final
-		self.sampling_frequency = 1000
+		self.sampling_frequency = sampling_frequency
 
 
 	def ptp_polynomial5th(self):
@@ -90,7 +90,7 @@ class PathPlannerPTP:
 		s_dddot 	= 35280*t**6 - 105840*t**5 + 113400*t**4 - 50400*t**3 + 7560*t**2
 		theta_dddot = (self.theta_f - self.theta_i)*s_dddot
 
-		return(t, theta, theta_dot, theta_ddot, theta_dddot)
+		return (t, theta, theta_dot, theta_ddot, theta_dddot)
 
 
 	def ptp_bangbang(self):

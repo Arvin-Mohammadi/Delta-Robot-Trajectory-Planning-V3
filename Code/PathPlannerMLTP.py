@@ -5,12 +5,12 @@
 # =================================================================================================
 
 from SimpleMath import tand, sind, cosd
+from PathPlannerPTP import PathPlannerPTP
 
 import os 
 import math 
 import numpy as np 
 import matplotlib.pyplot as plt 
-from scipy.interpolate import BSpline, make_interp_spline
 
 # =================================================================================================
 # -- mutli point path planning class -----------------------------------------------------------
@@ -25,31 +25,141 @@ class PathPlannerMLTP:
 		# primary values and vectors 
 		self.path 				= np.array(path)
 		self.n 					= len(self.path) - 1 
-		
 		# number of overall trajectory samples 
+		self.sampling_frequency = sampling_frequency
 		self.sampling_number 	= sampling_frequency*self.n + 1
 		# time vector corresponding to path points 
 		self.t_path				= np.linspace(0, 1, self.n+1)
 		# vector of time intervals for the t_path
 		self.T_path 			= self.t_path[1:self.n+1] - self.t_path[0:self.n]
 
-	def mltp_bspline(self):
-		'''
-		Generates a trajectory based on B-spline method for the path
-		'''
-		k = 3  # degree of the spline (cubic B-spline)
-		t = np.linspace(0, 1, self.sampling_number)
 
-		# Generate a B-spline representation of the curve
-		spl 	= make_interp_spline(self.t_path, self.path, k=k)
-		theta 	= spl(t)
+	def mltp_ptpmethods(self, method_name):
+		
+		t      			= np.linspace(0, 1, self.sampling_number)
+		theta      		= np.zeros_like(t)
+		theta_dot  		= np.zeros_like(t)
+		theta_ddot      = np.zeros_like(t)
+		theta_dddot 	= np.zeros_like(t)
 
-		# Compute derivatives of the B-spline
-		theta_dot 		= spl.derivative(nu=1)(t)
-		theta_ddot 		= spl.derivative(nu=2)(t)
-		theta_dddot 	= spl.derivative(nu=3)(t)
+		for i in range(len(self.path)-1):
+			path_planner = PathPlannerPTP(self.path[i], self.path[i+1], sampling_frequency=self.sampling_frequency)
 
-		return (t, theta, theta_dot, theta_ddot, theta_dddot)
+			# init 
+			(_t, _theta, _theta_dot, _theta_ddot, _theta_dddot) = (None, None, None, None, None)
+
+			if method_name == "ptp_polynomial5th":
+				(_t, _theta, _theta_dot, _theta_ddot, _theta_dddot) = path_planner.ptp_polynomial5th()
+			elif method_name == "ptp_polynomial7th":
+				(_t, _theta, _theta_dot, _theta_ddot, _theta_dddot) = path_planner.ptp_polynomial7th()
+			elif method_name == "ptp_polynomial9th":
+				(_t, _theta, _theta_dot, _theta_ddot, _theta_dddot) = path_planner.ptp_polynomial9th()
+			elif method_name == "ptp_bangbang":
+				(_t, _theta, _theta_dot, _theta_ddot, _theta_dddot) = path_planner.ptp_bangbang()
+			elif method_name == "ptp_trapezoidal":
+				(_t, _theta, _theta_dot, _theta_ddot, _theta_dddot) = path_planner.ptp_trapezoidal()
+			elif method_name == "ptp_scurve":
+				(_t, _theta, _theta_dot, _theta_ddot, _theta_dddot) = path_planner.ptp_scurve()
+
+			theta[i*self.sampling_frequency:(i+1)*self.sampling_frequency+1] 		= _theta
+			theta_dot[i*self.sampling_frequency:(i+1)*self.sampling_frequency+1] 	= _theta_dot
+			theta_ddot[i*self.sampling_frequency:(i+1)*self.sampling_frequency+1] 	= _theta_ddot
+			theta_dddot[i*self.sampling_frequency:(i+1)*self.sampling_frequency+1] 	= _theta_dddot
+
+		return t, theta, theta_dot, theta_ddot, theta_dddot
+
+	def mltp_polynomial7th_4point(self):
+		
+		if len(self.path) != 4:
+			print("The length of the path is not equal to four")
+			return None 
+
+		theta0 = self.path[0]
+		theta1 = self.path[1]
+		theta2 = self.path[2]
+		theta3 = self.path[3]
+		t      = np.linspace(0, 1, self.sampling_number)
+
+		a0 = theta0
+		a1 = 0
+		a2 = 0
+		a3 = 182.25 * theta1 - 134.875 * theta0 - 91.125 * theta2 + 43.75 * theta3
+		a4 = 548.25 * theta0 - 820.125 * theta1 + 546.75 * theta2 - 274.875 * theta3
+		a5 = 1366.875 * theta1 - 856.5 * theta0 - 1093.5 * theta2 + 583.125 * theta3
+		a6 = 600.75 * theta0 - 1002.375 * theta1 + 911.25 * theta2 - 509.625 * theta3
+		a7 = 273.375 * theta1 - 158.625 * theta0 - 273.375 * theta2 + 158.625 * theta3
+
+		theta 		= a7 * t**7 + a6 * t**6 + a5 * t**5 + a4 * t**4 + a3 * t**3 + a2 * t**2 + a1 * t + a0
+		theta_dot 	= 7 * a7 * t**6 + 6 * a6 * t**5 + 5 * a5 * t**4 + 4 * a4 * t**3 + 3 * a3 * t**2 + 2 * a2 * t + a1
+		theta_ddot 	= 42 * a7 * t**5 + 30 * a6 * t**4 + 20 * a5 * t**3 + 12 * a4 * t**2 + 6 * a3 * t + 2 * a2
+		theta_dddot = 210 * a7 * t**4 + 120 * a6 * t**3 + 60 * a5 * t**2 + 24 * a4 * t + 6 * a3
+
+		return t, theta, theta_dot, theta_ddot, theta_dddot
+
+
+	def mltp_polynomial9th_4point(self):
+
+		if len(self.path) != 4:
+			print("The length of the path is not equal to four")
+			return None 
+
+		theta0 = self.path[0]
+		theta1 = self.path[1]
+		theta2 = self.path[2]
+		theta3 = self.path[3]
+		t      = np.linspace(0, 1, self.sampling_number)
+
+		a0 = theta0
+		a1 = 0
+		a2 = 0
+		a3 = 0
+		a4 = 820.125 * theta1 - 641.9375 * theta0 - 410.0625 * theta2 + 231.875 * theta3
+		a5 = 3315.5625 * theta0 - 4510.6875 * theta1 + 2870.4375 * theta2 - 1675.3125 * theta3
+		a6 = 9841.5 * theta1 - 6926.875 * theta0 - 7381.125 * theta2 + 4466.5 * theta3
+		a7 = 7270.625 * theta0 - 10661.625 * theta1 + 9021.375 * theta2 - 5630.375 * theta3
+		a8 = 5740.875 * theta1 - 3822.1875 * theta0 - 5330.8125 * theta2 + 3412.125 * theta3
+		a9 = 803.8125 * theta0 - 1230.1875 * theta1 + 1230.1875 * theta2 - 803.8125 * theta3
+
+		theta      	= a9 * t**9 + a8 * t**8 + a7 * t**7 + a6 * t**6 + a5 * t**5 + a4 * t**4 + a3 * t**3 + a2 * t**2 + a1 * t + a0
+		theta_dot  	= 9 * a9 * t**8 + 8 * a8 * t**7 + 7 * a7 * t**6 + 6 * a6 * t**5 + 5 * a5 * t**4 + 4 * a4 * t**3 + 3 * a3 * t**2 + 2 * a2 * t + a1
+		theta_ddot 	= 72 * a9 * t**7 + 56 * a8 * t**6 + 42 * a7 * t**5 + 30 * a6 * t**4 + 20 * a5 * t**3 + 12 * a4 * t**2 + 6 * a3 * t + 2 * a2
+		theta_dddot = 504 * a9 * t**6 + 336 * a8 * t**5 + 210 * a7 * t**4 + 120 * a6 * t**3 + 60 * a5 * t**2 + 24 * a4 * t + 6 * a3
+
+		return t, theta, theta_dot, theta_ddot, theta_dddot
+
+
+	def mltp_polynomial11th_4point(self):
+
+		if len(self.path) != 4:
+			print("The length of the path is not equal to four")
+			return None 
+
+		theta0 = self.path[0]
+		theta1 = self.path[1]
+		theta2 = self.path[2]
+		theta3 = self.path[3]
+		t      = np.linspace(0, 1, self.sampling_number)
+
+		a0 	= theta0
+		a1 	= 0
+		a2 	= 0
+		a3 	= 0
+		a4 	= 0
+		a5 	= 3690.5625 * theta1 - 3014.71875 * theta0 - 1845.28125 * theta2 + 1169.4375 * theta3
+		a6 	= 18795.75 * theta0 - 23988.65625 * theta1 + 14762.25 * theta2 - 9569.34375 * theta3
+		a7 	= 64584.84375 * theta1 - 49087.96875 * theta0 - 46132.03125 * theta2 + 30635.15625 * theta3
+		a8 	= 68523.75 * theta0 - 92264.0625 * theta1 + 73811.25 * theta2 - 50070.9375 * theta3
+		a9 	= 73811.25 * theta1 - 53835.15625 * theta0 - 64584.84375 * theta2 + 44608.75 * theta3
+		a10 = 22549.5 * theta0 - 31369.78125 * theta1 + 29524.5 * theta2 - 20704.21875 * theta3
+		a11 = 5535.84375 * theta1 - 3932.15625 * theta0 - 5535.84375 * theta2 + 3932.15625 * theta3
+
+		theta      	= a11 * t**11 + a10 * t**10 + a9 * t**9 + a8 * t**8 + a7 * t**7 + a6 * t**6 + a5 * t**5 + a4 * t**4 + a3 * t**3 + a2 * t**2 + a1 * t + a0
+		theta_dot  	= 11 * a11 * t**10 + 10 * a10 * t**9 + 9 * a9 * t**8 + 8 * a8 * t**7 + 7 * a7 * t**6 + 6 * a6 * t**5 + 5 * a5 * t**4 + 4 * a4 * t**3 + 3 * a3 * t**2 + 2 * a2 * t + a1
+		theta_ddot 	= 110 * a11 * t**9 + 90 * a10 * t**8 + 72 * a9 * t**7 + 56 * a8 * t**6 + 42 * a7 * t**5 + 30 * a6 * t**4 + 20 * a5 * t**3 + 12 * a4 * t**2 + 6 * a3 * t + 2 * a2
+		theta_dddot = 990 * a11 * t**8 + 720 * a10 * t**7 + 504 * a9 * t**6 + 336 * a8 * t**5 + 210 * a7 * t**4 + 120 * a6 * t**3 + 60 * a5 * t**2 + 24 * a4 * t + 6 * a3
+
+		return t, theta, theta_dot, theta_ddot, theta_dddot
+
 
 	def mltp_cubicspline(self):
 		''' 
@@ -224,15 +334,39 @@ class PathPlannerMLTP:
 if __name__ == "__main__":
 
 	# Set the path 
-	PATH = [0, -0.2, 0.3, 0.8, -0.1, 1]
+	PATH = [0, 1, -1, 0]
 
 	# initialize the path planner class 
 	path_planner = PathPlannerMLTP(PATH)
 
+	# point to point methods for multiple points
+	results = path_planner.mltp_ptpmethods("ptp_polynomial5th")
+	path_planner.plot(results, "mltp - ptp polynomial5th")
+	# point to point methods for multiple points
+	results = path_planner.mltp_ptpmethods("ptp_polynomial7th")
+	path_planner.plot(results, "mltp - ptp polynomial7th")
+	# point to point methods for multiple points
+	results = path_planner.mltp_ptpmethods("ptp_polynomial9th")
+	path_planner.plot(results, "mltp - ptp polynomial9th")
+	# point to point methods for multiple points
+	results = path_planner.mltp_ptpmethods("ptp_bangbang")
+	path_planner.plot(results, "mltp - ptp bangbang")
+	# point to point methods for multiple points
+	results = path_planner.mltp_ptpmethods("ptp_trapezoidal")
+	path_planner.plot(results, "mltp - ptp trapezoidal")
+	# point to point methods for multiple points
+	results = path_planner.mltp_ptpmethods("ptp_scurve")
+	path_planner.plot(results, "mltp - ptp scurve")
+
 	# calculate the trajectory based on cubic spline 
 	results = path_planner.mltp_cubicspline()
 	path_planner.plot(results, "cubic spline")
-
-	# calculate the trajectory based on B spline 
-	results = path_planner.mltp_bspline()
-	path_planner.plot(results, "B spline")
+	# calculate the trajectory based on cubic spline 
+	results = path_planner.mltp_polynomial7th_4point()
+	path_planner.plot(results, "7th order polynomial")
+	# calculate the trajectory based on cubic spline 
+	results = path_planner.mltp_polynomial9th_4point()
+	path_planner.plot(results, "9th order polynomial")
+	# calculate the trajectory based on cubic spline 
+	results = path_planner.mltp_polynomial11th_4point()
+	path_planner.plot(results, "11th order polynomial")
