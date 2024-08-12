@@ -683,10 +683,10 @@ So the
 
 ```math
 \begin{aligned}
-	\theta(0) 		& = \theta_0, 	\quad \theta(1/3) 		= \theta_1 \\
-	\theta(2/3) 		& = \theta_2, 	\quad \theta(1) 		= \theta_3 \\
-	\dot{\theta}(0) 	& = 0, 		\quad \dot{\theta}(1) 		= 0 \\
-	\ddot{\theta}(0) 	& = 0, 		\quad \ddot{\theta}(1) 		= 0 \\
+	\theta(0) 		& = \theta_0, 	\quad \theta(1/3) 		& = \theta_1 \\
+	\theta(2/3) 		& = \theta_2, 	\quad \theta(1) 		& = \theta_3 \\
+	\dot{\theta}(0) 	& = 0, 		\quad \dot{\theta}(1) 		& = 0 \\
+	\ddot{\theta}(0) 	& = 0, 		\quad \ddot{\theta}(1) 		& = 0 \\
 \end{aligned}
 ```
 
@@ -700,28 +700,28 @@ So the
 
 ```math
 \begin{aligned}
-	\theta(0) 		& = \theta_0, 	\quad \theta(1/3) 		= \theta_1 \\
-	\theta(2/3) 		& = \theta_2, 	\quad \theta(1) 		= \theta_3 \\
-	\dot{\theta}(0) 	& = 0, 		\quad \dot{\theta}(1) 		= 0 \\
-	\ddot{\theta}(0) 	& = 0, 		\quad \ddot{\theta}(1) 		= 0 \\
-	\dddot{\theta}(0) 	& = 0. 		\quad \dddot{\theta}(1) 	= 0 
+	\theta(0) 		& = \theta_0, 	\quad \theta(1/3) 		& = \theta_1 \\
+	\theta(2/3) 		& = \theta_2, 	\quad \theta(1) 		& = \theta_3 \\
+	\dot{\theta}(0) 	& = 0, 		\quad \dot{\theta}(1) 		& = 0 \\
+	\ddot{\theta}(0) 	& = 0, 		\quad \ddot{\theta}(1) 		& = 0 \\
+	\dddot{\theta}(0) 	& = 0. 		\quad \dddot{\theta}(1) 	& = 0 
 \end{aligned}
 ```
 
 #### 11th-order polynomial
 
 ```math
-	s(t) = a_11.t^11 + \dots + a_1.t + a_0
+	s(t) = a_{11}.t^{11} + \dots + a_1.t + a_0
 ```
 
 ```math
 \begin{aligned}
-	\theta(0) 		& = \theta_0, 	\quad \theta(1/3) 		= \theta_1 \\
-	\theta(2/3) 		& = \theta_2, 	\quad \theta(1) 		= \theta_3 \\
-	\dot{\theta}(0) 	& = 0, 		\quad \dot{\theta}(1) 		= 0 \\
-	\ddot{\theta}(0) 	& = 0, 		\quad \ddot{\theta}(1) 		= 0 \\
-	\dddot{\theta}(0) 	& = 0. 		\quad \dddot{\theta}(1) 	= 0 \\
-	\ddot{\ddot{\theta}}(0) & = 0. 		\quad \ddot{\ddot{\theta}}(1) 	= 0 \\
+	\theta(0) 		& = \theta_0, 	\quad \theta(1/3) 		& = \theta_1 \\
+	\theta(2/3) 		& = \theta_2, 	\quad \theta(1) 		& = \theta_3 \\
+	\dot{\theta}(0) 	& = 0, 		\quad \dot{\theta}(1) 		& = 0 \\
+	\ddot{\theta}(0) 	& = 0, 		\quad \ddot{\theta}(1) 		& = 0 \\
+	\dddot{\theta}(0) 	& = 0. 		\quad \dddot{\theta}(1) 	& = 0 \\
+	\ddot{\ddot{\theta}}(0) & = 0. 		\quad \ddot{\ddot{\theta}}(1) 	& = 0 \\
 \end{aligned}
 ```
 And the equations will be something like: 
