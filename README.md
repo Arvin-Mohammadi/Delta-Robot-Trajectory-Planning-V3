@@ -37,7 +37,7 @@ Overview:
 
 
 <a name="section-introduction"></a>
-## Introduction
+# Introduction
 
 <details>
 <summary><ins>What is a Delta Robot and Why is it Important</ins></summary>
@@ -108,7 +108,7 @@ Take a look at the figure below. There are four main stages to any sort of robot
 
 
 <a name="section-deltarobot_kinematics"></a>
-## Delta Robot Kinematics
+# Delta Robot Kinematics
 
 <ins>What are Forward and Inverse Kinematics</ins>
 
@@ -123,7 +123,7 @@ This basically has the same logic as the FK and IK but this time instead of conv
 </details>
 </br>
 
-### Theoretical Solution of Forward and Inverse Kinematics in Delta Robot
+## Theoretical Solution of Forward and Inverse Kinematics in Delta Robot
 
 </br>
 <div align="center">
@@ -227,7 +227,7 @@ and also:
 
 
 <a name="section-point2point_trajectory_generation"></a>
-### Experimental Solution of Forward and Inverse Kinematics in Delta Robot
+## Experimental Solution of Forward and Inverse Kinematics in Delta Robot
 
 If you need a plug and place code that **JUST WORKS** i suggest the following code: [LINK](https://github.com/Arvin-Mohammadi/Delta-Robot-Trajectory-Planning-V3/blob/main/References/Inverse%20Kinematics%20(Delta%20Robot).pdf) - Reference #2
 
@@ -259,7 +259,7 @@ The same code as in the reference is implemented in the file ```DeltaKinematics.
 
 
 <a name="subsection-point2point_trajectory_generation"></a>
-## Theoretical Study - Point-to-Point Trajectory Generation
+# Theoretical Study - Point-to-Point Trajectory Generation
 
 
 <div align="center">
@@ -284,8 +284,8 @@ Basically point-to-point trajectory planning is like interpolation between two v
 > [!NOTE]
 > Since the array does not include time information, the duration for the whole process is considered to be 1, hence it simplifies a lot of the calculations. We call this "normalized time". If you need the time information included you should refer to the main references. 
 
-### Parabolic Method
-<details><p>
+## Parabolic Method
+
 We need to define the main phases of movement at the start of each method, so for this the important time instances are:
 
 ```math
@@ -365,9 +365,8 @@ Finally the overall mathematicall function can be described as:
 	\theta_b(t) & = \frac{\theta^I+\theta^F}{2} + 2(\theta^F - \theta^I)(t - 0.5) + 2(\theta^I - \theta^F)(t - 0.5)^2 &‌ \quad\text{for}\quad 0.5 \leq t \leq 1
 \end{aligned}
 ```
-</p></details>
 
-### Trapezoidal Method
+## Trapezoidal Method
 
 As explained, the goal here is to basically use a trapezoidal diagram as a way to interpolate between two given motor rotations. The trapezoidal diagram is defined as the following:
 
@@ -429,7 +428,7 @@ where
 
 
 
-### S-curve Method
+## S-curve Method
 
 The S-curve method is somewhat similar to the trapezoidal method with the difference that it is smoother. So in mathemtical terms that would be: 
 
@@ -514,7 +513,7 @@ Where:
 
 
 
-### Interpolating Polynomials
+## Interpolating Polynomials
 
 
 When interpolating between $\theta^I$ and $\theta^F$ we can use a polynomial such as $s(t)$ where $0 \leq t \leq 1$ since the time is normalized in this context and also $0 \leq s \leq 1$. And then you relate $s(t)$ with $\theta(t)$ as written below:
@@ -525,7 +524,7 @@ When interpolating between $\theta^I$ and $\theta^F$ we can use a polynomial suc
 
 Now knowing that, we can talk about $s(t)$ and we are gonna use the 5th, 7th, and 9th degree polynomials for this. 
 
-#### 5th order polynomial 
+### 5th order polynomial 
 
 The $s(t)$ polynomial can be written as: 
 
@@ -566,7 +565,7 @@ which means:
 ```
 
 
-#### 7th order polynomial
+### 7th order polynomial
 
 
 We go through the same process of as before in the 5th order polynomial. First it is to write down $s(t)$:
@@ -602,7 +601,7 @@ which means for $\theta(t)$ we have:
 ```
 
 
-#### 9th order polynomial
+### 9th order polynomial
 
 Again the same shit is both 5th and 7th order polynomial. First $s(t)$:
 
