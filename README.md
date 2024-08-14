@@ -1096,36 +1096,10 @@ Well what is adept cycle? it's basically just four points in 3D space that the r
 	<ins><strong>ADEPT CYCLE VIA THE CUBIC-SPLINE METHODS</strong></ins>
 </p>
 
-|         <img src="https://github.com/user-attachments/assets/80c03052-6278-40a9-b4ca-39e18418de47" style="width: 85%;">         |
+|         <img src="https://github.com/user-attachments/assets/80c03052-6278-40a9-b4ca-39e18418de47" style="width: 50%;">         |
 |:--------------------:|
-|         <img src="https://github.com/user-attachments/assets/94fe0eef-fbe3-4690-bac8-78288c151bb7" style="width: 85%;">         |
+|         <img src="https://github.com/user-attachments/assets/94fe0eef-fbe3-4690-bac8-78288c151bb7" style="width: 50%;">         |
 |   Adept Cycle Via Cubic Spline   |
-
-
-![ptp_trapezoidal](https://github.com/user-attachments/assets/8b607943-8f0c-45e0-a89e-e143d12fbf38)
-![ptp_trapezoidal (2)](https://github.com/user-attachments/assets/790fdd64-7c89-41e5-ac11-6bfcf843aeec)
-![ptp_scurve](https://github.com/user-attachments/assets/b5545deb-1ede-42f5-b6d2-db1b142c70e8)
-![ptp_scurve (2)](https://github.com/user-attachments/assets/898f3b31-32de-4129-9bd8-de110c4baefc)
-![ptp_polynomial9th](https://github.com/user-attachments/assets/c9beca08-c555-4e90-87dd-b4adae3a9632)
-![ptp_polynomial9th (2)](https://github.com/user-attachments/assets/25943fbc-2001-4661-b880-6cd26aa03f81)
-![ptp_polynomial7th](https://github.com/user-attachments/assets/4eb0e72c-b692-41ad-af27-2af2a222822c)
-![ptp_polynomial7th (2)](https://github.com/user-attachments/assets/11b1e5e3-e9f6-4863-b780-85656e194de5)
-![ptp_polynomial5th](https://github.com/user-attachments/assets/2873a59f-6da1-40fc-961e-96e26ccc5093)
-![ptp_polynomial5th (2)](https://github.com/user-attachments/assets/24672c80-23c8-4a1d-af77-90312ebe9d69)
-![ptp_bangbang](https://github.com/user-attachments/assets/145cc10e-3139-41c4-8813-104bbfef4b4d)
-![ptp_bangbang (2)](https://github.com/user-attachments/assets/082d42a3-cd20-42df-a447-36209f4b722d)
-![mltp_polynomial11th_4point](https://github.com/user-attachments/assets/ae60499b-56d2-4681-a186-69570c3483ac)
-![mltp_polynomial11th_4point (2)](https://github.com/user-attachments/assets/b5821e54-6735-4c7a-8213-350684641bdd)
-![mltp_polynomial9th_4point](https://github.com/user-attachments/assets/d7021347-832d-4dbe-b4c3-7b0291ae824f)
-![mltp_polynomial9th_4point (2)](https://github.com/user-attachments/assets/b204577f-aaf3-47a6-b8c4-1e49c6249ab2)
-![mltp_polynomial7th_4point](https://github.com/user-attachments/assets/87cadd5d-fb0d-41ea-a7b1-bb49057d98c3)
-![mltp_polynomial7th_4point (2)](https://github.com/user-attachments/assets/fbd85f82-90ff-4656-872e-eb80efb0cb7c)
-![adept mltp_cubicspline](https://github.com/user-attachments/assets/94fe0eef-fbe3-4690-bac8-78288c151bb7)
-![adept mltp_cubicspline (2)](https://github.com/user-attachments/assets/80c03052-6278-40a9-b4ca-39e18418de47)
-
-
-
-
 
 
 
@@ -1277,7 +1251,64 @@ path_planner.plot(results, "cubic spline")
 
 ### DeltaPathPlanner.py
 
--
+First we use define the kinematics of the delta robot, then define the four-point-path and finally ask for the results from the code:
+
+```python
+# Set the path 
+PATH = [[0, 0, 0], [0, 0, 0.5], [1, 1, 0.5], [1, 1, 0]]
+
+# init the robot 
+robot = DeltaKinematics(0.2, 0.46, 0.1, 0.074)
+# initialize the path planner class 
+path_planner = DeltaPathPlanner(robot,PATH)
+```
+
+Here is how to output the results and plot them:
+
+```python
+# calculate the trajectory based on cubic spline 
+results = path_planner.trajectory_gen("mltp_cubicspline")
+path_planner.plot(results, "adept mltp_cubicspline")
+path_planner.plot3d(results[1], "adept cycle cubic spline")
+
+# multi-point high order polynomials 
+results = path_planner.trajectory_gen('mltp_polynomial7th_4point')
+path_planner.plot(results, "mltp_polynomial7th_4point")
+path_planner.plot3d(results[1], "adept cycle 4 point polynoimal 7th order")
+
+results = path_planner.trajectory_gen('mltp_polynomial9th_4point')
+path_planner.plot(results, "mltp_polynomial9th_4point")
+path_planner.plot3d(results[1], "adept cycle 4 point polynoimal 9th order")
+
+results = path_planner.trajectory_gen('mltp_polynomial11th_4point')
+path_planner.plot(results, "mltp_polynomial11th_4point")
+path_planner.plot3d(results[1], "adept cycle 4 point polynoimal 11th order")
+
+# point to point methods
+results = path_planner.trajectory_gen('ptp_polynomial5th')
+path_planner.plot(results, 'ptp_polynomial5th')
+path_planner.plot3d(results[1], 'point to point 5th order polynomial')
+
+results = path_planner.trajectory_gen('ptp_polynomial7th')
+path_planner.plot(results, 'ptp_polynomial7th')
+path_planner.plot3d(results[1], 'point to point 7th order polynomial')
+
+results = path_planner.trajectory_gen('ptp_polynomial9th')
+path_planner.plot(results, 'ptp_polynomial9th')
+path_planner.plot3d(results[1], 'point to point 9th order polynomial')
+
+results = path_planner.trajectory_gen('ptp_bangbang')
+path_planner.plot(results, 'ptp_bangbang')
+path_planner.plot3d(results[1], 'point to point parabolic method')
+
+results = path_planner.trajectory_gen('ptp_trapezoidal')
+path_planner.plot(results, 'ptp_trapezoidal')
+path_planner.plot3d(results[1], 'point to point trapezoidal')
+
+results = path_planner.trajectory_gen('ptp_scurve')
+path_planner.plot(results, 'ptp_scurve')
+path_planner.plot3d(results[1], 'point to point S-curve')
+```
 
 <a name="section-references"></a>
 ## References
