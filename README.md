@@ -1065,8 +1065,6 @@ Well what is adept cycle? it's basically just four points in 3D space that the r
 |:--------------------:|:--------------------:|:--------------------:|
 |         <img src="https://github.com/user-attachments/assets/145cc10e-3139-41c4-8813-104bbfef4b4d" style="width: 85%;">         |         <img src="https://github.com/user-attachments/assets/8b607943-8f0c-45e0-a89e-e143d12fbf38" style="width: 85%;">         |         <img src="https://github.com/user-attachments/assets/b5545deb-1ede-42f5-b6d2-db1b142c70e8" style="width: 85%;">         |
 |   Point-to-Point Parabolic   |  Point-to-Point Trapezoidal  |   Point-to-Point S-Curve   |
-
-
 |         <img src="https://github.com/user-attachments/assets/24672c80-23c8-4a1d-af77-90312ebe9d69" style="width: 85%;">         |         <img src="https://github.com/user-attachments/assets/11b1e5e3-e9f6-4863-b780-85656e194de5" style="width: 85%;">         |         <img src="https://github.com/user-attachments/assets/25943fbc-2001-4661-b880-6cd26aa03f81" style="width: 85%;">         |
 |         <img src="https://github.com/user-attachments/assets/2873a59f-6da1-40fc-961e-96e26ccc5093" style="width: 85%;">         |         <img src="https://github.com/user-attachments/assets/4eb0e72c-b692-41ad-af27-2af2a222822c" style="width: 85%;">         |         <img src="https://github.com/user-attachments/assets/c9beca08-c555-4e90-87dd-b4adae3a9632" style="width: 85%;">         |
 |   Point-to-Point 5th-Order Polynomial   |  Point-to-Point 7th-Order Polynomial  |   Point-to-Point 9th-Order Polynomial   |
