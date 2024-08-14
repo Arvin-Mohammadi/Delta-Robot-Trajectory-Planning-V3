@@ -1061,21 +1061,42 @@ Well what is adept cycle? it's basically just four points in 3D space that the r
 </div>
 </br>
 
+|         <img src="https://github.com/user-attachments/assets/145cc10e-3139-41c4-8813-104bbfef4b4d" style="width: 85%;">         |         <img src="https://github.com/user-attachments/assets/790fdd64-7c89-41e5-ac11-6bfcf843aeec" style="width: 85%;">         |         <img src="https://github.com/user-attachments/assets/898f3b31-32de-4129-9bd8-de110c4baefc" style="width: 85%;">         |
+|:--------------------:|:--------------------:|:--------------------:|
+|         <img src="https://github.com/user-attachments/assets/145cc10e-3139-41c4-8813-104bbfef4b4d" style="width: 85%;">         |         <img src="https://github.com/user-attachments/assets/8b607943-8f0c-45e0-a89e-e143d12fbf38" style="width: 85%;">         |         <img src="https://github.com/user-attachments/assets/b5545deb-1ede-42f5-b6d2-db1b142c70e8" style="width: 85%;">         |
+|   Point-to-Point Parabolic   |  Point-to-Point Trapezoidal  |   Point-to-Point S-Curve   |
+
+
+|         <img src="https://github.com/user-attachments/assets/24672c80-23c8-4a1d-af77-90312ebe9d69" style="width: 85%;">         |         <img src="https://github.com/user-attachments/assets/11b1e5e3-e9f6-4863-b780-85656e194de5" style="width: 85%;">         |         <img src="https://github.com/user-attachments/assets/25943fbc-2001-4661-b880-6cd26aa03f81" style="width: 85%;">         |
+|         <img src="https://github.com/user-attachments/assets/2873a59f-6da1-40fc-961e-96e26ccc5093" style="width: 85%;">         |         <img src="https://github.com/user-attachments/assets/4eb0e72c-b692-41ad-af27-2af2a222822c" style="width: 85%;">         |         <img src="https://github.com/user-attachments/assets/c9beca08-c555-4e90-87dd-b4adae3a9632" style="width: 85%;">         |
+|   Point-to-Point 5th-Order Polynomial   |  Point-to-Point 7th-Order Polynomial  |   Point-to-Point 9th-Order Polynomial   |
+
+
+
+
+
+
 |         <img src="https://github.com/user-attachments/assets/790fdd64-7c89-41e5-ac11-6bfcf843aeec" style="width: 85%;">         |         <img src="https://github.com/user-attachments/assets/898f3b31-32de-4129-9bd8-de110c4baefc" style="width: 85%;">         |         <img src="https://github.com/user-attachments/assets/25943fbc-2001-4661-b880-6cd26aa03f81" style="width: 85%;">         |
 |:--------------------:|:--------------------:|:--------------------:|
+|         <img src="https://github.com/user-attachments/assets/8b607943-8f0c-45e0-a89e-e143d12fbf38" style="width: 85%;">         |         <img src="https://github.com/user-attachments/assets/b5545deb-1ede-42f5-b6d2-db1b142c70e8" style="width: 85%;">         |         <img src="https://github.com/user-attachments/assets/c9beca08-c555-4e90-87dd-b4adae3a9632" style="width: 85%;">         |
 |   PTP Trapezoidal 2   |  PTP S-Curve 2  |   PTP Polynomial 9th 2   |
 
 |         <img src="https://github.com/user-attachments/assets/11b1e5e3-e9f6-4863-b780-85656e194de5" style="width: 85%;">         |         <img src="https://github.com/user-attachments/assets/24672c80-23c8-4a1d-af77-90312ebe9d69" style="width: 85%;">         |         <img src="https://github.com/user-attachments/assets/082d42a3-cd20-42df-a447-36209f4b722d" style="width: 85%;">         |
 |:--------------------:|:--------------------:|:--------------------:|
+|         <img src="https://github.com/user-attachments/assets/4eb0e72c-b692-41ad-af27-2af2a222822c" style="width: 85%;">         |         <img src="https://github.com/user-attachments/assets/2873a59f-6da1-40fc-961e-96e26ccc5093" style="width: 85%;">         |         <img src="https://github.com/user-attachments/assets/145cc10e-3139-41c4-8813-104bbfef4b4d" style="width: 85%;">         |
 |   PTP Polynomial 7th 2   |  PTP Polynomial 5th 2  |   PTP Bang-Bang 2   |
 
-|         <img src="https://github.com/user-attachments/assets/8b607943-8f0c-45e0-a89e-e143d12fbf38" style="width: 85%;">         |         <img src="https://github.com/user-attachments/assets/b5545deb-1ede-42f5-b6d2-db1b142c70e8" style="width: 85%;">         |         <img src="https://github.com/user-attachments/assets/c9beca08-c555-4e90-87dd-b4adae3a9632" style="width: 85%;">         |
-|:--------------------:|:--------------------:|:--------------------:|
-|   PTP Trapezoidal 1   |  PTP S-Curve 1  |   PTP Polynomial 9th 1   |
 
-|         <img src="https://github.com/user-attachments/assets/4eb0e72c-b692-41ad-af27-2af2a222822c" style="width: 85%;">         |         <img src="https://github.com/user-attachments/assets/2873a59f-6da1-40fc-961e-96e26ccc5093" style="width: 85%;">         |         <img src="https://github.com/user-attachments/assets/145cc10e-3139-41c4-8813-104bbfef4b4d" style="width: 85%;">         |
-|:--------------------:|:--------------------:|:--------------------:|
-|   PTP Polynomial 7th 1   |  PTP Polynomial 5th 1  |   PTP Bang-Bang 1   |
+
+
+
+
+
+
+
+
+
+
 
 
 |         <img src="https://github.com/user-attachments/assets/b5821e54-6735-4c7a-8213-350684641bdd" style="width: 85%;">         |         <img src="https://github.com/user-attachments/assets/b204577f-aaf3-47a6-b8c4-1e49c6249ab2" style="width: 85%;">         |         <img src="https://github.com/user-attachments/assets/fbd85f82-90ff-4656-872e-eb80efb0cb7c" style="width: 85%;">         |
