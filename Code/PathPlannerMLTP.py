@@ -278,7 +278,7 @@ class PathPlannerMLTP:
 		return coeff 		
 
 
-	def plot(self, results, method_name, _num_differentials=3, _format='.png', _file_path='./results - multi point/'):
+	def plot(self, results, method_name, _num_differentials=3, _format='.pdf', _file_path='./results - multi point/'):
 		if not os.path.exists(_file_path):
 			os.makedirs(_file_path)
 		
@@ -359,9 +359,6 @@ if __name__ == "__main__":
 	path_planner.plot(results, "mltp - ptp scurve")
 
 	# calculate the trajectory based on cubic spline 
-	results = path_planner.mltp_cubicspline()
-	path_planner.plot(results, "cubic spline")
-	# calculate the trajectory based on cubic spline 
 	results = path_planner.mltp_polynomial7th_4point()
 	path_planner.plot(results, "7th order polynomial")
 	# calculate the trajectory based on cubic spline 
@@ -370,3 +367,7 @@ if __name__ == "__main__":
 	# calculate the trajectory based on cubic spline 
 	results = path_planner.mltp_polynomial11th_4point()
 	path_planner.plot(results, "11th order polynomial")
+
+	# calculate the trajectory based on cubic spline 
+	results = path_planner.mltp_cubicspline()
+	path_planner.plot(results, "cubic spline")
