@@ -1024,6 +1024,30 @@ So let's talk about why you should or shouldn't use each of these algorithms:
 *  **Pattern Generation**: This one is just a bit messy to be honest and I don't know how to improve on it. It's got something to do with sampling rate or whatever ... but putting that aside _when you basically have a certain pattern that you want your robot to travel_ you can just make an array of the actuator parameter values based on that shape. Then add a couple of extra emphasis points on the sharp edges manually, and then you'll have a trajectory that works for your pattern. 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <a name="section-adeptcycle"></a>
 # Adept Cycle 
 
@@ -1036,6 +1060,78 @@ Well what is adept cycle? it's basically just four points in 3D space that the r
 	Adept Cycle  
 </div>
 </br>
+
+|         <img src="https://github.com/user-attachments/assets/790fdd64-7c89-41e5-ac11-6bfcf843aeec" style="width: 85%;">         |         <img src="https://github.com/user-attachments/assets/898f3b31-32de-4129-9bd8-de110c4baefc" style="width: 85%;">         |         <img src="https://github.com/user-attachments/assets/25943fbc-2001-4661-b880-6cd26aa03f81" style="width: 85%;">         |
+|:--------------------:|:--------------------:|:--------------------:|
+|   PTP Trapezoidal 2   |  PTP S-Curve 2  |   PTP Polynomial 9th 2   |
+
+|         <img src="https://github.com/user-attachments/assets/11b1e5e3-e9f6-4863-b780-85656e194de5" style="width: 85%;">         |         <img src="https://github.com/user-attachments/assets/24672c80-23c8-4a1d-af77-90312ebe9d69" style="width: 85%;">         |         <img src="https://github.com/user-attachments/assets/082d42a3-cd20-42df-a447-36209f4b722d" style="width: 85%;">         |
+|:--------------------:|:--------------------:|:--------------------:|
+|   PTP Polynomial 7th 2   |  PTP Polynomial 5th 2  |   PTP Bang-Bang 2   |
+
+|         <img src="https://github.com/user-attachments/assets/8b607943-8f0c-45e0-a89e-e143d12fbf38" style="width: 85%;">         |         <img src="https://github.com/user-attachments/assets/b5545deb-1ede-42f5-b6d2-db1b142c70e8" style="width: 85%;">         |         <img src="https://github.com/user-attachments/assets/c9beca08-c555-4e90-87dd-b4adae3a9632" style="width: 85%;">         |
+|:--------------------:|:--------------------:|:--------------------:|
+|   PTP Trapezoidal 1   |  PTP S-Curve 1  |   PTP Polynomial 9th 1   |
+
+|         <img src="https://github.com/user-attachments/assets/4eb0e72c-b692-41ad-af27-2af2a222822c" style="width: 85%;">         |         <img src="https://github.com/user-attachments/assets/2873a59f-6da1-40fc-961e-96e26ccc5093" style="width: 85%;">         |         <img src="https://github.com/user-attachments/assets/145cc10e-3139-41c4-8813-104bbfef4b4d" style="width: 85%;">         |
+|:--------------------:|:--------------------:|:--------------------:|
+|   PTP Polynomial 7th 1   |  PTP Polynomial 5th 1  |   PTP Bang-Bang 1   |
+
+
+|         <img src="https://github.com/user-attachments/assets/b5821e54-6735-4c7a-8213-350684641bdd" style="width: 85%;">         |         <img src="https://github.com/user-attachments/assets/b204577f-aaf3-47a6-b8c4-1e49c6249ab2" style="width: 85%;">         |         <img src="https://github.com/user-attachments/assets/fbd85f82-90ff-4656-872e-eb80efb0cb7c" style="width: 85%;">         |
+|:--------------------:|:--------------------:|:--------------------:|
+|   MLTP Polynomial 11th 2   |  MLTP Polynomial 9th 2  |   MLTP Polynomial 7th 2   |
+
+|         <img src="https://github.com/user-attachments/assets/ae60499b-56d2-4681-a186-69570c3483ac" style="width: 85%;">         |         <img src="https://github.com/user-attachments/assets/d7021347-832d-4dbe-b4c3-7b0291ae824f" style="width: 85%;">         |         <img src="https://github.com/user-attachments/assets/87cadd5d-fb0d-41ea-a7b1-bb49057d98c3" style="width: 85%;">         |
+|:--------------------:|:--------------------:|:--------------------:|
+|   MLTP Polynomial 11th 1   |  MLTP Polynomial 9th 1  |   MLTP Polynomial 7th 1   |
+
+|         <img src="https://github.com/user-attachments/assets/80c03052-6278-40a9-b4ca-39e18418de47" style="width: 85%;">         |         <img src="https://github.com/user-attachments/assets/94fe0eef-fbe3-4690-bac8-78288c151bb7" style="width: 85%;">         |
+|:--------------------:|:--------------------:|
+|   MLTP Cubic Spline 2   |  MLTP Cubic Spline 1  |
+
+
+![ptp_trapezoidal](https://github.com/user-attachments/assets/8b607943-8f0c-45e0-a89e-e143d12fbf38)
+![ptp_trapezoidal (2)](https://github.com/user-attachments/assets/790fdd64-7c89-41e5-ac11-6bfcf843aeec)
+![ptp_scurve](https://github.com/user-attachments/assets/b5545deb-1ede-42f5-b6d2-db1b142c70e8)
+![ptp_scurve (2)](https://github.com/user-attachments/assets/898f3b31-32de-4129-9bd8-de110c4baefc)
+![ptp_polynomial9th](https://github.com/user-attachments/assets/c9beca08-c555-4e90-87dd-b4adae3a9632)
+![ptp_polynomial9th (2)](https://github.com/user-attachments/assets/25943fbc-2001-4661-b880-6cd26aa03f81)
+![ptp_polynomial7th](https://github.com/user-attachments/assets/4eb0e72c-b692-41ad-af27-2af2a222822c)
+![ptp_polynomial7th (2)](https://github.com/user-attachments/assets/11b1e5e3-e9f6-4863-b780-85656e194de5)
+![ptp_polynomial5th](https://github.com/user-attachments/assets/2873a59f-6da1-40fc-961e-96e26ccc5093)
+![ptp_polynomial5th (2)](https://github.com/user-attachments/assets/24672c80-23c8-4a1d-af77-90312ebe9d69)
+![ptp_bangbang](https://github.com/user-attachments/assets/145cc10e-3139-41c4-8813-104bbfef4b4d)
+![ptp_bangbang (2)](https://github.com/user-attachments/assets/082d42a3-cd20-42df-a447-36209f4b722d)
+![mltp_polynomial11th_4point](https://github.com/user-attachments/assets/ae60499b-56d2-4681-a186-69570c3483ac)
+![mltp_polynomial11th_4point (2)](https://github.com/user-attachments/assets/b5821e54-6735-4c7a-8213-350684641bdd)
+![mltp_polynomial9th_4point](https://github.com/user-attachments/assets/d7021347-832d-4dbe-b4c3-7b0291ae824f)
+![mltp_polynomial9th_4point (2)](https://github.com/user-attachments/assets/b204577f-aaf3-47a6-b8c4-1e49c6249ab2)
+![mltp_polynomial7th_4point](https://github.com/user-attachments/assets/87cadd5d-fb0d-41ea-a7b1-bb49057d98c3)
+![mltp_polynomial7th_4point (2)](https://github.com/user-attachments/assets/fbd85f82-90ff-4656-872e-eb80efb0cb7c)
+![adept mltp_cubicspline](https://github.com/user-attachments/assets/94fe0eef-fbe3-4690-bac8-78288c151bb7)
+![adept mltp_cubicspline (2)](https://github.com/user-attachments/assets/80c03052-6278-40a9-b4ca-39e18418de47)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 <a name="section-code_review"></a>
