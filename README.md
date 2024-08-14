@@ -1079,7 +1079,7 @@ Well what is adept cycle? it's basically just four points in 3D space that the r
 
 </br>
 <p align="center">
-	<ins><strong>ADEPT CYCLE VIA THE POINT-TO-POINT METHODS</strong></ins>
+	<ins><strong>ADEPT CYCLE VIA THE HIGHER-ORDER POLYNOMIAL METHODS</strong></ins>
 </p>
 
 
@@ -1091,22 +1091,15 @@ Well what is adept cycle? it's basically just four points in 3D space that the r
 
 
 
+</br>
+<p align="center">
+	<ins><strong>ADEPT CYCLE VIA THE CUBIC-SPLINE METHODS</strong></ins>
+</p>
 
-
-
-
-
-|         <img src="https://github.com/user-attachments/assets/b5821e54-6735-4c7a-8213-350684641bdd" style="width: 85%;">         |         <img src="https://github.com/user-attachments/assets/b204577f-aaf3-47a6-b8c4-1e49c6249ab2" style="width: 85%;">         |         <img src="https://github.com/user-attachments/assets/fbd85f82-90ff-4656-872e-eb80efb0cb7c" style="width: 85%;">         |
-|:--------------------:|:--------------------:|:--------------------:|
-|   MLTP Polynomial 11th 2   |  MLTP Polynomial 9th 2  |   MLTP Polynomial 7th 2   |
-
-|         <img src="https://github.com/user-attachments/assets/ae60499b-56d2-4681-a186-69570c3483ac" style="width: 85%;">         |         <img src="https://github.com/user-attachments/assets/d7021347-832d-4dbe-b4c3-7b0291ae824f" style="width: 85%;">         |         <img src="https://github.com/user-attachments/assets/87cadd5d-fb0d-41ea-a7b1-bb49057d98c3" style="width: 85%;">         |
-|:--------------------:|:--------------------:|:--------------------:|
-|   MLTP Polynomial 11th 1   |  MLTP Polynomial 9th 1  |   MLTP Polynomial 7th 1   |
-
-|         <img src="https://github.com/user-attachments/assets/80c03052-6278-40a9-b4ca-39e18418de47" style="width: 85%;">         |         <img src="https://github.com/user-attachments/assets/94fe0eef-fbe3-4690-bac8-78288c151bb7" style="width: 85%;">         |
-|:--------------------:|:--------------------:|
-|   MLTP Cubic Spline 2   |  MLTP Cubic Spline 1  |
+|         <img src="https://github.com/user-attachments/assets/80c03052-6278-40a9-b4ca-39e18418de47" style="width: 85%;">         |
+|:--------------------:|
+|         <img src="https://github.com/user-attachments/assets/94fe0eef-fbe3-4690-bac8-78288c151bb7" style="width: 85%;">         |
+|   Adept Cycle Via Cubic Spline   |
 
 
 ![ptp_trapezoidal](https://github.com/user-attachments/assets/8b607943-8f0c-45e0-a89e-e143d12fbf38)
