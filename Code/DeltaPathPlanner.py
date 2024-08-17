@@ -99,7 +99,7 @@ class DeltaPathPlanner:
 		plt.show()
 
 
-	def plot(self, results, method_name, _format='.png', _file_path='./results - adept cycle/'):
+	def plot(self, results, method_name, _format='.pdf', _file_path='./results - adept cycle/'):
 		if not os.path.exists(_file_path):
 			os.makedirs(_file_path)
 		
