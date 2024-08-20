@@ -77,12 +77,11 @@ Take a look at the figure below. There are four main stages to any sort of robot
 
 </br>
 <div align="center">
- 	<img src="https://github.com/user-attachments/assets/5aab2c7c-5e96-4978-9880-9c58a5b184c5" style="width: 50%;">
+ 	<img src="https://github.com/user-attachments/assets/dd0cda1e-495e-4c84-869c-bfa2a1832ad4" style="width: 50%;">
 	</br>
 	Simple robotics tasks are carried out as the depicted model.
 </div>
 </br>
-
 
 
 
