@@ -15,7 +15,7 @@ Overview:
 </br>
 </br>
 
-![Delta Robot Movement with different Trajectories](https://github.com/user-attachments/assets/332219ea-f07e-4477-ace7-05228a61bce7)
+https://github.com/user-attachments/assets/4cae6e12-086c-4b58-9fd9-a56ed97c3d32
 
 
 
