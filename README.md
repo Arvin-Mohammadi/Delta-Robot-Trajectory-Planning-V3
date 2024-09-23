@@ -985,19 +985,9 @@ This one is a bit tough to explain so bear with me for a second. When you have a
 So in this instance what we should do is to sample that pattern which results in an array of values much like before, which we will give to the PID controller of the robot as a reference to follow. How do we sample the pattern? well what I do is this: I first sample at a constant rate (based on distance) then I'll repeat the values which correspond to the sharp edges of the pattern. This way I can emphasis on the sharp ends for the PID controller so it comes out sharper (because the PID controller will have more time to reach it's destination with more precision). That's it. 
 
 
-<div align="center">
- 	<img src="https://github.com/user-attachments/assets/2dda7d86-4144-4927-a77d-dd997b848776" style="width: 50%;">
- 	<img src="https://github.com/user-attachments/assets/5ed8a76f-bad9-44ca-99b6-00f791b0570e" style="width: 50%;">
-	</br>
-	Pattern Generation 
-</div>
-</br>
-
-
-
-
-
-
+|         <img src="https://github.com/user-attachments/assets/2dda7d86-4144-4927-a77d-dd997b848776" style="width: 85%;">         |         <img src="https://github.com/user-attachments/assets/b9cf531a-9cab-4bfe-af1d-0ee922d16449" style="width: 85%;">         |
+|:--------------------:|:--------------------:|
+|         <img src="https://github.com/user-attachments/assets/5ed8a76f-bad9-44ca-99b6-00f791b0570e" style="width: 85%;">         |         <img src="https://github.com/user-attachments/assets/b8280c20-48b5-4660-9405-202e16a0e713" style="width: 85%;">         |
 
 
 
