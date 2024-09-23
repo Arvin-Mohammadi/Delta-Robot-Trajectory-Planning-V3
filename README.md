@@ -701,6 +701,7 @@ So like the point-to-point methods the **inputs** are the path points which want
 
 </br>
 <div align="center">
+ 	<img src="https://github.com/user-attachments/assets/f5f2bcad-499a-468b-bd7f-7d2ccbf54216" style="width: 50%;">
  	<img src="https://github.com/user-attachments/assets/02cdf85e-d61f-4f3b-afe9-3974e3a63551" style="width: 50%;">
 	</br>
 	In this application of petri dish sampling in microorganism culturing (which my team implemented), the robot is required to stop at each path point because a liquid drop needs to be placed at each location.
