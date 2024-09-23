@@ -987,11 +987,7 @@ So in this instance what we should do is to sample that pattern which results in
 
 |         <img src="https://github.com/user-attachments/assets/2dda7d86-4144-4927-a77d-dd997b848776" style="width: 85%;">         |         <img src="https://github.com/user-attachments/assets/b9cf531a-9cab-4bfe-af1d-0ee922d16449" style="width: 85%;">         |
 |:--------------------:|:--------------------:|
-|         <img src="https://github.com/user-attachments/assets/5ed8a76f-bad9-44ca-99b6-00f791b0570e" style="width: 85%;">         |         <img src="https://github.com/user-attachments/assets/b8280c20-48b5-4660-9405-202e16a0e713" style="width: 85%;">         |
-
-
-
-
+|         <img src="https://github.com/user-attachments/assets/5ed8a76f-bad9-44ca-99b6-00f791b0570e" style="width: 85%;">         |         <img src="https://github.com/user-attachments/assets/a4ad6fbb-b15e-4006-bd5f-19a2bef43c1f" style="width: 85%;">         |
 
 
 
