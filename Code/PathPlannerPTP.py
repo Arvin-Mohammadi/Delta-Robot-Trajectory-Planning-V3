@@ -203,52 +203,74 @@ class PathPlannerPTP:
 
 		return (t, theta, theta_dot, theta_ddot, theta_dddot)
 
-	def plot(self, results, method_name, _format='.png', _file_path='./results - point to point/'):
+	def plot(self, results, method_name, _format='.pdf', _file_path='./results - point to point/'):
 		if not os.path.exists(_file_path):
 			os.makedirs(_file_path)
-		
+
 		(t, theta, theta_dot, theta_ddot, theta_dddot) = results
 
 		fig = plt.figure()
 		fig.set_figheight(15)
 		fig.set_figwidth(10)
 
-		# plot theta
-		plt.subplot(411)
-		plt.plot(t, theta, label=r'$\theta$')
-		plt.legend()
-		plt.title(r'value-time', fontsize=20)
-		plt.xlabel("time", fontsize=15)
-		plt.ylabel("value", fontsize=15)
+		# Set global font to Times New Roman
+		plt.rc('font', family='Times New Roman')
 
+		if theta_dddot is not None:
+			# plot theta
+			plt.subplot(411)
+			plt.plot(t, theta, linewidth=4)  # Doubled the line thickness
+			plt.xlabel(r"$t$", fontsize=28)  # Increased font size
+			plt.ylabel(r'$\theta$', fontsize=28)  # Increased font size
+			plt.tick_params(axis='both', which='major', labelsize=22)  # Increased axis numbers font size
 
-		# plot theta dot 
-		plt.subplot(412)
-		plt.plot(t, theta_dot, label=r'$\dot{\theta}$')
-		plt.legend()
-		plt.title(r'first differential value-time', fontsize=20)
-		plt.xlabel("time", fontsize=15)
-		plt.ylabel("first differential value", fontsize=15)
+			# plot theta dot 
+			plt.subplot(412)
+			plt.plot(t, theta_dot, linewidth=4)  # Doubled the line thickness
+			plt.xlabel(r"$t$", fontsize=28)  # Increased font size
+			plt.ylabel(r'$\dot{\theta}$', fontsize=28)  # Increased font size
+			plt.tick_params(axis='both', which='major', labelsize=22)  # Increased axis numbers font size
 
-		# plot theta double dot 
-		plt.subplot(413)
-		plt.plot(t, theta_ddot, label=r'$\ddot{\theta}$')
-		plt.legend()
-		plt.title(r'second differential value-time', fontsize=20)
-		plt.xlabel("time", fontsize=15)
-		plt.ylabel("second differential value", fontsize=15)
+			# plot theta double dot 
+			plt.subplot(413)
+			plt.plot(t, theta_ddot, linewidth=4)  # Doubled the line thickness
+			plt.xlabel(r"$t$", fontsize=28)  # Increased font size
+			plt.ylabel(r'$\ddot{\theta}$', fontsize=28)  # Increased font size
+			plt.tick_params(axis='both', which='major', labelsize=22)  # Increased axis numbers font size
 
-		# plot theta triple dot 
-		plt.subplot(414)
-		plt.plot(t, theta_dddot, label=r'$\dddot{\theta}$')
-		plt.legend()
-		plt.title(r'third differential value-time', fontsize=20)
-		plt.xlabel("time", fontsize=15)
-		plt.ylabel("third differential value", fontsize=15)
+			# plot theta triple dot 
+			plt.subplot(414)
+			plt.plot(t, theta_dddot, linewidth=4)  # Doubled the line thickness
+			plt.xlabel(r"$t$", fontsize=28)  # Increased font size
+			plt.ylabel(r'$\dddot{\theta}$', fontsize=28)  # Increased font size
+			plt.tick_params(axis='both', which='major', labelsize=22)  # Increased axis numbers font size
+
+		else:
+			# plot theta
+			plt.subplot(311)
+			plt.plot(t, theta, linewidth=4)  # Doubled the line thickness
+			plt.xlabel(r"$t$", fontsize=28)  # Increased font size
+			plt.ylabel(r'$\theta$', fontsize=28)  # Increased font size
+			plt.tick_params(axis='both', which='major', labelsize=22)  # Increased axis numbers font size
+
+			# plot theta dot 
+			plt.subplot(312)
+			plt.plot(t, theta_dot, linewidth=4)  # Doubled the line thickness
+			plt.xlabel(r"$t$", fontsize=28)  # Increased font size
+			plt.ylabel(r'$\dot{\theta}$', fontsize=28)  # Increased font size
+			plt.tick_params(axis='both', which='major', labelsize=22)  # Increased axis numbers font size
+
+			# plot theta double dot 
+			plt.subplot(313)
+			plt.plot(t, theta_ddot, linewidth=4)  # Doubled the line thickness
+			plt.xlabel(r"$t$", fontsize=28)  # Increased font size
+			plt.ylabel(r'$\ddot{\theta}$', fontsize=28)  # Increased font size
+			plt.tick_params(axis='both', which='major', labelsize=22)  # Increased axis numbers font size
 
 		plt.tight_layout()
 		plt.savefig(_file_path + method_name + _format)
 		plt.clf()
+
 
 # =================================================================================================
 # -- main -----------------------------------------------------------------------------------------
@@ -271,13 +293,13 @@ if __name__ == "__main__":
 	results = path_planner.ptp_polynomial9th()
 	path_planner.plot(results, "9th order polynomial")
 
-    # results for the trapezoidal velocity profile
-	results = path_planner.ptp_trapezoidal()
-	path_planner.plot(results, "Trapezoidal Velocity Profile")
-
 	# results for the parabolic method
 	results = path_planner.ptp_bangbang()
 	path_planner.plot(results, "Parabolic Method")
+
+    # results for the trapezoidal velocity profile
+	results = path_planner.ptp_trapezoidal()
+	path_planner.plot(results, "Trapezoidal Velocity Profile")
 
     # results for the S-curve profile
 	results = path_planner.ptp_scurve()

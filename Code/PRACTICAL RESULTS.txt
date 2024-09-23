@@ -1,0 +1,366 @@
+										TIME = 1
+Method:  mltp_cubicspline
+Max Error:  1.044577444664383
+Mean Error:  0.5111512908072573
+Variance Error:  0.3897144114432394
+Final Error:  0.23436656124717606
+
+Method:  mltp_polynomial7th_4point
+Max Error:  1.08841690264153
+Mean Error:  0.5174977334353368
+Variance Error:  0.4939675027386662
+Final Error:  0.11651186227387497
+
+Method:  mltp_polynomial9th_4point
+Max Error:  1.2756340679918845
+Mean Error:  0.541547717943958
+Variance Error:  0.7453827308358987
+Final Error:  0.06488048985544356
+
+Method:  mltp_polynomial11th_4point
+Max Error:  1.2407675302877947
+Mean Error:  0.5471808608303578
+Variance Error:  0.7781892055233548
+Final Error:  0.048102830754237144
+
+Method:  ptp_polynomial5th
+Max Error:  1.3954660308126918
+Mean Error:  0.48556639061175044
+Variance Error:  0.6504209556460844
+Final Error:  0.3209570899201482
+
+Method:  ptp_polynomial7th
+Max Error:  1.5836596683419126
+Mean Error:  0.4854334315647617
+Variance Error:  0.7948364568900245
+Final Error:  0.31244401472198247
+
+Method:  ptp_polynomial9th
+Max Error:  1.6668824729599983
+Mean Error:  0.4920791136675272
+Variance Error:  0.8814448351248594
+Final Error:  0.35111623746212806
+
+Method:  ptp_bangbang
+Max Error:  1.3388786781355124
+Mean Error:  0.47839225810434566
+Variance Error:  0.5716226350336904
+Final Error:  0.32284766207371357
+
+Method:  ptp_trapezoidal
+Max Error:  1.2143887135409062
+Mean Error:  0.4745006856282128
+Variance Error:  0.5090653102469294
+Final Error:  0.3306901100599918
+
+Method:  ptp_scurve
+Max Error:  1.3859432881855507
+Mean Error:  0.48597321154250217
+Variance Error:  0.6443635445735993
+Final Error:  0.29573678075018334
+
+
+										TIME = 2 seconds
+
+Method:  mltp_cubicspline
+Max Error:  2.6871678660286498
+Mean Error:  1.3030544220167284
+Variance Error:  0.49849270879986396
+Final Error:  0.31536413198327407
+
+Method:  mltp_polynomial7th_4point
+Max Error:  2.7540648482848598
+Mean Error:  1.3260790299887018
+Variance Error:  0.6426599907856201
+Final Error:  0.11700738701082411
+
+Method:  mltp_polynomial9th_4point
+Max Error:  2.9615247750642295
+Mean Error:  1.3464621157561403
+Variance Error:  0.847513435730358
+Final Error:  0.04871932600846917
+
+Method:  mltp_polynomial11th_4point
+Max Error:  3.177622519542495
+Mean Error:  1.390217665278962
+Variance Error:  1.0956287311863129
+Final Error:  0.02103766206104311
+
+Method:  ptp_polynomial5th
+Max Error:  3.932539121617913
+Mean Error:  1.2267204487144705
+Variance Error:  1.042552644198711
+Final Error:  0.3401046583081241
+
+Method:  ptp_polynomial7th
+Max Error:  4.398179822505121
+Mean Error:  1.2296432123444787
+Variance Error:  1.3671797403456165
+Final Error:  0.22501024947469261
+
+Method:  ptp_polynomial9th
+Max Error:  4.918664725846574
+Mean Error:  1.229686030739134
+Variance Error:  1.6274842445607338
+Final Error:  0.1644164041623292
+
+Method:  ptp_bangbang
+Max Error:  3.8089647485648386
+Mean Error:  1.2190366484966773
+Variance Error:  0.8918112534231046
+Final Error:  0.408464778326851
+
+Method:  ptp_trapezoidal
+Max Error:  3.2988779679934326
+Mean Error:  1.2201636744085653
+Variance Error:  0.7845692141974354
+Final Error:  0.44260738197918525
+
+Method:  ptp_scurve
+Max Error:  3.676671558709328
+Mean Error:  1.2278455646535327
+Variance Error:  1.0255260345209103
+Final Error:  0.32372240712151185
+
+										TIME = 3 seconds
+Method:  mltp_cubicspline
+Max Error:  0.36708770555726733
+Mean Error:  0.17542243397576734
+Variance Error:  0.04687649519493457
+Final Error:  0.02769397523192005
+
+Method:  mltp_polynomial7th_4point
+Max Error:  0.3697144302650178
+Mean Error:  0.1765469337523669
+Variance Error:  0.05686544988964334
+Final Error:  0.007873494332234662
+
+Method:  mltp_polynomial9th_4point
+Max Error:  0.4005483382353915
+Mean Error:  0.18090286775232833
+Variance Error:  0.07532281508750424
+Final Error:  0.003579826751094269
+
+Method:  mltp_polynomial11th_4point
+Max Error:  0.43417053917771425
+Mean Error:  0.18655085365127094
+Variance Error:  0.09865050367411307
+Final Error:  0.003361111902412417
+
+Method:  ptp_polynomial5th
+Max Error:  0.537985653060368
+Mean Error:  0.16223027534307832
+Variance Error:  0.09743799434754843
+Final Error:  0.015817217904847802
+
+Method:  ptp_polynomial7th
+Max Error:  0.6151238663524131
+Mean Error:  0.1636740741265415
+Variance Error:  0.12996117322718242
+Final Error:  0.011352227329987159
+
+Method:  ptp_polynomial9th
+Max Error:  0.6758939191169899
+Mean Error:  0.1632687102053787
+Variance Error:  0.15275189923044072
+Final Error:  0.007281025696849595
+
+Method:  ptp_bangbang
+Max Error:  0.53117731602582
+Mean Error:  0.16222554136235592	
+Variance Error:  0.08429219495111931
+Final Error:  0.030591011020080987
+
+Method:  ptp_trapezoidal
+Max Error:  0.4317673669219343
+Mean Error:  0.16213964864019678
+Variance Error:  0.07112695551478468
+Final Error:  0.029553683953728684
+
+Method:  ptp_scurve
+Max Error:  0.49732783599720853
+Mean Error:  0.16213788187079786
+Variance Error:  0.09507701291846696
+Final Error:  0.016538062120500983
+										TIME = 4 seconds
+Method:  mltp_cubicspline
+Max Error:  0.27643108697462
+Mean Error:  0.12968368012684772
+Variance Error:  0.02592606103699811
+Final Error:  0.0123961043723906
+
+Method:  mltp_polynomial7th_4point
+Max Error:  0.27670094502250075
+Mean Error:  0.1311227106915988
+Variance Error:  0.03040085327442038
+Final Error:  0.007612034167379206
+
+Method:  mltp_polynomial9th_4point
+Max Error:  0.30113302276755133
+Mean Error:  0.13162896659213
+Variance Error:  0.04123206525580503
+Final Error:  0.004195534482134725
+
+Method:  mltp_polynomial11th_4point
+Max Error:  0.32540261124018566
+Mean Error:  0.13699652556894923
+Variance Error:  0.053435589711821066
+Final Error:  0.003245392160391376
+
+Method:  ptp_polynomial5th
+Max Error:  0.398609361488934
+Mean Error:  0.11945431714088502
+Variance Error:  0.05449447753251966
+Final Error:  0.00548887105407116
+
+Method:  ptp_polynomial7th
+Max Error:  0.46445307812375025
+Mean Error:  0.11970439986823392
+Variance Error:  0.07010244045303804
+Final Error:  0.0022970573123320894
+
+Method:  ptp_polynomial9th
+Max Error:  0.516855873949824
+Mean Error:  0.11929499589912973
+Variance Error:  0.08517654935679783
+Final Error:  0.0018126893109601278
+
+Method:  ptp_bangbang
+Max Error:  0.39527934245766083
+Mean Error:  0.11963861477132202
+Variance Error:  0.04580818062204142
+Final Error:  0.02246205797663507
+
+Method:  ptp_trapezoidal
+Max Error:  0.32655288815549277
+Mean Error:  0.11914090215070212
+Variance Error:  0.038818764754512874
+Final Error:  0.01642059704938364
+
+Method:  ptp_scurve
+Max Error:  0.37815697031987694
+Mean Error:  0.119793906509326
+Variance Error:  0.05375344851555498
+Final Error:  0.006684829658070912
+
+										TIME = 5 seconds
+Method:  mltp_cubicspline
+Max Error:  0.23022382841005898
+Mean Error:  0.10386025739667706
+Variance Error:  0.016431302254409176
+Final Error:  0.009796105931292839
+
+Method:  mltp_polynomial7th_4point
+Max Error:  0.21599371789950905
+Mean Error:  0.10311621694234163
+Variance Error:  0.018671641534606265
+Final Error:  0.004699350721061379
+
+Method:  mltp_polynomial9th_4point
+Max Error:  0.24808187174424723
+Mean Error:  0.10488310238556693
+Variance Error:  0.02533842232257048
+Final Error:  0.002794072959825559
+
+Method:  mltp_polynomial11th_4point
+Max Error:  0.2609768967299459
+Mean Error:  0.10896684795029007
+Variance Error:  0.03355694845260803
+Final Error:  0.0024484322456850174
+
+Method:  ptp_polynomial5th
+Max Error:  0.3109159481121365
+Mean Error:  0.09484457877121122
+Variance Error:  0.03373043531620931
+Final Error:  0.006184672211393635
+
+Method:  ptp_polynomial7th
+Max Error:  0.36285769484372443
+Mean Error:  0.094612706429464
+Variance Error:  0.04419324379938185
+Final Error:  0.0018429180647428587
+
+Method:  ptp_polynomial9th
+Max Error:  0.4011985280485139
+Mean Error:  0.0949722497141948
+Variance Error:  0.05428962895305296
+Final Error:  0.0020201660375923055
+
+Method:  ptp_bangbang
+Max Error:  0.3163215919905307
+Mean Error:  0.09480609278524199
+Variance Error:  0.028874918171624946
+Final Error:  0.01168279648958137
+
+Method:  ptp_trapezoidal
+Max Error:  0.2592485620426003
+Mean Error:  0.09496775360948026
+Variance Error:  0.024523348046004492
+Final Error:  0.013187136644395891
+
+Method:  ptp_scurve
+Max Error:  0.2967205423994522
+Mean Error:  0.09463659870441804
+Variance Error:  0.033482475867200844
+Final Error:  0.004996588961347741
+
+										TIME = 6 seconds
+Method:  mltp_cubicspline
+Max Error:  0.19272702921786916
+Mean Error:  0.08584737509683152
+Variance Error:  0.011404458933503217
+Final Error:  0.006241529390459145
+
+Method:  mltp_polynomial7th_4point
+Max Error:  0.18778597855076903
+Mean Error:  0.08493057399716701
+Variance Error:  0.012681936952596524
+Final Error:  0.003580039629210676
+
+Method:  mltp_polynomial9th_4point
+Max Error:  0.19808878252238918
+Mean Error:  0.08630957293192944
+Variance Error:  0.017314974370434912
+Final Error:  0.0023107740172597165
+
+Method:  mltp_polynomial11th_4point
+Max Error:  0.2216430929114578
+Mean Error:  0.08982387491360316
+Variance Error:  0.02276751638952298
+Final Error:  0.0023312156046242523
+
+Method:  ptp_polynomial5th
+Max Error:  0.2751320876218776
+Mean Error:  0.078192415605995
+Variance Error:  0.02311392414316642
+Final Error:  0.002036955174076792
+
+Method:  ptp_polynomial7th
+Max Error:  0.3149841591035306
+Mean Error:  0.07829502575690221
+Variance Error:  0.030506244301864383
+Final Error:  0.0018996068380663616
+
+Method:  ptp_polynomial9th
+Max Error:  0.3578176957279115
+Mean Error:  0.07843096595105707
+Variance Error:  0.03774974605008985
+Final Error:  0.0021525486177021353
+
+Method:  ptp_bangbang
+Max Error:  0.25592919808026193
+Mean Error:  0.07770791716636985
+Variance Error:  0.01925186274345054
+Final Error:  0.009449807585116134
+
+Method:  ptp_trapezoidal
+Max Error:  0.22726422607793734
+Mean Error:  0.07792029467088642
+Variance Error:  0.016538254975961543
+Final Error:  0.009371509197523612
+
+Method:  ptp_scurve
+Max Error:  0.25922423061673994
+Mean Error:  0.0777772312735816
+Variance Error:  0.022882254033618245
+Final Error:  0.0018750511395660165
