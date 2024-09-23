@@ -985,14 +985,9 @@ This one is a bit tough to explain so bear with me for a second. When you have a
 So in this instance what we should do is to sample that pattern which results in an array of values much like before, which we will give to the PID controller of the robot as a reference to follow. How do we sample the pattern? well what I do is this: I first sample at a constant rate (based on distance) then I'll repeat the values which correspond to the sharp edges of the pattern. This way I can emphasis on the sharp ends for the PID controller so it comes out sharper (because the PID controller will have more time to reach it's destination with more precision). That's it. 
 
 
-|         <img src="https://github.com/user-attachments/assets/2dda7d86-4144-4927-a77d-dd997b848776" style="width: 85%;">         |         <img src="https://github.com/user-attachments/assets/b9cf531a-9cab-4bfe-af1d-0ee922d16449" style="width: 85%;">         |
+|         <img src="https://github.com/user-attachments/assets/d01c0cd8-bc55-44c5-99cf-d7f30ea864b3" style="width: 85%;">         |         <img src="https://github.com/user-attachments/assets/b9cf531a-9cab-4bfe-af1d-0ee922d16449" style="width: 85%;">         |
 |:--------------------:|:--------------------:|
-|         <img src="https://github.com/user-attachments/assets/5ed8a76f-bad9-44ca-99b6-00f791b0570e" style="width: 85%;">         |         <img src="https://github.com/user-attachments/assets/a4ad6fbb-b15e-4006-bd5f-19a2bef43c1f" style="width: 85%;">         |
-
-
-
-
-
+|         <img src="https://github.com/user-attachments/assets/02d4bd2d-313e-4605-a4b0-fe750d78e80c" style="width: 85%;">         |         <img src="https://github.com/user-attachments/assets/a4ad6fbb-b15e-4006-bd5f-19a2bef43c1f" style="width: 85%;">         |
 
 
 
