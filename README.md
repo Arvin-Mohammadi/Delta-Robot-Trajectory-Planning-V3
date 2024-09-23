@@ -1013,12 +1013,17 @@ So in this instance what we should do is to sample that pattern which results in
 Well what is adept cycle? it's basically just four points in 3D space that the robot must hit in order to perform a pick-and-place operation. it looks something like this:
 
 
+</br>
 <div align="center">
+ 	<img src="https://github.com/user-attachments/assets/cc371e61-3bc7-47a6-aa66-2a41a22a44bf" style="width: 50%;">
  	<img src="https://github.com/user-attachments/assets/78efffa4-90ac-4bd5-b245-08d04c101c30" style="width: 50%;">
 	</br>
-	Adept Cycle  
+	Adept Cycle
 </div>
 </br>
+
+
+
 
 
 
