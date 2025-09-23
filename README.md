@@ -141,85 +141,85 @@ This basically has the same logic as the FK and IK but this time instead of conv
 
 The Delta robot consists of three main chains. Each chain starts from the base platform($O_0$), connects to the upper arm via the pin joint ($A_i$), connects to the lower arm via the universal joint ($B_i$), and finally connects to the end-effector via the universal joint ($C_i$). This results in a movement behaviour, where the end-effector moves parallel to the base platform and can move along three translational axes of ($x, y, z$) in 3D space. 
 
-```math
+$$
 \begin{cases} 
   R_i & \equiv \overline{O_0A_i} & = \text{The distance between base platform center and the pin joint} \\
   r_i & \equiv \overline{O_PC_i} & = \text{The distance between the end-effector center and the universal joint $C_i$} \\
   L_i & \equiv \overline{A_iB_i} & = \text{The length of each actuated link (upper arm)}  \\
   l_i & \equiv \overline{B_iC_i} & = \text{The length of each driven link (lower arm)}
 \end{cases}
-```
+$$
 
 The angles between $x_0$ and $\overline{O_0A_i}$ are indiacted by $\gamma_i$. The angles between $x_p$ and $\overline{O_PC_i}$ are indicated by $\beta_i$. The angles between the actuated links and the horizon are indicated by $\theta_i$, where $i=1, 2, 3$
 
 We have the following assumptions:
 
-```math
+$$
 \begin{cases}
   L & = L_i \\
   l & = l_i \\
   R & = R_i \\
   r & = r_i
 \end{cases}
-```
+$$
 
 and also: 
 
-```math
+$$
 \gamma_1 = \frac{1}{2}\gamma_2 = \frac{1}{3}\gamma_3 = \beta_1 = \frac{1}{2}\beta_2 = \frac{1}{3}\beta_3 = 120\degree
-```
+$$
 
 <ins>Calculating Relative Positions</ins> 
 
 - The position of $A_i$ in relation to the $\{O_0\}$-frame:
 
-```math
+$$
     \overline{O_0A_i} = [R\cos\gamma_i \quad R\sin\gamma_i \quad 0]^T
-```
+$$
 
 - The position of $B_i$ in relation to the $\{O_0\}$-frame:
 
-```math
+$$
     \overline{O_0B_i} = 
     \begin{bmatrix}
         (R + L\cos\theta_i)\cos\gamma_i \\ 
         (R + L\cos\theta_i)\sin\gamma_i \\
         - L\sin\theta_i 
     \end{bmatrix}
-```
+$$
 
 - The position of $C_i$ in relation to the $\{O_0\}$-frame:
 
-```math
+$$
     \overline{O_PC_i} = [r\cos\gamma_i \quad r\sin\gamma_i \quad 0]^T
-```
+$$
 
 -  The position of $C_i$ in relation to the $\{O_0\}$-frame, given that the position of end-effector center is equal to $[X_P \quad Y_P \quad Z_P]^T$:
 
-```math
+$$
     \overline{O_0C_i} = 
     \begin{bmatrix}
         X_P + r\cos\gamma_i\\ 
         Y_P + r\sin\gamma_i \\ 
         Z_P
     \end{bmatrix}
-```
+$$
 
 - Given the mentioned equations we can say that we have the following constraint:
 
-```math
+$$
     l = |\overline{O_0B_i} - \overline{O_0C_i}|
-```
+$$
 - Re-writing the previous equation we have: 
 
-```math 
+$$ 
     \overline{O_0B_i - O_0C_i} = 
     \begin{bmatrix}
         (R - r + L\cos\theta_i)\cos\gamma_i - X_P \\ 
         (R - r + L\cos\theta_i)\sin\gamma_i - Y_P \\ 
         - L\sin\theta_i - Z_P
     \end{bmatrix}
-```
+$$
 
 <ins>Solution of Foward and Inverse Kinematics</ins>
 
@@ -275,12 +275,12 @@ The same code as in the reference is implemented in the file ```DeltaKinematics.
 
 Basically point-to-point trajectory planning is like interpolation between two values (let's call them $\theta^I$ and $\theta^F$), and to us it outputs an interpolation of these two values as a function of time; then we take that function and sample it at a constant sampling frequency, take the resulting array of values and give that array to the robot's PID controller. 
 
-```math
+$$
   \begin{cases}
     & \Theta^I & = \text{Initial Value} \\
     & \Theta^F & = \text{Final Value}
   \end{cases}
-```
+$$
 
 > [!NOTE]
 > The output array does not include any time information, the time information comes into play when we want to give the PID controller the next target point from the array. So basically when the robot wants to move from Point A to  B in either 2 seconds or 3 seconds, the interpolation array for both of these actions are the same. 
@@ -292,30 +292,30 @@ Basically point-to-point trajectory planning is like interpolation between two v
 
 We need to define the main phases of movement at the start of each method, so for this the important time instances are:
 
-```math
+$$
 \begin{aligned}
   t_0 & \equiv \text{Positive acceleration phase starts} \\ 
   t_1 & \equiv \text{Positive acceleration phase ends | Negative acceleration phase starts} \\ 
   t_2 & \equiv \text{Negative acceleration phase ends} 
 \end{aligned}
-```
+$$
 So the trajectory is also called the parabolic trajectory and is actually made of two 2nd order polynomials glued together, in mathmetical form that will look like: 
 
-```math
+$$
 \begin{aligned}
 	\theta_a(t) & = a_0 + a_1(t - t_0) + a_2(t - t_0)^2 & \quad\text{for}‌\quad t_0 \leq t \leq t_1 \\ 
 	\theta_b(t) & = a_3 + a_4(t - t_1) + a_5(t - t_1)^2 & \quad\text{for}‌\quad t_1 \leq t \leq t_2 \\ 
 \end{aligned}
-```
+$$
 
 What we can do is to set $t_0 = 0, t_1 = 0.5, t_2 = 1$ and then simplify everything to reach:  
 
-```math
+$$
 \begin{aligned}
 	\theta_a(t) & = a_0 + a_1t + a_2t^2 & \quad\text{for}‌\quad 0 \leq t \leq 0.5 \\ 
 	\theta_b(t) & = a_3 + a_4(t - 0.5) + a_5(t - 0.5)^2 & \quad\text{for}‌\quad 0.5 \leq t \leq 1 \\ 
 \end{aligned}
-```
+$$
 
 Then we write down the conditions for solving $\theta_a(t)$. The conditions are:
 1. At the start of movement in this phase, $\theta_a(t)$ is equal to $\theta^I$
@@ -323,20 +323,20 @@ Then we write down the conditions for solving $\theta_a(t)$. The conditions are:
 3. At the start of movement in this phase, velocity (1st differential) of $\theta_a(t)$ is equal to zero
 which in mathematical form is written as:
 
-```math
+$$
 \begin{aligned}
 	\text{conditions for solving $\theta_a(t)$} \rightarrow
 	& \theta_a(t=0) = \theta^I = a_0 \\ 
 	&‌ \theta_a(t=0.5) = \frac{\theta^I + \theta^F}{2} = a_0 + a_1(0.5) + a_2(0.5)^2 \\ 
 	&‌ \dot{\theta}_a(t=0) = 0 = a_1 
 \end{aligned}
-```
+$$
 
 Solving the system of linear equations we get:
 
-```math
+$$
 	a_0 = \theta^I, \quad a_1 = 0, \quad a_2 = 2(\theta^F - \theta^I)
-```
+$$
 
 Then we write down the conditions for solving $\theta_a(t)$. The conditions are:
 1. At the start of movement in this phase $\theta_b(t)$ is exactly half-way between $\theta^I$ and $\theta^F$
@@ -345,85 +345,85 @@ Then we write down the conditions for solving $\theta_a(t)$. The conditions are:
 which in mathematical form is written as:
 
 
-```math
+$$
 \begin{aligned}
 	\text{conditions for solving $\theta_b$} \rightarrow
 	& \theta_b(t=0.5) = \frac{\theta^I+\theta^F}{2} = a_3 \\ 
 	& \theta_b(t=1) = \theta^F = a_3 + a_4(0.5) + a_5(0.5)^2 \\ 
 	&‌ \dot{\theta}_b(t=1) = 0 = a_4 + 2a_5(0.5)
 \end{aligned}
-```
+$$
 
 
 Solving the system of linear equations we get:
 
-```math
+$$
 	a_3 = \frac{\theta^I+\theta^F}{2}, \quad a_4 = 2(\theta^F - \theta^I), \quad a_5 = 2(\theta^I - \theta^F)
-```
+$$
 
 Finally the overall mathematicall function can be described as:
 
-```math
+$$
 \begin{aligned}
 	\theta_a(t) & = \theta^I + 2(\theta^F - \theta^I)t^2 &‌ \quad\text{for}\quad 0 \leq t \leq 0.5 \\ 
 	\theta_b(t) & = \frac{\theta^I+\theta^F}{2} + 2(\theta^F - \theta^I)(t - 0.5) + 2(\theta^I - \theta^F)(t - 0.5)^2 &‌ \quad\text{for}\quad 0.5 \leq t \leq 1
 \end{aligned}
-```
+$$
 
 ## Trapezoidal Method
 
 As explained, the goal here is to basically use a trapezoidal diagram as a way to interpolate between two given motor rotations. The trapezoidal diagram is defined as the following:
 
-```math
+$$
   \dot{\theta} = 
   \begin{cases}
     at        & t_0 \leq t < t_1 \\
     V_{max}   & t_1 \leq t < t_2  \\
     -at       & t_2 \leq t \leq t_3
   \end{cases}
-```
+$$
 
 For the sake of simplicity we say that $t_0 = 0, t_1 = 1/3, t_2 = 2/3, t_3 = 1$. Using this we can also conclude that $v_{max} = a.t$ where $t=1/3$ and this results in  $a = 3v_{max}$. Finally we have: 
-```math
+$$
   \dot{\theta} = 
   \begin{cases}
     3V_{max}t        & 0 \leq t < 1/3 \\
     V_{max}   & 1/3 \leq t < 2/3  \\
     -3V_{max}t       & 2/3 \leq t \leq 1
   \end{cases}
-```
+$$
 
 
 So we can calculate all of the $\theta, \dot{\theta}, \ddot{\theta}$. First let's go for the easiest one, $\ddot{\theta}$:
 
 
-```math
+$$
 \begin{aligned}
 	\ddot{\theta}(t) & = a & \quad \text{for} \quad 0 \leq t \leq T \\
 	\ddot{\theta}(t) & = 0 & \quad \text{for} \quad T \leq t \leq 2T \\
 	\ddot{\theta}(t) & = -a & \quad \text{for} \quad 2T \leq t \leq 1 \\
 \end{aligned}
-```
+$$
 
 Next up is $\dot{\theta}$: 
 
-```math
+$$
 \begin{aligned}
 	\dot{\theta}(t) & = a t & \quad \text{for} \quad 0 \leq t \leq T \\
 	\dot{\theta}(t) & = v_{\text{max}} & \quad \text{for} \quad T \leq t \leq 2T \\
 	\dot{\theta}(t) & = -a(t - 2T) + v_{\text{max}} & \quad \text{for} \quad 2T \leq t \leq 1 \\
 \end{aligned}
-```
+$$
 
 And the next is $\theta$:
 
-```math
+$$
 \begin{aligned}
 	\theta(t) & = \theta_0 + \frac{1}{2} a t^2 & \quad \text{for} \quad 0 \leq t \leq T \\
 	\theta(t) & = \theta_0 + \frac{1}{2} a T^2 + v_{\text{max}} (t - T) & \quad \text{for} \quad T \leq t \leq 2T \\
 	\theta(t) & = \theta_0 + \frac{1}{2} a T^2 + v_{\text{max}} T + v_{\text{max}} (t - 2T) - \frac{1}{2} a (t - 2T)^2 & \quad \text{for} \quad 2T \leq t \leq 1 \\
 \end{aligned}
-```
+$$
 
 where 
 - $T = \frac{1}{3}$
@@ -436,7 +436,7 @@ where
 
 The S-curve method is somewhat similar to the trapezoidal method with the difference that it is smoother. So in mathemtical terms that would be: 
 
-```math
+$$
 \begin{aligned}
 	\ddot{\theta} = 
 	\begin{cases}
@@ -449,11 +449,11 @@ The S-curve method is somewhat similar to the trapezoidal method with the differ
 		j.t			& \quad\text{for}\quad t_6 \leq t \leq t_7
 	\end{cases}
 \end{aligned}
-```
+$$
 
 We'll do the same thing as the trapezoidal method and calculate the entire movement based on $\theta, \dot{\theta}, \ddot{\theta}, \dddot{\theta}$. First is $\dddot{\theta}$: 
 
-```math
+$$
 \begin{aligned}
 	\dddot{\theta}(t) & = j_{\text{max}} & \quad \text{for} \quad 0 \leq t \leq T \\
 	\dddot{\theta}(t) & = 0 & \quad \text{for} \quad T \leq t \leq 2T \\
@@ -463,11 +463,11 @@ We'll do the same thing as the trapezoidal method and calculate the entire movem
 	\dddot{\theta}(t) & = 0 & \quad \text{for} \quad 5T \leq t \leq 6T \\
 	\dddot{\theta}(t) & = j_{\text{max}} & \quad \text{for} \quad 6T \leq t \leq 7T \\
 \end{aligned}
-```
+$$
 
 Next is $\ddot{\theta}$: 
 
-```math
+$$
 \begin{aligned}
 	\ddot{\theta}(t) & = j_{\text{max}} t & \quad \text{for} \quad 0 \leq t \leq T \\
 	\ddot{\theta}(t) & = a_{\text{max}} & \quad \text{for} \quad T \leq t \leq 2T \\
@@ -477,12 +477,12 @@ Next is $\ddot{\theta}$:
 	\ddot{\theta}(t) & = - a_{\text{max}} & \quad \text{for} \quad 5T \leq t \leq 6T \\
 	\ddot{\theta}(t) & = - a_{\text{max}} + j_{\text{max}} (t - 6T) & \quad \text{for} \quad 6T \leq t \leq 7T \\
 \end{aligned}
-```
+$$
 
 Next is $\dot{\theta}$: 
 
 
-```math
+$$
 \begin{aligned}
 	\dot{\theta}(t) & = \frac{1}{2} j_{\text{max}} t^2 & \quad \text{Phase} 1\\
 	\dot{\theta}(t) & = \frac{1}{2} a_{\text{max}} T + a_{\text{max}} (t - T) & \quad \text{Phase} 2 \\
@@ -492,12 +492,12 @@ Next is $\dot{\theta}$:
 	\dot{\theta}(t) & = \frac{3}{4} v_{\text{max}} - a_{\text{max}} (t - 5T) &  \quad \text{Phase} 6\\
 	\dot{\theta}(t) & = \frac{1}{4} v_{\text{max}} - a_{\text{max}} (t - 6T) + \frac{1}{2} j_{\text{max}} (t - 6T)^2 &  \quad \text{Phase} 7 \\
 \end{aligned}
-```
+$$
 
 Finally it's $\theta$: 
 
 
-```math
+$$
 \begin{aligned}
 	\theta(t) & = \theta_0 + \frac{1}{6} j_{\text{max}} t^3 & \quad \text{Phase} 1\\
 	\theta(t) & = \theta_0 + \frac{1}{12} v_{\text{max}} T + \frac{1}{2} a_{\text{max}} T(t - T) + \frac{1}{2} a_{\text{max}} (t - T)^2 &  \quad \text{Phase} 2\\
@@ -507,7 +507,7 @@ Finally it's $\theta$:
 	\theta(t) & = \theta_0 + \frac{41}{12} v_{\text{max}} T + \frac{3}{4} v_{\text{max}} (t - 5T) - \frac{1}{2} a_{\text{max}} (t - 5T)^2 &  \quad \text{Phase} 6\\
 	\theta(t) & = \theta_0 + \frac{47}{12} v_{\text{max}} T + \frac{1}{4} v_{\text{max}} (t - 6T) - \frac{1}{2} a_{\text{max}} (t - 6T)^2 + \frac{1}{6} j_{\text{max}} (t - 6T)^3 & \quad \text{Phase} 7 \\
 \end{aligned}
-```
+$$
 
 Where:
 - $T = \frac{1}{7}$
@@ -522,9 +522,9 @@ Where:
 
 When interpolating between $\theta^I$ and $\theta^F$ we can use a polynomial such as $s(t)$ where $0 \leq t \leq 1$ since the time is normalized in this context and also $0 \leq s \leq 1$. And then you relate $s(t)$ with $\theta(t)$ as written below:
 
-```math
+$$
 	\theta(t) = \theta^I + (\theta^F - \theta^I)s(t)
-```
+$$
 
 Now knowing that, we can talk about $s(t)$ and we are gonna use the 5th, 7th, and 9th degree polynomials for this. 
 
@@ -532,9 +532,9 @@ Now knowing that, we can talk about $s(t)$ and we are gonna use the 5th, 7th, an
 
 The $s(t)$ polynomial can be written as: 
 
-```math
+$$
 	s(t) = a.t^5 + b.t^4 + c.t^3 + d.t^2 + e.t + f
-```
+$$
 
 we can write the conditions to solve for $a, b, c, d, e, f$:
 1. starting and finishing position of $s$ which are 0 and 1
@@ -542,31 +542,31 @@ we can write the conditions to solve for $a, b, c, d, e, f$:
 3. starting and finishing acceleration of $s$ which are both 0
 These conditions can be written in mathmetical format:  
 
-```math
+$$
 \begin{aligned}
 	s(0) = 0, \quad \dot{s}(0) = 0, \quad \ddot{s}(0) = 0 \\ 
 	s(1) = 1, \quad \dot{s}(1) = 0, \quad \ddot{s}(1) = 0
 \end{aligned}
-```
+$$
 
 Solving for the resulting system of linear equations we get: 
 
-```math
+$$
 	a = 6, \quad b = -15, \quad c = 10, \quad d=e=f=0
-```
+$$
 
 
 and in the end we have:
 
-```math
+$$
 	s(t) = 6.t^5 - 15.t^4 + 10.t^3
-```
+$$
 
 which means:
 
-```math
+$$
 	\theta(t) = \theta^I + (\theta^F - \theta^I)(6.t^5 - 15.t^4 + 10.t^3)
-```
+$$
 
 
 ### 7th order polynomial
@@ -574,74 +574,74 @@ which means:
 
 We go through the same process of as before in the 5th order polynomial. First it is to write down $s(t)$:
 
-```math
+$$
 	s(t) = a.t^7 + b.t^6 + c.t^5 + d.t^4 + e.t^3 + f.t^2 + g.t + h
-```
+$$
 
 then writing down the conditions:
 
-```math
+$$
 	\begin{aligned}
 		s(0) = 0, \quad \dot{s}(0) = 0, \quad \ddot{s}(0) = 0, \quad \dddot{s}(0) = 0 \\ 
 		s(1) = 1, \quad \dot{s}(1) = 0, \quad \ddot{s}(1) = 0, \quad \dddot{s}(1) = 0
 	\end{aligned}
-```
+$$
 
 Then solving the linear system of equations based on the conditions:
 
-```math
+$$
 	a=-20, \quad b = 70, \quad c = -84, \quad d = 35, \quad e=f=g=h=0
-```
+$$
 
 and at the end we can write:
 
-```math
+$$
 	s(t) = -20.t^7 + 70.t^6 - 84.t^5 + 35.t^4
-```
+$$
 
 which means for $\theta(t)$ we have:
-```math
+$$
 	\theta(t) = \theta^I + (\theta^F - \theta^I)(-20.t^7 + 70.t^6 - 84.t^5 + 35.t^4)
-```
+$$
 
 
 ### 9th order polynomial
 
 Again the same shit is both 5th and 7th order polynomial. First $s(t)$:
 
-```math
+$$
 	a_1.t^9 + a_2.t^8 + \dots + a_8.t^2 + a_9.t + a-{10}
-```
+$$
 
 then writing down the conditions:
 
-```math
+$$
 	\begin{aligned}
 		s(0) = 0, \quad \dot{s}(0) = 0, \quad \ddot{s}(0) = 0, \quad \dddot{s}(0) = 0, \quad \ddot{\ddot{s}}(0) = 0 \\ 
 		s(1) = 1, \quad \dot{s}(1) = 0, \quad \ddot{s}(1) = 0, \quad \dddot{s}(1) = 0, \quad \ddot{\ddot{s}}(1) = 0
 	\end{aligned}
-```
+$$
 
 Then solving the system of linear equations:
 
-```math
+$$
 \begin{aligned}
 	a_1 & = 70, \quad a_2 = -315, \quad a_3 = 540, \quad a_4 = -420 \\\
 	a_5 & = 126, \quad a_6=a_7=a_8=a_9=a_{10}=0
 \end{aligned}
-```
+$$
 
 So we have for $s(t)$:
 
-```math
+$$
 	s(t) = 70.t^9 - 315.t^8 + 540.t^7 - 420.t^6 + 126.t^5
-```
+$$
 
 and we have for $\theta(t)$: 
 
-```math
+$$
 	\theta(t) = \theta^I + (\theta^F - \theta^I)(70.t^9 - 315.t^8 + 540.t^7 - 420.t^6 + 126.t^5)
-```
+$$
 
 </br>
 <p align="center">
@@ -727,9 +727,9 @@ And the overall idea is to interpolate between each two points in the path, with
 
 Say we are interpolating a set of values such as [0, 1, -1, 0] and we wanted to create a trajectory for these values with a single polynomial: 
 
-```math
+$$
 	s(t) = a_n.t^n + \dots + a_1.t + a_0
-```
+$$
 
 So given this information we list the conditions for creating the polynomial function: 
 
@@ -748,23 +748,23 @@ Based on if we want to control the value of jerk and snap, this'll give us three
 
 Defining the polynomial:
 
-```math
+$$
 	\theta(t) = a_7.t^7 + \dots + a_1.t + a_0
-```
+$$
 
 
-```math
+$$
 \begin{aligned}
 	\theta(0) 		& = \theta_0, 	\quad \theta(1/3) 		& = \theta_1 \\
 	\theta(2/3) 		& = \theta_2, 	\quad \theta(1) 		& = \theta_3 \\
 	\dot{\theta}(0) 	& = 0, 		\quad \dot{\theta}(1) 		& = 0 \\
 	\ddot{\theta}(0) 	& = 0, 		\quad \ddot{\theta}(1) 		& = 0 \\
 \end{aligned}
-```
+$$
 
 The polynomial solution for $a_i$: 
 
-```math
+$$
 \begin{aligned}
 	a_0 & = \theta_0 \\
 	a_1 & = 0 \\
@@ -775,19 +775,19 @@ The polynomial solution for $a_i$:
 	a_6 & = 600.75\,\theta_0 -1002.375\,\theta_1 +911.25\,\theta_2 -509.625\,\theta_3 \\
 	a_7 & = 273.375\,\theta_1 -158.625\,\theta_0 -273.375\,\theta_2 +158.625\,\theta_3 
 \end{aligned}
-```
+$$
 
 
 ### 9th-order polynomial
 
 Defining the polynomial:
 
-```math
+$$
 	s(t) = a_9.t^9 + \dots + a_1.t + a_0
-```
+$$
 
 
-```math
+$$
 \begin{aligned}
 	\theta(0) 		& = \theta_0, 	\quad \theta(1/3) 		& = \theta_1 \\
 	\theta(2/3) 		& = \theta_2, 	\quad \theta(1) 		& = \theta_3 \\
@@ -795,11 +795,11 @@ Defining the polynomial:
 	\ddot{\theta}(0) 	& = 0, 		\quad \ddot{\theta}(1) 		& = 0 \\
 	\dddot{\theta}(0) 	& = 0. 		\quad \dddot{\theta}(1) 	& = 0 
 \end{aligned}
-```
+$$
 
 The polynomial solution for $a_i$: 
 
-```math
+$$
 \begin{aligned}
 	a_0 & = \theta_0 \\ 
 	a_1 & = 0 \\ 
@@ -812,18 +812,18 @@ The polynomial solution for $a_i$:
 	a_8 & = 5740.875\,\theta_1 -3822.1875\,\theta_0 -5330.8125\,\theta_2 +3412.125\,\theta_3 \\
 	a_9 & = 803.8125\,\theta_0 -1230.1875\,\theta_1 +1230.1875\,\theta_2 -803.8125\,\theta_3 
 \end{aligned}
-```
+$$
 
 
 ### 11th-order polynomial
 
 Defining the polynomial:
 
-```math
+$$
 	s(t) = a_{11}.t^{11} + \dots + a_1.t + a_0
-```
+$$
 
-```math
+$$
 \begin{aligned}
 	\theta(0) 		& = \theta_0, 	\quad \theta(1/3) 		& = \theta_1 \\
 	\theta(2/3) 		& = \theta_2, 	\quad \theta(1) 		& = \theta_3 \\
@@ -832,11 +832,11 @@ Defining the polynomial:
 	\dddot{\theta}(0) 	& = 0. 		\quad \dddot{\theta}(1) 	& = 0 \\
 	\ddot{\ddot{\theta}}(0) & = 0. 		\quad \ddot{\ddot{\theta}}(1) 	& = 0 \\
 \end{aligned}
-```
+$$
 
 The polynomial solution for $a_i$: 
 
-```math
+$$
 \begin{aligned}
 	a_0 & = \theta_0 \\ 
 	a_1 & = 0 \\ 
@@ -851,7 +851,7 @@ The polynomial solution for $a_i$:
 	a_{10} & = 22549.5\,\theta_0 -31369.78125\,\theta_1 +29524.5\,\theta_2 -20704.21875\,\theta_3 \\
 	a_{11} & = 5535.84375\,\theta_1 -3932.15625\,\theta_0 -5535.84375\,\theta_2 +3932.15625\,\theta_3 
 \end{aligned}
-```
+$$
 
 </br>
 <p align="center">
@@ -875,20 +875,20 @@ Each polynomial will have a degree of $p$ based on the desired level of trajecto
 
 So the input is:
 
-```math
+$$
 \begin{aligned}
 	\text{path array} = [\theta_0, \theta_1, \dots, \theta_n]   
 \end{aligned}
-```
+$$
 
 The overall trajectory function can be described as: 
 
-```math
+$$
 \begin{aligned}
 	\theta(t) & = \lbrace q_k(t), t \in [t_k, t_{k+1}], k=0, \dots , n-1 \rbrace \\
 	\text{where} \quad q_k(t) & = a_{k0} + a_{k1}(t-t_k) + a_{k2}(t-t_k)^2 + a_{k3}(t-t_k)^3
 \end{aligned}
-```
+$$
 
 So as I said there are $n$ polynomials with unknown coefficients that connect every two points in the given path. So we need to calculate the value of $4n$ coefficients. We calculate the values of coefficients based on some conditions such as: 
 
@@ -899,36 +899,36 @@ So as I said there are $n$ polynomials with unknown coefficients that connect ev
 
 Adding these conditions up will result in 4n conditions, hence 4n equations. Solving this system of linear equations will give us the result. Let's write the conditions one more time: 
 
-```math
+$$
 \begin{aligned}
 	& q_k(t_k) = \theta_k, \quad q_k(t_{k+1}) = \theta_{k+1}, & k=0, ..., n-1 \\
 	& \dot{q}_k (t_{k+1}) 	= \dot{q}_{k+1}(t_{k+1}), & k=0, ..., n-2\\
 	& \ddot{q}_k (t_{k+1}) 	= \ddot{q}_{k+1} (t_{k+1}), & k=0, ..., n-2\\
 	& \dot{q}_0 (t_0) 	= v_0 = 0 , \quad \dot{q}_{n-1} (t_n) = v_n = 0 & \\
 \end{aligned}
-```
+$$
 
 The coefficient $a_{k,i}$ can be computed with the following steps. First we consider each velocity at time $t_k$ to be known:
 
-```math
+$$
 \begin{aligned}
 	q_k(t_k) & = a_{k0}						& = q_k \\
 	\dot{q_k} (t_k) & = a_{k1} 					& = v_k \\ 
 	q_k(t_{k+1}) & = a_{k0} + a_{k1} T_k + a_{k2} T^2_k + a_{k3}T^3_k & = q_{k+1} \\ 
 	\dot{q_k} (t_{k+1}) & = a_{k1} + 2a_{k2} T_k + 3 a_{k3} T^2_k 	& = v_{k+1} \\ 
 \end{aligned}
-```
+$$
 
 Where $T_k = t_{k+1} - t_k$. Solving the above equations we have: 
 
-```math
+$$
 \begin{cases}
     a_{k,0} & = q_k\\ 
     a_{k,1} & = v_k\\ 
     a_{k,2} & = \frac{1}{T_k}   [\frac{3(q_{k+1} - q_k)}{T_k} - 2v_k - v_{k+1}] \\ 
     a_{k,3} & = \frac{1}{T^2_k} [\frac{2(q_k - q_{k+1})}{T_k} + v_k + v_{k+1}] 
 \end{cases}
-```
+$$
 
 
 But this is for when the velocities of the points are known, which they are not (except the initial and final points). So the velocities have to be calculated, in this instance we use the continuity conditions of acceleration. Velocities can be found with a matrix of $v = A^{-1}c$. Where: 
